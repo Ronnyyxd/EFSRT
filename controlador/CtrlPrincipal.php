@@ -34,7 +34,19 @@ class CtrlPrincipal extends Controlador {
             'CtrlAnexo03'=>'Anexo 03',
             'CtrlAnexo04'=>'Anexo 04',
             'CtrlAnexo05'=>'Anexo 05',
-            
+            'CtrlAuditoria'=>'Auditoria',
+            'CtrlDocentes'=>'Docentes',
+            'CtrlEncargado'=>'Encargado',
+            'CtrlEntidad'=>'Entidad',
+            'CtrlEstados'=>'Estados',
+            'CtrlEstudiantes'=>'Estudiantes',
+            'CtrlIndicadores'=>'Indicadores',
+            'CtrlIndicadores_evaluacion'=>'Indicadores_Evaluacion',
+            'CtrlModulos'=>'Modulos',
+            'CtrlPersonas'=>'Personas',
+            'CtrlProgramas_Estudios'=>'Programas_Estudios',
+            'CtrlTipos_indicadores'=>'Tipos_indicadores',
+            'CtrlVisitas_Anexo04'=>'Visitas_Anexo04',
         ];
     }
 }
