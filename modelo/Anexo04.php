@@ -1,7 +1,7 @@
 <?php
 require_once './core/Modelo.php';
 
-class Empresas extends Modelo {
+class Anexo04 extends Modelo {
     private $id;
     private $RazonSocial;
     private $Direccion;
@@ -10,7 +10,7 @@ class Empresas extends Modelo {
     private $idRepresentante;
     private $RUC;
     private $esActiva;
-    private $_tabla='empresas';
+    private $_tabla='anexo04';
 
     public function __construct($id=null,$RazonSocial=null,$Direccion=null,$Telefono=null,$rubro=null,$idRepresentante=null,$RUC=null
     ,$esActiva=null,$idEmpresa=null,$idDocente=null){

@@ -1,6 +1,8 @@
 <?php
+session_start();
 require_once './core/Controlador.php';
 require_once './modelo/Anexo03.php';
+require_once './modelo/Modulos.php';
 
 class CtrlAnexo03 extends Controlador {
     public function index(){
@@ -10,12 +12,21 @@ class CtrlAnexo03 extends Controlador {
 
         # var_dump($data);exit;
 
-        $datos = [
-            'titulo'=>'Anexo03',
-            'datos'=>$data['data']
+/*         $datos = [
+            
+            'datos'=>$data['data'],
+            #"titulo"=>"anexo03",
         ];
 
-        $this->mostrar('anexo03/mostrar.php',$datos);
+        $home = $this->mostrar('anexo03/mostrar.php',$datos,true); */
+
+        $datos= [
+            'titulo'=>'Anexo03',
+            'contenido'=>$home,
+            'menu'=>$_SESSION['menu'],
+            'datos'=>$data['data']
+        ];
+    $this->mostrar('./plantilla/home.php',$datos);
     }
 
     public function eliminar(){
@@ -27,8 +38,13 @@ class CtrlAnexo03 extends Controlador {
         $this->index();
     }
     public function nuevo(){
+        $obj = new Modulos();
+        $dataCta = $obj->getTodo();
+        $datos = [
+            'modulos'=>$dataCta['data']
+        ];
         # echo "Agregando..";
-        $this->mostrar('anexo03/formulario.php');
+        $this->mostrar('anexo03/formulario.php',$datos);
     }
     public function editar(){
         $NroModulo = $_GET['NroModulo'];

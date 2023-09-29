@@ -30,16 +30,16 @@ $titulo = $esNuevo==1?'Nuevo Anexo 03':'Editando Anexo 03';
         <input type="hidden" name="esNuevo" value="<?=$esNuevo?>">
         <br>
         Fecha_desde:
-        <input type="text" name="Fecha_desde" value="<?=$Fecha_desde?>">
+        <input type="date" name="Fecha_desde" value="<?=$Fecha_desde?>">
         <br>
         Fecha_hasta:
-        <input type="text" name="Fecha_hasta" value="<?=$Fecha_hasta?>">
+        <input type="date" name="Fecha_hasta" value="<?=$Fecha_hasta?>">
         <br>
         horario:
-        <input type="text" name="horario" value="<?=$horario?>">
+        <input type="time" name="horario" value="<?=$horario?>">
         <br>
         observaciones:
-        <input type="text" name="observaciones" value="<?=$observaciones?>">
+        <input class="form-control" type="text" name="observaciones" value="<?=$observaciones?>">
         <br>
         pago_por:
         <input type="text" name="pago_por" value="<?=$pago_por?>">
@@ -59,7 +59,25 @@ $titulo = $esNuevo==1?'Nuevo Anexo 03':'Editando Anexo 03';
         idEstudiante:
         <input type="text" name="idEstudiante" value="<?=$idEstudiante?>">
         <br>
+        idModulo:
+        <select name="NroModulo" idModulo="">
+            <?php
+            $esSeleccionado=null;
+            if (is_array ($modulo))
+            foreach ($modulo as $m) { 
+                $esSeleccionado='';
+                if($NroModulo==$m['idModulo'])
+                    $esSeleccionado='selected';
+            ?>
+                
+                <option <?=$esSeleccionado?> value="<?=$m['id']?>"> <?=$m['nombre']?></option>
+            <?php
+            }
+            ?>
+
+        </select>
         
+        <br>
         idModulo:
         <input type="text" name="idModulo" value="<?=$idModulo?>">
         <br>

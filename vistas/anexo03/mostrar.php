@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
 </head>
 <body>
-    <h1><?=$titulo?></h1>
+   
 <a href="?ctrl=CtrlAnexo03&accion=nuevo">Nuevo Anexo 03</a>
     <table class="table">
         <tr>
@@ -64,7 +64,7 @@ foreach ($datos as $d) {
         <?=$d['idEstudiante']?>
     </td>
     <td>
-        <?=$d['idModulo']?>
+        <?=$d['modulo']?>
     </td>
     <td>
         <?=$d['detalle_otros']?>

@@ -16,6 +16,7 @@ class Anexo03 extends Modelo {
     private $idModulo;
     private $detalle_otros;
     private $_tabla='anexo_03';
+    private $_vista='v_anexo3';
 
     public function __construct($NroModulo=null,$Fecha_desde=null,$Fecha_hasta=null,$horario=null,$observaciones=null,$pago_por=null,$movilidad=null
     ,$otros=null,$solo_EFSRT=null,$idEmpresa=null,$idEstudiante=null,$idModulo=null,$detalle_otros=null){
@@ -35,6 +36,7 @@ class Anexo03 extends Modelo {
         parent::__construct($this->_tabla);
     }
     public function getTodo(){
+        $this->setTabla($this->_vista);
         return $this->getAll();
     }
     public function eliminar(){
