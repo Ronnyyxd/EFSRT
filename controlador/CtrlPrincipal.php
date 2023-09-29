@@ -36,9 +36,9 @@ class CtrlPrincipal extends Controlador {
             'CtrlAnexo05'=>'Anexo 05',
             /* 'CtrlAuditoria'=>'Auditoria', */
             'CtrlDocentes'=>'Docentes',
-            /* 'CtrlEncargado'=>'Encargado',Representantes
-            'CtrlEntidad'=>'Entidad',Empresas
-            'CtrlEstados'=>'Estados', */
+            'CtrlRepresentantes'=>'Representantes',
+            'CtrlEmpresas'=>'Empresas',
+            /*'CtrlEstados'=>'Estados', */ 
             'CtrlEstudiantes'=>'Estudiantes',
             'CtrlIndicadores'=>'Indicadores',
             'CtrlIndicadores_evaluacion'=>'Indicadores_Evaluacion',

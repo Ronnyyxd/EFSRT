@@ -12,8 +12,9 @@ class Empresas extends Modelo {
     private $esActiva;
     private $_tabla='empresas';
 
+
     public function __construct($id=null,$RazonSocial=null,$Direccion=null,$Telefono=null,$rubro=null,$idRepresentante=null,$RUC=null
-    ,$esActiva=null,$idEmpresa=null,$idDocente=null){
+    ,$esActiva=null){
         $this->id = $id;
         $this->RazonSocial=$RazonSocial;
         $this->Direccion=$Direccion;
@@ -41,7 +42,6 @@ class Empresas extends Modelo {
             'idRepresentante'=>"'$this->idRepresentante'",
             'RUC'=>"'$this->RUC'",
             'esActiva'=>"'$this->esActiva'",
-
         ];
         return $this->insert($datos);
     }
@@ -58,7 +58,7 @@ class Empresas extends Modelo {
             'idRepresentante'=>"'$this->idRepresentante'",
             'RUC'=>"'$this->RUC'",
             'esActiva'=>"'$this->esActiva'",
-
+ 
 
         ];
         $wh = "id=$this->id";
