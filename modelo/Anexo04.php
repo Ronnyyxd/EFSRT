@@ -10,7 +10,7 @@ class Anexo04 extends Modelo {
     private $idRepresentante;
     private $RUC;
     private $esActiva;
-    private $_tabla='anexo04';
+    private $_tabla='anexo_04';
 
     public function __construct($id=null,$RazonSocial=null,$Direccion=null,$Telefono=null,$rubro=null,$idRepresentante=null,$RUC=null
     ,$esActiva=null,$idEmpresa=null,$idDocente=null){

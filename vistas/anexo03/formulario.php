@@ -84,10 +84,21 @@ $titulo = $esNuevo==1?'Nuevo Anexo 03':'Editando Anexo 03';
         detalle_otros:
         <input type="text" name="detalle_otros" value="<?=$detalle_otros?>">
         <br>
+        
         <input type="submit" value="Guardar">
 
     </form>
+    <br>
 
+    <!-- 
+    if(isset($NroModulo['mensaje']) and $NroModulo['mensaje'] =='falta'){
+    ?> -->
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>Error</strong> Rellena todos los campos
+  
+</div>
+<div class="d-grid gap-2 d-md-block">
+    <button class="btn btn-dark" type="button">         
     <a href="?ctrl=CtrlAnexo03">Retornar</a>
 </body>
 </html>

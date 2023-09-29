@@ -56,7 +56,13 @@ $titulo = $esNuevo==1?'Nueva Persona':'Editando Persona';
         <input type="submit" value="Guardar">
 
     </form>
-
+    <br>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>Error</strong> Rellena todos los campos
+  
+</div>
+<div class="d-grid gap-2 d-md-block">
+    <button class="btn btn-dark" type="button">
     <a href="?ctrl=CtrlPersonas">Retornar</a>
 </body>
 </html>

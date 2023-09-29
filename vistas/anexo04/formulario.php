@@ -60,4 +60,3 @@ $titulo = $esNuevo==1?'Nuevo Anexo 04':'Editando Anexo 04';
     <a href="?ctrl=CtrlAnexo04">Retornar</a>
 </body>
 </html>
-

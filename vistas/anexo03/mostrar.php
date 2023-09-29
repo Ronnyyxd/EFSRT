@@ -1,5 +1,6 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+<button class="btn btn-warning" type="button"><a href="?ctrl=CtrlAnexo03&accion=nuevo">Nuevo Anexo 03</a></button>
 
-<a href="?ctrl=CtrlAnexo03&accion=nuevo">Nuevo Anexo 03</a>
     <table class="table">
         <tr>
             <th>Numero del Modulo</th>
@@ -60,11 +61,13 @@ foreach ($datos as $d) {
     <td>
         <?=$d['detalle_otros']?>
     </td>
-    <td>
-        <a href="?ctrl=CtrlAnexo03&accion=editar&NroModulo=<?=$d['NroModulo']?>">
-            Editar
-        </a>
-        <a href="?ctrl=CtrlAnexo03&accion=eliminar&NroModulo=<?=$d['NroModulo']?>">Eliminar</a>
+    <td>    
+    <div class="d-grid gap-2 d-md-block">
+        <button class="btn btn-dark" type="button"><a href="?ctrl=CtrlAnexo03&accion=editar&NroModulo=<?=$d['NroModulo']?>">
+        <i class="bi bi-pencil"></i>
+        </a></button>
+        <div class="d-grid gap-2 d-md-block">
+        <button class="btn btn-dark" type="button"><a href="?ctrl=CtrlAnexo03&accion=eliminar&NroModulo=<?=$d['NroModulo']?>"><i class="bi bi-trash2-fill"></i></a></button>
         
     </td>
 </tr>
@@ -74,7 +77,9 @@ foreach ($datos as $d) {
 ?>
 
     </table>
-
-    <a href="?">Retornar</a>
+    
+    
+    <div class="d-grid gap-2 d-md-block">
+    <button class="btn btn-dark" type="button"><a href="?">Retornar</a></button>
 </body>
 </html>
