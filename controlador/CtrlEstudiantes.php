@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once './core/Controlador.php';
 require_once './modelo/Estudiantes.php';
 
@@ -15,7 +16,14 @@ class CtrlEstudiantes extends Controlador {
             'datos'=>$data['data']
         ];
 
-        $this->mostrar('estudiantes/mostrar.php',$datos);
+        $home = $this->mostrar('estudiantes/mostrar.php',$datos,true);
+
+        $datos= [
+            'titulo'=>'Estudiantes',
+            'contenido'=>$home,
+            'menu'=>$_SESSION['menu']
+        ];
+    $this->mostrar('./plantilla/home.php',$datos);
     }
 
     public function eliminar(){
@@ -28,7 +36,12 @@ class CtrlEstudiantes extends Controlador {
     }
     public function nuevo(){
         # echo "Agregando..";
-        $this->mostrar('estudiantes/formulario.php');
+        $datos= [
+            'titulo'=>'Nuevo Estudiante',
+            'contenido'=>$this->mostrar('estudiantes/formulario.php',null,true),
+            'menu'=>$_SESSION['menu']
+        ];
+    $this->mostrar('./plantilla/home.php',$datos);
     }
     public function editar(){
         $id = $_GET['id'];

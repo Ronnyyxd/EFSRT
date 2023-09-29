@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once './core/Controlador.php';
 require_once './modelo/Modulos.php';
 
@@ -15,7 +16,14 @@ class CtrlModulos extends Controlador {
             'datos'=>$data['data']
         ];
 
-        $this->mostrar('modulos/mostrar.php',$datos);
+        $home = $this->mostrar('modulos/mostrar.php',$datos,true);
+
+        $datos= [
+            'titulo'=>'Modulos',
+            'contenido'=>$home,
+            'menu'=>$_SESSION['menu']
+        ];
+    $this->mostrar('./plantilla/home.php',$datos);
     }
     	
     public function eliminar(){
@@ -28,7 +36,12 @@ class CtrlModulos extends Controlador {
     }
     public function nuevo(){
         # echo "Agregando..";
-        $this->mostrar('modulos/formulario.php');
+        $datos= [
+            'titulo'=>'Nuevo Modulo',
+            'contenido'=>$this->mostrar('modulos/formulario.php',null,true),
+            'menu'=>$_SESSION['menu']
+        ];
+    $this->mostrar('./plantilla/home.php',$datos);
     }
     public function editar(){
         $id = $_GET['id'];
@@ -39,7 +52,14 @@ class CtrlModulos extends Controlador {
         $datos = [
             'datos'=>$data['data'][0]
         ];
-        $this->mostrar('modulos/formulario.php',$datos);
+        $home = $this->mostrar('modulos/formulario.php',$datos,true);
+
+         $datos= [
+            'titulo'=>'Editar Modulo',
+            'contenido'=>$home,
+            'menu'=>$_SESSION['menu']
+        ];
+    $this->mostrar('./plantilla/home.php',$datos);
     }
 
     public function guardar(){

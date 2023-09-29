@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once './core/Controlador.php';
 require_once './modelo/Visitas_anexo04.php';
 
@@ -11,11 +12,18 @@ class CtrlVisitas_anexo04 extends Controlador {
         # var_dump($data);exit;
 
         $datos = [
-            'titulo'=>'Visitas_anexo04',
+            'titulo'=>'Visitas Anexo 04',
             'datos'=>$data['data']
         ];
 
-        $this->mostrar('visitas_anexo04/mostrar.php',$datos);
+        $home = $this->mostrar('visitas_anexo04/mostrar.php',$datos,true);
+
+        $datos= [
+            'titulo'=>'Visitas Anexo 04',
+            'contenido'=>$home,
+            'menu'=>$_SESSION['menu']
+        ];
+    $this->mostrar('./plantilla/home.php',$datos);
     }
     	
     public function eliminar(){
@@ -28,7 +36,12 @@ class CtrlVisitas_anexo04 extends Controlador {
     }
     public function nuevo(){
         # echo "Agregando..";
-        $this->mostrar('visitas_anexo04/formulario.php');
+        $datos= [
+            'titulo'=>'Nueva  Visita',
+            'contenido'=>$this->mostrar('visitas_anexo04/formulario.php',null,true),
+            'menu'=>$_SESSION['menu']
+        ];
+    $this->mostrar('./plantilla/home.php',$datos);
     }
     public function editar(){
         $id = $_GET['id'];
@@ -39,7 +52,14 @@ class CtrlVisitas_anexo04 extends Controlador {
         $datos = [
             'datos'=>$data['data'][0]
         ];
-        $this->mostrar('visitas_anexo04/formulario.php',$datos);
+        $home = $this->mostrar('visitas_anexo04/formulario.php',$datos,true);
+
+         $datos= [
+            'titulo'=>'Editar Visita',
+            'contenido'=>$home,
+            'menu'=>$_SESSION['menu']
+        ];
+    $this->mostrar('./plantilla/home.php',$datos);
     }
 
     public function guardar(){

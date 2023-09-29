@@ -1,25 +1,27 @@
 <?php
 session_start();
 require_once './core/Controlador.php';
-require_once './modelo/Docentes.php';
+require_once './modelo/Anexo03.php';
+require_once './modelo/Modulos.php';
 
-class CtrlDocentes extends Controlador {
+class CtrlAnexo03 extends Controlador {
     public function index(){
-        # echo "Hola Docentes";
-        $obj = new Docentes;
+        # echo "Hola Anexo03";
+        $obj = new Anexo03;
         $data = $obj->getTodo();
 
         # var_dump($data);exit;
 
         $datos = [
-            'titulo'=>'Docentes',
-            'datos'=>$data['data']
+
+            'titulo'=>'Anexo 03',
+            'datos'=>$data['data'],
         ];
 
-        $home = $this->mostrar('docentes/mostrar.php',$datos,true);
+        $home = $this->mostrar('anexo03/mostrar.php',$datos,true);
 
         $datos= [
-            'titulo'=>'Docentes',
+            'titulo'=>'Anexo 03',
             'contenido'=>$home,
             'menu'=>$_SESSION['menu']
         ];
@@ -28,8 +30,8 @@ class CtrlDocentes extends Controlador {
 
     public function eliminar(){
         $id = $_GET['id'];
-        # echo "eliminando: ".$id;
-        $obj =new Docentes ($id);
+        # echo "eliminando: ".$NroModulo;
+        $obj =new Anexo03 ($id);
         $obj->eliminar();
 
         $this->index();
@@ -37,8 +39,8 @@ class CtrlDocentes extends Controlador {
     public function nuevo(){
         # echo "Agregando..";
         $datos= [
-            'titulo'=>'Nuevo Docente',
-            'contenido'=>$this->mostrar('docentes/formulario.php',null,true),
+            'titulo'=>'Nuevo Anexo 03',
+            'contenido'=>$this->mostrar('anexo03/formulario.php',null,true),
             'menu'=>$_SESSION['menu']
         ];
     $this->mostrar('./plantilla/home.php',$datos);
@@ -46,16 +48,16 @@ class CtrlDocentes extends Controlador {
     public function editar(){
         $id = $_GET['id'];
         # echo "Editando: ".$id;
-        $obj = new Docentes($id);
+        $obj = new Anexo03($id);
         $data = $obj->editar();
         # var_dump($data);exit;
         $datos = [
             'datos'=>$data['data'][0]
         ];
-        $home = $this->mostrar('docentes/formulario.php',$datos,true);
+        $home = $this->mostrar('anexo03/formulario.php',$datos,true);
 
          $datos= [
-            'titulo'=>'Editar Docente',
+            'titulo'=>'Editar Anexo 03',
             'contenido'=>$home,
             'menu'=>$_SESSION['menu']
         ];
@@ -64,11 +66,22 @@ class CtrlDocentes extends Controlador {
     public function guardar(){
         # echo "Guardando..";
         # var_dump($_POST);
-        $idPrograma_estudios = $_POST['idPrograma_estudios'];
-        $id = $_POST['id'];
+        $NroModulo = $_POST['NroModulo'];
+        $Fecha_desde = $_POST['Fecha_desde'];   
+        $Fecha_hasta = $_POST['Fecha_hasta'];    
+        $horario = $_POST['horario'];   
+        $observaciones = $_POST['observaciones'];   
+        $pago_por = $_POST['pago_por'];   
+        $movilidad = $_POST['movilidad'];   
+        $otros = $_POST['otros'];   
+        $solo_EFSRT = $_POST['solo_EFSRT'];   
+        $idEmpresa  = $_POST['idEmpresa'];   
+        $idEstudiante  = $_POST['idEstudiante'];   
+        $idModulo = $_POST['idModulo'];   
+        $detalle_otros = $_POST['detalle_otros'];   
         $esNuevo = $_POST['esNuevo'];
 
-        $obj = new Docentes ($idPrograma_estudios,$id );
+        $obj = new Anexo03 ($NroModulo, $Fecha_desde,$Fecha_hasta,$horario,$observaciones,$pago_por,$movilidad,$otros, $solo_EFSRT,$idEmpresa,$idEstudiante,$idModulo,$detalle_otros);
 
         switch ($esNuevo) {
             case 0: # Editar

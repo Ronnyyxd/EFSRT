@@ -1,10 +1,10 @@
 
-<a href="?ctrl=CtrlEstudiantes&accion=nuevo">Nuevo Estudiantes</a>
+<a href="?ctrl=CtrlTurnos&accion=nuevo">Nuevo Turno</a>
     <table class="table">
         <tr>
             <th>Id</th>
-            <th>idPrograma_estudios</th>
-           </tr>
+            <th>Turno</th>
+        </tr>
 <?php
 if (is_array($datos))
 foreach ($datos as $d) {
@@ -14,13 +14,13 @@ foreach ($datos as $d) {
         <?=$d['id']?>
     </td>
     <td>
-        <?=$d['idPrograma_estudios']?>
+        <?=$d['turno']?>
     </td>
     <td>
-        <a href="?ctrl=CtrlEstudiantes&accion=editar&id=<?=$d['id']?>">
+        <a href="?ctrl=CtrlTurnos&accion=editar&id=<?=$d['id']?>">
             Editar
         </a>
-        <a href="?ctrl=CtrlEstudiantes&accion=eliminar&id=<?=$d['id']?>">Eliminar</a>
+        <a href="?ctrl=CtrlTurnos&accion=eliminar&id=<?=$d['id']?>">Eliminar</a>
         
     </td>
 </tr>

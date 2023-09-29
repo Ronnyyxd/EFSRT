@@ -12,13 +12,13 @@ class CtrlAnexo03 extends Controlador {
 
         # var_dump($data);exit;
 
-/*         $datos = [
+        $datos = [
             
             'datos'=>$data['data'],
             #"titulo"=>"anexo03",
         ];
 
-        $home = $this->mostrar('anexo03/mostrar.php',$datos,true); */
+        $home = $this->mostrar('anexo03/mostrar.php',$datos,true);
 
         $datos= [
             'titulo'=>'Anexo03',
@@ -44,7 +44,12 @@ class CtrlAnexo03 extends Controlador {
             'modulos'=>$dataCta['data']
         ];
         # echo "Agregando..";
-        $this->mostrar('anexo03/formulario.php',$datos);
+        $datos= [
+            'titulo'=>'Nuevo Anexo',
+            'contenido'=>$this->mostrar('anexo03/formulario.php',null,true),
+            'menu'=>$_SESSION['menu']
+        ];
+    $this->mostrar('./plantilla/home.php',$datos);
     }
     public function editar(){
         $NroModulo = $_GET['NroModulo'];
@@ -55,7 +60,14 @@ class CtrlAnexo03 extends Controlador {
         $datos = [
             'datos'=>$data['data'][0]
         ];
-        $this->mostrar('anexo03/formulario.php',$datos);
+        $home = $this->mostrar('anexo03/formulario.php',$datos,true);
+
+         $datos= [
+            'titulo'=>'Editar Anexo 03',
+            'contenido'=>$home,
+            'menu'=>$_SESSION['menu']
+        ];
+    $this->mostrar('./plantilla/home.php',$datos);
     }
     public function guardar(){
         # echo "Guardando..";

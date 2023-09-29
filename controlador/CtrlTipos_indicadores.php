@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once './core/Controlador.php';
 require_once './modelo/tipos_indicadores.php';
 
@@ -15,7 +16,14 @@ class CtrlTipos_indicadores extends Controlador {
             'datos'=>$data['data']
         ];
 
-        $this->mostrar('tipos_indicadores/mostrar.php',$datos);
+        $home = $this->mostrar('tipos_indicadores/mostrar.php',$datos,true);
+
+        $datos= [
+            'titulo'=>'Tipos de Indicadores',
+            'contenido'=>$home,
+            'menu'=>$_SESSION['menu']
+        ];
+    $this->mostrar('./plantilla/home.php',$datos);
     }
     	
     public function eliminar(){
@@ -28,7 +36,12 @@ class CtrlTipos_indicadores extends Controlador {
     }
     public function nuevo(){
         # echo "Agregando..";
-        $this->mostrar('tipos_indicadores/formulario.php');
+        $datos= [
+            'titulo'=>'Tipos de Indicadores',
+            'contenido'=>$this->mostrar('tipos_indicadores/formulario.php',null,true),
+            'menu'=>$_SESSION['menu']
+        ];
+    $this->mostrar('./plantilla/home.php',$datos);
     }
     public function editar(){
         $id = $_GET['id'];
@@ -39,7 +52,14 @@ class CtrlTipos_indicadores extends Controlador {
         $datos = [
             'datos'=>$data['data'][0]
         ];
-        $this->mostrar('tipos_indicadores/formulario.php',$datos);
+        $home = $this->mostrar('tipos_indicadores/formulario.php',$datos,true);
+
+         $datos= [
+            'titulo'=>'Editar Tipo de Indicador',
+            'contenido'=>$home,
+            'menu'=>$_SESSION['menu']
+        ];
+    $this->mostrar('./plantilla/home.php',$datos);
     }
 
 

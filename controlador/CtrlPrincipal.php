@@ -37,13 +37,16 @@ class CtrlPrincipal extends Controlador {
             'CtrlEmpresas'=>'Empresas',
             /*'CtrlEstados'=>'Estados', */ 
             'CtrlEstudiantes'=>'Estudiantes',
-            'CtrlIndicadores'=>'Indicadores',
+            /*'CtrlIndicadores'=>'Indicadores',*/ 
+            'CtrlIndicadores_anexo'=>'Indicadores_anexo',
             'CtrlIndicadores_evaluacion'=>'Indicadores_Evaluacion',
             'CtrlModulos'=>'Modulos',
             'CtrlPersonas'=>'Personas',
             'CtrlProgramas_Estudios'=>'Programas_Estudios',
             'CtrlTipos_indicadores'=>'Tipos_indicadores',
+            'CtrlTurnos'=>'Turnos',
             'CtrlVisitas_Anexo04'=>'Visitas_Anexo04',
+            'CtrlPlanes_estudio'=>'Planes de Estudio',
         ];
     }
 }

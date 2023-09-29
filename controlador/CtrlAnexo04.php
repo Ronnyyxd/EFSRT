@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once './core/Controlador.php';
 require_once './modelo/Anexo04.php';
 
@@ -15,7 +16,14 @@ class CtrlAnexo04 extends Controlador {
             'datos'=>$data['data']
         ];
 
-        $this->mostrar('anexo04/mostrar.php',$datos);
+        $home = $this->mostrar('anexo04/mostrar.php',$datos,true);
+
+        $datos= [
+            'titulo'=>'Anexo 04',
+            'contenido'=>$home,
+            'menu'=>$_SESSION['menu']
+        ];
+    $this->mostrar('./plantilla/home.php',$datos);
     }
     
 
@@ -29,7 +37,12 @@ class CtrlAnexo04 extends Controlador {
     }
     public function nuevo(){
         # echo "Agregando..";
-        $this->mostrar('Anexo04/formulario.php');
+        $datos= [
+            'titulo'=>'Nuevo Anexo 04',
+            'contenido'=>$this->mostrar('anexo04/formulario.php',null,true),
+            'menu'=>$_SESSION['menu']
+        ];
+    $this->mostrar('./plantilla/home.php',$datos);
     }
     public function editar(){
         $id = $_GET['id'];
@@ -40,7 +53,14 @@ class CtrlAnexo04 extends Controlador {
         $datos = [
             'datos'=>$data['data'][0]
         ];
-        $this->mostrar('Anexo04/formulario.php',$datos);
+        $home = $this->mostrar('cargos/formulario.php',$datos,true);
+
+         $datos= [
+            'titulo'=>'Editar Cargo',
+            'contenido'=>$home,
+            'menu'=>$_SESSION['menu']
+        ];
+    $this->mostrar('./plantilla/home.php',$datos);
     }
 
     public function guardar(){

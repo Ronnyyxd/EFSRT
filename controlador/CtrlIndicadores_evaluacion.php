@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once './core/Controlador.php';
 require_once './modelo/Indicadores_evaluacion.php';
 
@@ -15,7 +16,14 @@ class CtrlIndicadores_evaluacion extends Controlador {
             'datos'=>$data['data']
         ];
 
-        $this->mostrar('indicadores_evaluacion/mostrar.php',$datos);
+        $home = $this->mostrar('indicadores_evaluacion/mostrar.php',$datos,true);
+
+        $datos= [
+            'titulo'=>'Indicadores de Evaluacion',
+            'contenido'=>$home,
+            'menu'=>$_SESSION['menu']
+        ];
+    $this->mostrar('./plantilla/home.php',$datos);
     }
     	
     public function eliminar(){
@@ -28,7 +36,12 @@ class CtrlIndicadores_evaluacion extends Controlador {
     }
     public function nuevo(){
         # echo "Agregando..";
-        $this->mostrar('indicadores_evaluacion/formulario.php');
+        $datos= [
+            'titulo'=>'Nuevo Indicador de Evaluacion',
+            'contenido'=>$this->mostrar('indicadores_evaluacion/formulario.php',null,true),
+            'menu'=>$_SESSION['menu']
+        ];
+    $this->mostrar('./plantilla/home.php',$datos);
     }
     public function editar(){
         $id = $_GET['id'];
@@ -39,7 +52,14 @@ class CtrlIndicadores_evaluacion extends Controlador {
         $datos = [
             'datos'=>$data['data'][0]
         ];
-        $this->mostrar('indicadores_evaluacion/formulario.php',$datos);
+        $home = $this->mostrar('indicadores_evaluacion/formulario.php',$datos,true);
+
+         $datos= [
+            'titulo'=>'Editar Indicador de Evaluacion',
+            'contenido'=>$home,
+            'menu'=>$_SESSION['menu']
+        ];
+    $this->mostrar('./plantilla/home.php',$datos);
     }
 
 

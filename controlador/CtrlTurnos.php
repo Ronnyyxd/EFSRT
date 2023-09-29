@@ -1,35 +1,35 @@
 <?php
 session_start();
 require_once './core/Controlador.php';
-require_once './modelo/programas_estudios.php';
+require_once './modelo/Turnos.php';
 
-class CtrlProgramas_estudios extends Controlador {
+class CtrlTurnos extends Controlador {
     public function index(){
-        # echo "Hola programas_estudios";
-        $obj = new Programas_estudios;
+        # echo "Hola Turnos";
+        $obj = new Turnos;
         $data = $obj->getTodo();
 
         # var_dump($data);exit;
 
         $datos = [
-            'titulo'=>'programas_estudios',
+            'titulo'=>'Turnos',
             'datos'=>$data['data']
         ];
 
-        $home = $this->mostrar('programas_estudios/mostrar.php',$datos,true);
+        $home = $this->mostrar('turnos/mostrar.php',$datos,true);
 
         $datos= [
-            'titulo'=>'Programas de Estudios',
+            'titulo'=>'Turnos',
             'contenido'=>$home,
             'menu'=>$_SESSION['menu']
         ];
     $this->mostrar('./plantilla/home.php',$datos);
     }
-    	
+
     public function eliminar(){
         $id = $_GET['id'];
         # echo "eliminando: ".$id;
-        $obj =new Programas_estudios ($id);
+        $obj =new Turnos ($id);
         $obj->eliminar();
 
         $this->index();
@@ -37,8 +37,8 @@ class CtrlProgramas_estudios extends Controlador {
     public function nuevo(){
         # echo "Agregando..";
         $datos= [
-            'titulo'=>'Nuevo Programa de Estudios',
-            'contenido'=>$this->mostrar('programas_estudios/formulario.php',null,true),
+            'titulo'=>'Nuevo Turno',
+            'contenido'=>$this->mostrar('turnos/formulario.php',null,true),
             'menu'=>$_SESSION['menu']
         ];
     $this->mostrar('./plantilla/home.php',$datos);
@@ -46,38 +46,29 @@ class CtrlProgramas_estudios extends Controlador {
     public function editar(){
         $id = $_GET['id'];
         # echo "Editando: ".$id;
-        $obj = new Programas_estudios($id);
+        $obj = new Turnos ($id);
         $data = $obj->editar();
         # var_dump($data);exit;
         $datos = [
             'datos'=>$data['data'][0]
         ];
-        $home = $this->mostrar('programas_estudios/formulario.php',$datos,true);
+        $home = $this->mostrar('turno/formulario.php',$datos,true);
 
          $datos= [
-            'titulo'=>'Editar Programa de Estudios',
+            'titulo'=>'Editar Turno',
             'contenido'=>$home,
             'menu'=>$_SESSION['menu']
         ];
     $this->mostrar('./plantilla/home.php',$datos);
     }
-
-
     public function guardar(){
         # echo "Guardando..";
         # var_dump($_POST);
         $id = $_POST['id'];
-        $nombre = $_POST['nombre'];   
-        $logo = $_POST['logo'];    
-        $idTurno = $_POST['idTurno'];        
-        $esNuevo = $_POST['esNuevo'];  
+        $turno = $_POST['turno'];
+        $esNuevo = $_POST['esNuevo'];
 
-
-
-  
-
-        $obj = new Programas_estudios ($id, $nombre,$logo,$idTurno
-    );
+        $obj = new Turnos ($id, $turno);
 
         switch ($esNuevo) {
             case 0: # Editar

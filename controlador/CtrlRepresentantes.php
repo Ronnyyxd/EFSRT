@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once './core/Controlador.php';
 require_once './modelo/Representantes.php';
 
@@ -15,7 +16,15 @@ class CtrlRepresentantes extends Controlador {
             'datos'=>$data['data']
         ];
 
-        $this->mostrar('representantes/mostrar.php',$datos);
+        $home = $this->mostrar('representantes/mostrar.php',$datos,true);
+
+        $datos= [
+            'titulo'=>'Representantes',
+            'contenido'=>$home,
+            'menu'=>$_SESSION['menu']
+        ];
+    $this->mostrar('./plantilla/home.php',$datos);
+
     }
 
     public function eliminar(){
@@ -28,7 +37,12 @@ class CtrlRepresentantes extends Controlador {
     }
     public function nuevo(){
         # echo "Agregando..";
-        $this->mostrar('representantes/formulario.php');
+        $datos= [
+            'titulo'=>'Nuevo Representante',
+            'contenido'=>$this->mostrar('representantes/formulario.php',null,true),
+            'menu'=>$_SESSION['menu']
+        ];
+    $this->mostrar('./plantilla/home.php',$datos);
     }
     public function editar(){
         $id = $_GET['id'];
@@ -39,7 +53,14 @@ class CtrlRepresentantes extends Controlador {
         $datos = [
             'datos'=>$data['data'][0]
         ];
-        $this->mostrar('representantes/formulario.php',$datos);
+        $home = $this->mostrar('representantes/formulario.php',$datos,true);
+
+         $datos= [
+            'titulo'=>'Editar Representantes',
+            'contenido'=>$home,
+            'menu'=>$_SESSION['menu']
+        ];
+    $this->mostrar('./plantilla/home.php',$datos);
     }
     public function guardar(){
         # echo "Guardando..";

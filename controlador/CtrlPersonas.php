@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once './core/Controlador.php';
 require_once './modelo/Personas.php';
 
@@ -11,13 +12,20 @@ class CtrlPersonas extends Controlador {
         # var_dump($data);exit;
 
         $datos = [
-            'titulo'=>'Personas',
+
             'datos'=>$data['data']
         ];
 
-        $this->mostrar('personas/mostrar.php',$datos);
+        $home = $this->mostrar('personas/mostrar.php',$datos,true);
+
+        $datos= [
+            'titulo'=>'Personas',
+            'contenido'=>$home,
+            'menu'=>$_SESSION['menu']
+        ];
+    $this->mostrar('./plantilla/home.php',$datos);
+
     }
-    
 
     public function eliminar(){
         $id = $_GET['id'];
@@ -29,7 +37,12 @@ class CtrlPersonas extends Controlador {
     }
     public function nuevo(){
         # echo "Agregando..";
-        $this->mostrar('personas/formulario.php');
+        $datos= [
+            'titulo'=>'Nuevo Persona',
+            'contenido'=>$this->mostrar('personas/formulario.php',null,true),
+            'menu'=>$_SESSION['menu']
+        ];
+    $this->mostrar('./plantilla/home.php',$datos);
     }
     public function editar(){
         $id = $_GET['id'];
@@ -40,11 +53,18 @@ class CtrlPersonas extends Controlador {
         $datos = [
             'datos'=>$data['data'][0]
         ];
-        $this->mostrar('personas/formulario.php',$datos);
+        $home = $this->mostrar('personas/formulario.php',$datos,true);
+
+         $datos= [
+            'titulo'=>'Editar Personas',
+            'contenido'=>$home,
+            'menu'=>$_SESSION['menu']
+        ];
+    $this->mostrar('./plantilla/home.php',$datos);
+    
+
+
     }
-
- 
-
     public function guardar(){
         # echo "Guardando..";
         # var_dump($_POST);

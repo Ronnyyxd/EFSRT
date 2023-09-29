@@ -1,25 +1,25 @@
 <?php
 session_start();
 require_once './core/Controlador.php';
-require_once './modelo/programas_estudios.php';
+require_once './modelo/Planes_estudio.php';
 
-class CtrlProgramas_estudios extends Controlador {
+class CtrlPlanes_estudio extends Controlador {
     public function index(){
-        # echo "Hola programas_estudios";
-        $obj = new Programas_estudios;
+        # echo "Hola Planes_estudio";
+        $obj = new Planes_estudio;
         $data = $obj->getTodo();
 
         # var_dump($data);exit;
 
         $datos = [
-            'titulo'=>'programas_estudios',
+            'titulo'=>'Planes_estudio',
             'datos'=>$data['data']
         ];
 
-        $home = $this->mostrar('programas_estudios/mostrar.php',$datos,true);
+        $home = $this->mostrar('planes_estudio/mostrar.php',$datos,true);
 
         $datos= [
-            'titulo'=>'Programas de Estudios',
+            'titulo'=>'Indicadores de Evaluacion',
             'contenido'=>$home,
             'menu'=>$_SESSION['menu']
         ];
@@ -29,7 +29,7 @@ class CtrlProgramas_estudios extends Controlador {
     public function eliminar(){
         $id = $_GET['id'];
         # echo "eliminando: ".$id;
-        $obj =new Programas_estudios ($id);
+        $obj =new Planes_estudio ($id);
         $obj->eliminar();
 
         $this->index();
@@ -37,8 +37,8 @@ class CtrlProgramas_estudios extends Controlador {
     public function nuevo(){
         # echo "Agregando..";
         $datos= [
-            'titulo'=>'Nuevo Programa de Estudios',
-            'contenido'=>$this->mostrar('programas_estudios/formulario.php',null,true),
+            'titulo'=>'Nuevo plan de estudio',
+            'contenido'=>$this->mostrar('planes_estudio/formulario.php',null,true),
             'menu'=>$_SESSION['menu']
         ];
     $this->mostrar('./plantilla/home.php',$datos);
@@ -46,16 +46,16 @@ class CtrlProgramas_estudios extends Controlador {
     public function editar(){
         $id = $_GET['id'];
         # echo "Editando: ".$id;
-        $obj = new Programas_estudios($id);
+        $obj = new Planes_estudio($id);
         $data = $obj->editar();
         # var_dump($data);exit;
         $datos = [
             'datos'=>$data['data'][0]
         ];
-        $home = $this->mostrar('programas_estudios/formulario.php',$datos,true);
+        $home = $this->mostrar('planes_estudio/formulario.php',$datos,true);
 
          $datos= [
-            'titulo'=>'Editar Programa de Estudios',
+            'titulo'=>'Editar plan de estudio',
             'contenido'=>$home,
             'menu'=>$_SESSION['menu']
         ];
@@ -67,16 +67,15 @@ class CtrlProgramas_estudios extends Controlador {
         # echo "Guardando..";
         # var_dump($_POST);
         $id = $_POST['id'];
-        $nombre = $_POST['nombre'];   
-        $logo = $_POST['logo'];    
-        $idTurno = $_POST['idTurno'];        
+        $anio = $_POST['anio'];   
+        $activo = $_POST['activo'];    
+        $idPrograma = $_POST['idPrograma'];        
         $esNuevo = $_POST['esNuevo'];  
-
 
 
   
 
-        $obj = new Programas_estudios ($id, $nombre,$logo,$idTurno
+        $obj = new Planes_estudio ($id, $anio,$activo,$idPrograma
     );
 
         switch ($esNuevo) {
