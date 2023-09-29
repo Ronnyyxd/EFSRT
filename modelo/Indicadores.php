@@ -36,11 +36,11 @@ class Indicadores extends Modelo {
     public function guardar(){
         $datos = [
             'id'=>$this->id,
-            'nombre'=>"'$this->$nombre'",
-            'descripcion'=>"'$this->$descripcion'",
-            'idDetalleMatricula'=>"'$this->$idDetalleMatricula'",
-            'promedio'=>"'$this->$promedio'",
-            'notaRecuperacion'=>"'$this->$notaRecuperacion'",
+            'nombre'=>"'$this->nombre'",
+            'descripcion'=>"'$this->descripcion'",
+            'idDetalleMatricula'=>"'$this->idDetalleMatricula'",
+            'promedio'=>"'$this->promedio'",
+            'notaRecuperacion'=>"'$this->notaRecuperacion'",
         ];
         return $this->insert($datos);
     }
@@ -51,10 +51,10 @@ class Indicadores extends Modelo {
         $datos = [
             'id'=>$this->id,
             'nombre'=>"'$this->$nombre'",
-            'descripcion'=>"'$this->$descripcion'",
-            'idDetalleMatricula'=>"'$this->$idDetalleMatricula'",
-            'promedio'=>"'$this->$promedio'",
-            'notaRecuperacion'=>"'$this->$notaRecuperacion'",
+            'descripcion'=>"'$this->descripcion'",
+            'idDetalleMatricula'=>"'$this->idDetalleMatricula'",
+            'promedio'=>"'$this->promedio'",
+            'notaRecuperacion'=>"'$this->notaRecuperacion'",
 
         ];
         $wh = "id=$this->id";

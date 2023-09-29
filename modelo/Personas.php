@@ -40,15 +40,15 @@ class Personas extends Modelo {
     public function guardar(){
         $datos = [
             'id'=>$this->id,
-            'nombres'=>"'$this->$nombres'",
-            'apellidos'=>"'$this->$apellidos'",
-            'dni'=>"'$this->$dni'",
-            'correo'=>"'$this->$correo'",
-            'direccion'=>"'$this->$direccion'",
-            'Telefono'=>"'$this->$Telefono'",
-            'password'=>"'$this->$password'",
-            'usuario'=>"'$this->$usuario'",
-            'fechaNacimiento'=>"'$this->$fechaNacimiento'",
+            'nombres'=>"'$this->nombres'",
+            'apellidos'=>"'$this->apellidos'",
+            'dni'=>"'$this->dni'",
+            'correo'=>"'$this->correo'",
+            'direccion'=>"'$this->direccion'",
+            'Telefono'=>"'$this->Telefono'",
+            'password'=>"'$this->password'",
+            'usuario'=>"'$this->usuario'",
+            'fechaNacimiento'=>"'$this->fechaNacimiento'",
         ];
         return $this->insert($datos);
     }
@@ -58,15 +58,15 @@ class Personas extends Modelo {
     public function actualizar(){
         $datos = [
             'id'=>$this->id,
-            'nombres'=>"'$this->$nombres'",
-            'apellidos'=>"'$this->$apellidos'",
-            'dni'=>"'$this->$dni'",
-            'correo'=>"'$this->$correo'",
-            'direccion'=>"'$this->$direccion'",
-            'Telefono'=>"'$this->$Telefono'",
-            'password'=>"'$this->$password'",
-            'usuario'=>"'$this->$usuario'",
-            'fechaNacimiento'=>"'$this->$fechaNacimiento'",
+            'nombres'=>"'$this->nombres'",
+            'apellidos'=>"'$this->apellidos'",
+            'dni'=>"'$this->dni'",
+            'correo'=>"'$this->correo'",
+            'direccion'=>"'$this->direccion'",
+            'Telefono'=>"'$this->Telefono'",
+            'password'=>"'$this->password'",
+            'usuario'=>"'$this->usuario'",
+            'fechaNacimiento'=>"'$this->fechaNacimiento'",
 
         ];
         $wh = "id=$this->id";

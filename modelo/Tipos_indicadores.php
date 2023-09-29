@@ -30,9 +30,8 @@ class Tipos_indicadores extends Modelo {
     public function guardar(){
         $datos = [
             'id'=>$this->id,
-            'item'=>"'$this->$item'",
-            'nombre'=>"'$this->$nombre'",
-            'idTurno'=>"'$this->$idTurno'",
+            'item'=>"'$this->item'",
+            'nombre'=>"'$this->nombre'",
         ];
         return $this->insert($datos);
     }
@@ -42,9 +41,8 @@ class Tipos_indicadores extends Modelo {
     public function actualizar(){
         $datos = [
             'id'=>$this->id,
-            'item'=>"'$this->$item'",
-            'nombre'=>"'$this->$nombre'",
-            'idTurno'=>"'$this->$idTurno'",
+            'item'=>"'$this->item'",
+            'nombre'=>"'$this->nombre'",
 
 
         ];

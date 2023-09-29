@@ -38,11 +38,11 @@ class Visitas_anexo04 extends Modelo {
     public function guardar(){
         $datos = [
             'id'=>$this->id,
-            'numero'=>"'$this->$numero'",
-            'fecha'=>"'$this->$fecha'",
-            'tareas'=>"'$this->$tareas'",
-            'porcentaje_avance'=>"'$this->$porcentaje_avance'",
-            'idAnexo'=>"'$this->$idAnexo'",
+            'numero'=>"'$this->numero'",
+            'fecha'=>"'$this->fecha'",
+            'tareas'=>"'$this->tareas'",
+            'porcentaje_avance'=>"'$this->porcentaje_avance'",
+            'idAnexo'=>"'$this->idAnexo'",
         ];
         return $this->insert($datos);
     }
@@ -52,11 +52,11 @@ class Visitas_anexo04 extends Modelo {
     public function actualizar(){
         $datos = [
             'id'=>$this->id,
-            'numero'=>"'$this->$numero'",
-            'fecha'=>"'$this->$fecha'",
-            'tareas'=>"'$this->$tareas'",
-            'porcentaje_avance'=>"'$this->$porcentaje_avance'",
-            'idAnexo'=>"'$this->$idAnexo'",
+            'numero'=>"'$this->numero'",
+            'fecha'=>"'$this->fecha'",
+            'tareas'=>"'$this->tareas'",
+            'porcentaje_avance'=>"'$this->porcentaje_avance'",
+            'idAnexo'=>"'$this->idAnexo'",
 
         ];
         $wh = "id=$this->id";

@@ -36,11 +36,11 @@ class Modulos extends Modelo {
     public function guardar(){
         $datos = [
             'id'=>$this->id,
-            'nombre'=>"'$this->$nombre'",
-            'horas'=>"'$this->$horas'",
-            'creditos'=>"'$this->$creditos'",
-            'numero'=>"'$this->$numero'",
-            'idPlan'=>"'$this->$idPlan'",
+            'nombre'=>"'$this->nombre'",
+            'horas'=>"'$this->horas'",
+            'creditos'=>"'$this->creditos'",
+            'numero'=>"'$this->numero'",
+            'idPlan'=>"'$this->idPlan'",
         ];
         return $this->insert($datos);
     }
@@ -50,11 +50,11 @@ class Modulos extends Modelo {
     public function actualizar(){
         $datos = [
             'id'=>$this->id,
-            'nombre'=>"'$this->$nombre'",
-            'horas'=>"'$this->$horas'",
-            'creditos'=>"'$this->$creditos'",
-            'numero'=>"'$this->$numero'",
-            'idPlan'=>"'$this->$idPlan'",
+            'nombre'=>"'$this->nombre'",
+            'horas'=>"'$this->horas'",
+            'creditos'=>"'$this->creditos'",
+            'numero'=>"'$this->numero'",
+            'idPlan'=>"'$this->idPlan'",
 
         ];
         $wh = "id=$this->id";

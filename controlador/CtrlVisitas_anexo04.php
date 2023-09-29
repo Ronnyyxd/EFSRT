@@ -55,8 +55,7 @@ class CtrlVisitas_anexo04 extends Controlador {
 
 
 
-        $obj = new Visitas_anexo04 ($id, $numero,$fecha,$tareas,$porcentaje_avance,$idAnexo
-    );
+        $obj = new Visitas_anexo04 ($id, $numero,$fecha,$tareas,$porcentaje_avance,$idAnexo);
 
         switch ($esNuevo) {
             case 0: # Editar

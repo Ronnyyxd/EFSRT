@@ -50,13 +50,14 @@ class CtrlTipos_indicadores extends Controlador {
         $id = $_POST['id'];
         $item = $_POST['item'];   
         $nombre = $_POST['nombre'];           
+         
         $esNuevo = $_POST['esNuevo'];  
 
 
 
   
 
-        $obj = new Tipos_indicadores ($id, $item,$nombre,$idTurno
+        $obj = new Tipos_indicadores ($id, $item,$nombre
     );
 
         switch ($esNuevo) {

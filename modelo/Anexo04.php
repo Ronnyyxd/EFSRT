@@ -39,15 +39,15 @@ class Anexo04 extends Modelo {
     public function guardar(){
         $datos = [
             'id'=>$this->id,
-            'fecha_inicio'=>"'$this->$fecha_inicio'",
-            'fecha_fin'=>"'$this->$fecha_fin'",
-            'problemas_detectados'=>"'$this->$problemas_detectados'",
-            'observaciones'=>"'$this->$observaciones'",
-            'idEstudiante'=>"'$this->$idEstudiante'",
-            'idPrograma_estudios'=>"'$this->$idPrograma_estudios'",
-            'idModulo'=>"'$this->$idModulo'",
-            'idEmpresa'=>"'$this->$idEmpresa'",
-            'idDocente'=>"'$this->$idDocente'",
+            'fecha_inicio'=>"'$this->fecha_inicio'",
+            'fecha_fin'=>"'$this->fecha_fin'",
+            'problemas_detectados'=>"'$this->problemas_detectados'",
+            'observaciones'=>"'$this->observaciones'",
+            'idEstudiante'=>"'$this->idEstudiante'",
+            'idPrograma_estudios'=>"'$this->idPrograma_estudios'",
+            'idModulo'=>"'$this->idModulo'",
+            'idEmpresa'=>"'$this->idEmpresa'",
+            'idDocente'=>"'$this->idDocente'",
         ];
         return $this->insert($datos);
     }
@@ -57,15 +57,15 @@ class Anexo04 extends Modelo {
     public function actualizar(){
         $datos = [
             'id'=>$this->id,
-            'fecha_inicio'=>"'$this->$fecha_inicio'",
-            'fecha_fin'=>"'$this->$fecha_fin'",
-            'problemas_detectados'=>"'$this->$problemas_detectados'",
-            'observaciones'=>"'$this->$observaciones'",
-            'idEstudiante'=>"'$this->$idEstudiante'",
-            'idPrograma_estudios'=>"'$this->$idPrograma_estudios'",
-            'idModulo'=>"'$this->$idModulo'",
-            'idEmpresa'=>"'$this->$idEmpresa'",
-            'idDocente'=>"'$this->$idDocente'",
+            'fecha_inicio'=>"'$this->fecha_inicio'",
+            'fecha_fin'=>"'$this->fecha_fin'",
+            'problemas_detectados'=>"'$this->problemas_detectados'",
+            'observaciones'=>"'$this->observaciones'",
+            'idEstudiante'=>"'$this->idEstudiante'",
+            'idPrograma_estudios'=>"'$this->idPrograma_estudios'",
+            'idModulo'=>"'$this->idModulo'",
+            'idEmpresa'=>"'$this->idEmpresa'",
+            'idDocente'=>"'$this->idDocente'",
 
         ];
         $wh = "id=$this->id";

@@ -30,27 +30,23 @@ class Programas_estudios extends Modelo {
         return $this->deleteById($this->id);
     }
     public function guardar(){
-        $datos = [
-            'id'=>$this->id,
-            'nombre'=>"'$this->$nombre'",
-            'logo'=>"'$this->$logo'",
-            'idTurno'=>"'$this->$idTurno'",
-        ];
+        $datos = $this->getDatos();
         return $this->insert($datos);
     }
     public function editar(){
         return $this->getById($this->id);
     }
     public function actualizar(){
-        $datos = [
-            'id'=>$this->id,
-            'nombre'=>"'$this->$nombre'",
-            'logo'=>"'$this->$logo'",
-            'idTurno'=>"'$this->$idTurno'",
-
-
-        ];
+        $datos = $this->getDatos();
         $wh = "id=$this->id";
         return $this->update($wh,$datos);
+    }
+    private function getDatos(){
+        return   [
+            'id'=>$this->id,
+            'nombre'=>"'$this->nombre'",
+            'logo'=>"'$this->logo'",
+            'idTurno'=>"'$this->idTurno'",
+        ];
     }
 }

@@ -43,39 +43,39 @@ class Anexo03 extends Modelo {
     public function guardar(){
         $datos = [
             'NroModulo'=>$this->NroModulo,
-            'Fecha_desde'=>"'$this->$Fecha_desde'",
-            'Fecha_hasta'=>"'$this->$Fecha_hasta'",
-            'horario'=>"'$this->$horario'",
-            'observaciones'=>"'$this->$observaciones'",
-            'pago_por'=>"'$this->$pago_por'",
-            'movilidad'=>"'$this->$movilidad'",
-            'otros'=>"'$this->$otros'",
-            'solo_EFSRT'=>"'$this->$solo_EFSRT'",
-            'idEmpresa'=>"'$this->$idEmpresa'",
-            'idEstudiante'=>"'$this->$idEstudiante'",
-            'idModulo'=>"'$this->$idModulo'",
-            'detalle_otros'=>"'$this->$detalle_otros'",
+            'Fecha_desde'=>"'$this->Fecha_desde'",
+            'Fecha_hasta'=>"'$this->Fecha_hasta'",
+            'horario'=>"'$this->horario'",
+            'observaciones'=>"'$this->observaciones'",
+            'pago_por'=>"'$this->pago_por'",
+            'movilidad'=>"'$this->movilidad'",
+            'otros'=>"'$this->otros'",
+            'solo_EFSRT'=>"'$this->solo_EFSRT'",
+            'idEmpresa'=>"'$this->idEmpresa'",
+            'idEstudiante'=>"'$this->idEstudiante'",
+            'idModulo'=>"'$this->idModulo'",
+            'detalle_otros'=>"'$this->detalle_otros'",
         ];
         return $this->insert($datos);
     }
     public function editar(){
-        return $this->getById($this->NroModulo);
+        return $this->getBy('NroModulo',$this->NroModulo);
     }
     public function actualizar(){
         $datos = [
             'NroModulo'=>$this->NroModulo,
-            'Fecha_desde'=>"'$this->$Fecha_desde'",
-            'Fecha_hasta'=>"'$this->$Fecha_hasta'",
-            'horario'=>"'$this->$horario'",
-            'observaciones'=>"'$this->$observaciones'",
-            'pago_por'=>"'$this->$pago_por'",
-            'movilidad'=>"'$this->$movilidad'",
-            'otros'=>"'$this->$otros'",
-            'solo_EFSRT'=>"'$this->$solo_EFSRT'",
-            'idEmpresa'=>"'$this->$idEmpresa'",
-            'idEstudiante'=>"'$this->$idEstudiante'",
-            'idModulo'=>"'$this->$idModulo'",
-            'detalle_otros'=>"'$this->$detalle_otros'",
+            'Fecha_desde'=>"'$this->Fecha_desde'",
+            'Fecha_hasta'=>"'$this->Fecha_hasta'",
+            'horario'=>"'$this->horario'",
+            'observaciones'=>"'$this->observaciones'",
+            'pago_por'=>"'$this->pago_por'",
+            'movilidad'=>"'$this->movilidad'",
+            'otros'=>"'$this->otros'",
+            'solo_EFSRT'=>"'$this->solo_EFSRT'",
+            'idEmpresa'=>"'$this->idEmpresa'",
+            'idEstudiante'=>"'$this->idEstudiante'",
+            'idModulo'=>"'$this->idModulo'",
+            'detalle_otros'=>"'$this->detalle_otros'",
         ];
         $wh = "NroModulo=$this->NroModulo";
         return $this->update($wh,$datos);

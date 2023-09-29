@@ -28,7 +28,7 @@ class CtrlAnexo03 extends Controlador {
     }
     public function nuevo(){
         # echo "Agregando..";
-        $this->mostrar('Anexo03/formulario.php');
+        $this->mostrar('anexo03/formulario.php');
     }
     public function editar(){
         $NroModulo = $_GET['NroModulo'];
@@ -39,7 +39,7 @@ class CtrlAnexo03 extends Controlador {
         $datos = [
             'datos'=>$data['data'][0]
         ];
-        $this->mostrar('Anexo03/formulario.php',$datos);
+        $this->mostrar('anexo03/formulario.php',$datos);
     }
     public function guardar(){
         # echo "Guardando..";
@@ -53,7 +53,7 @@ class CtrlAnexo03 extends Controlador {
         $movilidad = $_POST['movilidad'];   
         $otros = $_POST['otros'];   
         $solo_EFSRT = $_POST['solo_EFSRT'];   
-        $idEmpresa  = $_POST['idEmpresa '];   
+        $idEmpresa  = $_POST['idEmpresa'];   
         $idEstudiante  = $_POST['idEstudiante'];   
         $idModulo = $_POST['idModulo'];   
         $detalle_otros = $_POST['detalle_otros'];   

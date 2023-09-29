@@ -30,9 +30,9 @@ class Indicadores_evaluacion extends Modelo {
     public function guardar(){
         $datos = [
             'id'=>$this->id,
-            'item'=>"'$this->$item'",
-            'nombre'=>"'$this->$nombre'",
-            'idTipo_indicador'=>"'$this->$idTipo_indicador'",
+            'item'=>"'$this->item'",
+            'nombre'=>"'$this->nombre'",
+            'idTipo_indicador'=>"'$this->idTipo_indicador'",
         ];
         return $this->insert($datos);
     }
@@ -42,9 +42,9 @@ class Indicadores_evaluacion extends Modelo {
     public function actualizar(){
         $datos = [
             'id'=>$this->id,
-            'item'=>"'$this->$item'",
-            'nombre'=>"'$this->$nombre'",
-            'idTipo_indicador'=>"'$this->$idTipo_indicador'",
+            'item'=>"'$this->item'",
+            'nombre'=>"'$this->nombre'",
+            'idTipo_indicador'=>"'$this->idTipo_indicador'",
 
 
         ];

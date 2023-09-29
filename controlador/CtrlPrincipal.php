@@ -29,16 +29,16 @@ class CtrlPrincipal extends Controlador {
 
     public function getMenu(){
         return [
-            'CtrlCargo'=>'Cargos',
-            'CtrlEstado'=>'Estados',
+            /* 'CtrlCargo'=>'Cargos',
+            'CtrlEstado'=>'Estados', */
             'CtrlAnexo03'=>'Anexo 03',
             'CtrlAnexo04'=>'Anexo 04',
             'CtrlAnexo05'=>'Anexo 05',
-            'CtrlAuditoria'=>'Auditoria',
+            /* 'CtrlAuditoria'=>'Auditoria', */
             'CtrlDocentes'=>'Docentes',
-            'CtrlEncargado'=>'Encargado',
-            'CtrlEntidad'=>'Entidad',
-            'CtrlEstados'=>'Estados',
+            /* 'CtrlEncargado'=>'Encargado',Representantes
+            'CtrlEntidad'=>'Entidad',Empresas
+            'CtrlEstados'=>'Estados', */
             'CtrlEstudiantes'=>'Estudiantes',
             'CtrlIndicadores'=>'Indicadores',
             'CtrlIndicadores_evaluacion'=>'Indicadores_Evaluacion',
