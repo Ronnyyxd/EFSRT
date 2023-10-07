@@ -14,7 +14,7 @@
           <img src="20232\imagenes\mark.jfif" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Administrador</a>
+        <?=(isset($_SESSION['usuario']))?$_SESSION['usuario']:'Visitante';?>
         </div>
       </div>
 
@@ -69,12 +69,17 @@
           <li class="nav-header">CERRAR</li>
 
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="?ctrl=CtrlPersona&accion=logout" class="nav-link">
               <i class="nav-icon far fa-circle text-warning"></i>
               <p>Cerrar Sesión</p>
             </a>
           </li>
-
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon far fa-circle text-info"></i>
+              <p>Salir</p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

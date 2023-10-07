@@ -7,10 +7,10 @@ require_once './core/Controlador.php';
 class CtrlPrincipal extends Controlador {
 
     public function index(){
-        $_SESSION['menu'] = $this->getMenu();
+        #$_SESSION['menu'] = $this->getMenu();
         $datos= [
             'contenido'=>$this->mostrar('principal.php',null,true),
-            'menu'=> $_SESSION['menu']
+            #'menu'=> $_SESSION['menu']
         ];
     $this->mostrar('./plantilla/home.php',$datos);
         # echo "Hola mundo";
@@ -24,20 +24,15 @@ class CtrlPrincipal extends Controlador {
 
     }
 
-    public function getMenu(){
+    /* public function getMenu(){
         return [
-            /* 'CtrlCargo'=>'Cargos',
-            'CtrlEstado'=>'Estados', */
             'CtrlAnexo03'=>'Anexo 03',
             'CtrlAnexo04'=>'Anexo 04',
             'CtrlAnexo05'=>'Anexo 05',
-            /* 'CtrlAuditoria'=>'Auditoria', */
             'CtrlDocentes'=>'Docentes',
             'CtrlRepresentantes'=>'Representantes',
             'CtrlEmpresas'=>'Empresas',
-            /*'CtrlEstados'=>'Estados', */ 
             'CtrlEstudiantes'=>'Estudiantes',
-            /*'CtrlIndicadores'=>'Indicadores',*/ 
             'CtrlIndicadores_anexo'=>'Indicadores_anexo',
             'CtrlIndicadores_evaluacion'=>'Indicadores_Evaluacion',
             'CtrlModulos'=>'Modulos',
@@ -48,5 +43,5 @@ class CtrlPrincipal extends Controlador {
             'CtrlVisitas_Anexo04'=>'Visitas_Anexo04',
             'CtrlPlanes_estudio'=>'Planes de Estudio',
         ];
-    }
+    } */
 }
