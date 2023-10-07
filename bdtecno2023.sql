@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost:3307
--- Tiempo de generación: 01-09-2023 a las 01:11:22
--- Versión del servidor: 10.1.38-MariaDB
--- Versión de PHP: 7.3.2
+-- Host: 127.0.0.1
+-- Generation Time: Oct 07, 2023 at 02:05 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `bdtecno2023`
+-- Database: `bdtecno2023`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `anexos_documento`
+-- Table structure for table `anexos_documento`
 --
 
 CREATE TABLE `anexos_documento` (
@@ -34,12 +33,12 @@ CREATE TABLE `anexos_documento` (
   `url` varchar(250) DEFAULT NULL,
   `id` int(11) NOT NULL,
   `idDocumento` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `anexo_03`
+-- Table structure for table `anexo_03`
 --
 
 CREATE TABLE `anexo_03` (
@@ -56,12 +55,12 @@ CREATE TABLE `anexo_03` (
   `idEstudiante` int(11) DEFAULT NULL,
   `idModulo` int(11) DEFAULT NULL,
   `detalle_otros` varchar(80) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `anexo_04`
+-- Table structure for table `anexo_04`
 --
 
 CREATE TABLE `anexo_04` (
@@ -75,12 +74,12 @@ CREATE TABLE `anexo_04` (
   `idModulo` int(11) DEFAULT NULL,
   `idEmpresa` int(11) DEFAULT NULL,
   `idDocente` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `anexo_05`
+-- Table structure for table `anexo_05`
 --
 
 CREATE TABLE `anexo_05` (
@@ -104,12 +103,12 @@ CREATE TABLE `anexo_05` (
   `total_puntaje` char(18) DEFAULT NULL,
   `fecha_anexo` timestamp NULL DEFAULT NULL,
   `lugar_anexo` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `asignaciones_bienes`
+-- Table structure for table `asignaciones_bienes`
 --
 
 CREATE TABLE `asignaciones_bienes` (
@@ -118,39 +117,39 @@ CREATE TABLE `asignaciones_bienes` (
   `idServidorPublico` int(11) DEFAULT NULL,
   `idEstado` int(11) DEFAULT NULL,
   `idJefeInmediato` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `auditoria`
+-- Table structure for table `auditoria`
 --
 
 CREATE TABLE `auditoria` (
   `id` int(11) NOT NULL,
-  `tabla` varchar(25) DEFAULT NULL,
-  `operacion` varchar(10) DEFAULT NULL,
-  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `usuario` varchar(15) DEFAULT NULL,
-  `ip` varchar(32) DEFAULT NULL,
-  `datos_new` longtext,
-  `datos_old` longtext
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `tabla` varchar(25) NOT NULL,
+  `operacion` varchar(10) NOT NULL,
+  `fecha` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `usuario` varchar(15) NOT NULL,
+  `ip` varchar(32) NOT NULL,
+  `datos_new` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`datos_new`)),
+  `datos_old` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`datos_old`))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `autores`
+-- Table structure for table `autores`
 --
 
 CREATE TABLE `autores` (
   `id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `bachilleres`
+-- Table structure for table `bachilleres`
 --
 
 CREATE TABLE `bachilleres` (
@@ -158,24 +157,24 @@ CREATE TABLE `bachilleres` (
   `tieneIdiomaExtranjero` bit(1) DEFAULT NULL,
   `culminoEstudios` bit(1) DEFAULT NULL,
   `añoTermino` varchar(4) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `bachiller_trabajo_aplicacion`
+-- Table structure for table `bachiller_trabajo_aplicacion`
 --
 
 CREATE TABLE `bachiller_trabajo_aplicacion` (
   `id` int(11) NOT NULL,
   `idBachiller` int(11) DEFAULT NULL,
   `idTrabajo` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cargas_horaria`
+-- Table structure for table `cargas_horaria`
 --
 
 CREATE TABLE `cargas_horaria` (
@@ -198,45 +197,56 @@ CREATE TABLE `cargas_horaria` (
   `vienes_fin` timestamp NULL DEFAULT NULL,
   `sabado_fin` timestamp NULL DEFAULT NULL,
   `domingo_fin` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cargos`
+-- Table structure for table `cargos`
 --
 
 CREATE TABLE `cargos` (
   `id` int(11) NOT NULL,
   `nombre` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `cargos`
+--
+
+INSERT INTO `cargos` (`id`, `nombre`) VALUES
+(1, 'Gerente'),
+(2, 'Técnico'),
+(3, 'Practicantes'),
+(4, 'Asistente'),
+(5, 'Auxiliar');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `categorias`
+-- Table structure for table `categorias`
 --
 
 CREATE TABLE `categorias` (
   `id` int(11) NOT NULL,
   `nombre` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `ciudades`
+-- Table structure for table `ciudades`
 --
 
 CREATE TABLE `ciudades` (
   `id` int(11) NOT NULL,
   `nombre` varchar(60) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `conceptos_pago`
+-- Table structure for table `conceptos_pago`
 --
 
 CREATE TABLE `conceptos_pago` (
@@ -244,12 +254,21 @@ CREATE TABLE `conceptos_pago` (
   `monto` decimal(10,2) DEFAULT NULL,
   `id` int(11) NOT NULL,
   `idCta` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `conceptos_pago`
+--
+
+INSERT INTO `conceptos_pago` (`nombre`, `monto`, `id`, `idCta`) VALUES
+('Matriculas', 186.00, 1, 1),
+('Certificado de Estudios', 120.00, 2, 1),
+('Pago de Servicio de Agua', 350.00, 3, 2);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cronogramas_academicos`
+-- Table structure for table `cronogramas_academicos`
 --
 
 CREATE TABLE `cronogramas_academicos` (
@@ -258,24 +277,32 @@ CREATE TABLE `cronogramas_academicos` (
   `nombre` varchar(50) DEFAULT NULL,
   `id` int(11) NOT NULL,
   `idPeriodo` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `ctas_contables`
+-- Table structure for table `ctas_contables`
 --
 
 CREATE TABLE `ctas_contables` (
   `cuenta` varchar(15) DEFAULT NULL,
   `descripcion` varchar(100) DEFAULT NULL,
   `id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `ctas_contables`
+--
+
+INSERT INTO `ctas_contables` (`cuenta`, `descripcion`, `id`) VALUES
+('1010', 'Recaudaciones', 1),
+('2020', 'Pagos Grales', 2);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cursos`
+-- Table structure for table `cursos`
 --
 
 CREATE TABLE `cursos` (
@@ -287,12 +314,12 @@ CREATE TABLE `cursos` (
   `idModulo` int(11) DEFAULT NULL,
   `idTipo` int(11) DEFAULT NULL,
   `idSemestre` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `desplazamientos`
+-- Table structure for table `desplazamientos`
 --
 
 CREATE TABLE `desplazamientos` (
@@ -300,12 +327,12 @@ CREATE TABLE `desplazamientos` (
   `fecha` timestamp NULL DEFAULT NULL,
   `idServidorOrigen` int(11) DEFAULT NULL,
   `idServidorDestino` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `detalles_asignacion`
+-- Table structure for table `detalles_asignacion`
 --
 
 CREATE TABLE `detalles_asignacion` (
@@ -314,24 +341,24 @@ CREATE TABLE `detalles_asignacion` (
   `idEquipo` int(11) DEFAULT NULL,
   `observaciones` varchar(250) DEFAULT NULL,
   `cantidad` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `detalles_desplazamientos`
+-- Table structure for table `detalles_desplazamientos`
 --
 
 CREATE TABLE `detalles_desplazamientos` (
   `id` int(11) NOT NULL,
   `idDesplazamiento` int(11) DEFAULT NULL,
   `idEquipo` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `detalles_matricula`
+-- Table structure for table `detalles_matricula`
 --
 
 CREATE TABLE `detalles_matricula` (
@@ -341,12 +368,12 @@ CREATE TABLE `detalles_matricula` (
   `nroMatricula` int(11) DEFAULT NULL,
   `notaFinal` decimal(5,2) DEFAULT NULL,
   `notaRecuperacion` decimal(5,2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `detalles_pago`
+-- Table structure for table `detalles_pago`
 --
 
 CREATE TABLE `detalles_pago` (
@@ -358,12 +385,12 @@ CREATE TABLE `detalles_pago` (
   `idPago` int(11) DEFAULT NULL,
   `descuento` decimal(10,2) DEFAULT NULL,
   `igv` decimal(19,7) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `detalles_permanencia`
+-- Table structure for table `detalles_permanencia`
 --
 
 CREATE TABLE `detalles_permanencia` (
@@ -384,23 +411,23 @@ CREATE TABLE `detalles_permanencia` (
   `domingo_fin` char(18) DEFAULT NULL,
   `idFicha` int(11) DEFAULT NULL,
   `idTurno` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `docentes`
+-- Table structure for table `docentes`
 --
 
 CREATE TABLE `docentes` (
   `idPrograma_estudios` int(11) DEFAULT NULL,
   `id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `documentos`
+-- Table structure for table `documentos`
 --
 
 CREATE TABLE `documentos` (
@@ -414,24 +441,24 @@ CREATE TABLE `documentos` (
   `asunto` varchar(100) DEFAULT NULL,
   `idOficina` int(11) DEFAULT NULL,
   `idPersona` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `editoriales`
+-- Table structure for table `editoriales`
 --
 
 CREATE TABLE `editoriales` (
   `id` int(11) NOT NULL,
   `nombre` varchar(50) DEFAULT NULL,
   `idCiudad` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `empresas`
+-- Table structure for table `empresas`
 --
 
 CREATE TABLE `empresas` (
@@ -443,12 +470,12 @@ CREATE TABLE `empresas` (
   `idRepresentante` int(11) DEFAULT NULL,
   `RUC` varchar(11) DEFAULT NULL,
   `esActiva` bit(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `equipos`
+-- Table structure for table `equipos`
 --
 
 CREATE TABLE `equipos` (
@@ -463,12 +490,12 @@ CREATE TABLE `equipos` (
   `numeroPECOSA` varchar(20) DEFAULT NULL,
   `numeroOC` varchar(20) DEFAULT NULL,
   `dimensiones` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `equipos_antivirus`
+-- Table structure for table `equipos_antivirus`
 --
 
 CREATE TABLE `equipos_antivirus` (
@@ -477,12 +504,12 @@ CREATE TABLE `equipos_antivirus` (
   `observaciones` varchar(100) DEFAULT NULL,
   `idAntivirus` int(11) DEFAULT NULL,
   `licencia` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `equipos_discos`
+-- Table structure for table `equipos_discos`
 --
 
 CREATE TABLE `equipos_discos` (
@@ -492,45 +519,62 @@ CREATE TABLE `equipos_discos` (
   `idTipoDisco` int(11) DEFAULT NULL,
   `numeroSerie` varchar(30) DEFAULT NULL,
   `idEstado` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `estados`
+-- Table structure for table `estados`
 --
 
 CREATE TABLE `estados` (
   `id` int(11) NOT NULL,
   `nombre` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `estados`
+--
+
+INSERT INTO `estados` (`id`, `nombre`) VALUES
+(1, 'Bueno'),
+(2, 'Regular'),
+(3, 'Malo');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `estados_tramites`
+-- Table structure for table `estados_tramites`
 --
 
 CREATE TABLE `estados_tramites` (
   `estado` varchar(30) DEFAULT NULL,
   `id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `estudiantes`
+-- Table structure for table `estudiantes`
 --
 
 CREATE TABLE `estudiantes` (
   `id` int(11) NOT NULL,
   `idPrograma_estudios` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `estudiantes`
+--
+
+INSERT INTO `estudiantes` (`id`, `idPrograma_estudios`) VALUES
+(1, 1),
+(2, 2);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `evaluaciones`
+-- Table structure for table `evaluaciones`
 --
 
 CREATE TABLE `evaluaciones` (
@@ -539,24 +583,24 @@ CREATE TABLE `evaluaciones` (
   `asistio` int(11) DEFAULT NULL,
   `nota` decimal(5,2) DEFAULT NULL,
   `idSubIndicador` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `examenes_requisitos`
+-- Table structure for table `examenes_requisitos`
 --
 
 CREATE TABLE `examenes_requisitos` (
   `id` int(11) NOT NULL,
   `idExamen` int(11) DEFAULT NULL,
   `idRequisito` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `examenes_suficiencia`
+-- Table structure for table `examenes_suficiencia`
 --
 
 CREATE TABLE `examenes_suficiencia` (
@@ -568,23 +612,23 @@ CREATE TABLE `examenes_suficiencia` (
   `numeroActa` varchar(50) DEFAULT NULL,
   `acta` varchar(100) DEFAULT NULL,
   `fechaSustentacion` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `factores_forma`
+-- Table structure for table `factores_forma`
 --
 
 CREATE TABLE `factores_forma` (
   `id` int(11) NOT NULL,
   `nombre` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `fichas_permanencia`
+-- Table structure for table `fichas_permanencia`
 --
 
 CREATE TABLE `fichas_permanencia` (
@@ -592,12 +636,12 @@ CREATE TABLE `fichas_permanencia` (
   `idTrabajador` int(11) DEFAULT NULL,
   `fecha_ini` timestamp NULL DEFAULT NULL,
   `fecha_fin` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `fichas_postulacion`
+-- Table structure for table `fichas_postulacion`
 --
 
 CREATE TABLE `fichas_postulacion` (
@@ -611,23 +655,23 @@ CREATE TABLE `fichas_postulacion` (
   `puntaje` decimal(19,7) DEFAULT NULL,
   `puesto` int(11) DEFAULT NULL,
   `ingreso` bit(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `idiomas`
+-- Table structure for table `idiomas`
 --
 
 CREATE TABLE `idiomas` (
   `id` int(11) NOT NULL,
   `nombre` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `indicadores`
+-- Table structure for table `indicadores`
 --
 
 CREATE TABLE `indicadores` (
@@ -637,12 +681,12 @@ CREATE TABLE `indicadores` (
   `idDetalleMatricula` int(11) DEFAULT NULL,
   `promedio` decimal(5,2) DEFAULT NULL,
   `notaRecuperacion` decimal(5,2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `indicadores_anexo`
+-- Table structure for table `indicadores_anexo`
 --
 
 CREATE TABLE `indicadores_anexo` (
@@ -650,12 +694,12 @@ CREATE TABLE `indicadores_anexo` (
   `idAnexo` int(11) DEFAULT NULL,
   `idIndicador` int(11) DEFAULT NULL,
   `calificacion` decimal(5,2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `indicadores_evaluacion`
+-- Table structure for table `indicadores_evaluacion`
 --
 
 CREATE TABLE `indicadores_evaluacion` (
@@ -663,12 +707,12 @@ CREATE TABLE `indicadores_evaluacion` (
   `item` int(11) DEFAULT NULL,
   `nombre` varchar(80) DEFAULT NULL,
   `idTipo_indicador` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `jurados_examen_suficiencia`
+-- Table structure for table `jurados_examen_suficiencia`
 --
 
 CREATE TABLE `jurados_examen_suficiencia` (
@@ -677,12 +721,12 @@ CREATE TABLE `jurados_examen_suficiencia` (
   `idJurado` int(11) DEFAULT NULL,
   `notaTeoria` decimal(5,2) DEFAULT NULL,
   `notaPractica` decimal(5,2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `jurados_trabajo_aplicacion`
+-- Table structure for table `jurados_trabajo_aplicacion`
 --
 
 CREATE TABLE `jurados_trabajo_aplicacion` (
@@ -690,12 +734,12 @@ CREATE TABLE `jurados_trabajo_aplicacion` (
   `idTrabajo` int(11) DEFAULT NULL,
   `idJurado` int(11) DEFAULT NULL,
   `notaJurado` decimal(5,2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `justificaciones_asistencia`
+-- Table structure for table `justificaciones_asistencia`
 --
 
 CREATE TABLE `justificaciones_asistencia` (
@@ -706,12 +750,12 @@ CREATE TABLE `justificaciones_asistencia` (
   `justificacion` char(18) DEFAULT NULL,
   `idTrabajador` int(11) DEFAULT NULL,
   `idJefe` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `libros`
+-- Table structure for table `libros`
 --
 
 CREATE TABLE `libros` (
@@ -731,59 +775,59 @@ CREATE TABLE `libros` (
   `idIdioma` int(11) DEFAULT NULL,
   `volumen` int(11) DEFAULT NULL,
   `codigoDEWEY` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `libro_autores`
+-- Table structure for table `libro_autores`
 --
 
 CREATE TABLE `libro_autores` (
   `id` int(11) NOT NULL,
   `idAutor` int(11) DEFAULT NULL,
   `idLibro` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `libro_materias`
+-- Table structure for table `libro_materias`
 --
 
 CREATE TABLE `libro_materias` (
   `id` int(11) NOT NULL,
   `idMateria` int(11) DEFAULT NULL,
   `idLibro` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `marcas`
+-- Table structure for table `marcas`
 --
 
 CREATE TABLE `marcas` (
   `nombre` varchar(50) DEFAULT NULL,
   `id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `materias`
+-- Table structure for table `materias`
 --
 
 CREATE TABLE `materias` (
   `id` int(11) NOT NULL,
   `nombre` varchar(100) DEFAULT NULL,
   `idCategoria` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `matriculas`
+-- Table structure for table `matriculas`
 --
 
 CREATE TABLE `matriculas` (
@@ -793,12 +837,12 @@ CREATE TABLE `matriculas` (
   `idPeriodo` int(11) DEFAULT NULL,
   `idPago` int(11) DEFAULT NULL,
   `idTipo` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mis_favoritos`
+-- Table structure for table `mis_favoritos`
 --
 
 CREATE TABLE `mis_favoritos` (
@@ -806,34 +850,34 @@ CREATE TABLE `mis_favoritos` (
   `Fecha_registro` timestamp NULL DEFAULT NULL,
   `idPersona` int(11) DEFAULT NULL,
   `idLibro` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `modalidades`
+-- Table structure for table `modalidades`
 --
 
 CREATE TABLE `modalidades` (
   `id` int(11) NOT NULL,
   `nombre` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `modalides_ingreso`
+-- Table structure for table `modalides_ingreso`
 --
 
 CREATE TABLE `modalides_ingreso` (
   `id` int(11) NOT NULL,
   `modalidad` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `modelos`
+-- Table structure for table `modelos`
 --
 
 CREATE TABLE `modelos` (
@@ -841,12 +885,12 @@ CREATE TABLE `modelos` (
   `id` int(11) NOT NULL,
   `detalles` varchar(100) DEFAULT NULL,
   `idMarca` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `modulos`
+-- Table structure for table `modulos`
 --
 
 CREATE TABLE `modulos` (
@@ -856,12 +900,12 @@ CREATE TABLE `modulos` (
   `creditos` int(11) DEFAULT NULL,
   `numero` varchar(10) DEFAULT NULL,
   `idPlan` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `modulos_sys`
+-- Table structure for table `modulos_sys`
 --
 
 CREATE TABLE `modulos_sys` (
@@ -869,23 +913,31 @@ CREATE TABLE `modulos_sys` (
   `version` varchar(12) DEFAULT NULL,
   `id` int(11) NOT NULL,
   `icono` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `modulos_sys`
+--
+
+INSERT INTO `modulos_sys` (`nombre`, `version`, `id`, `icono`) VALUES
+('Módulo de Trámite Documentario', '1.0.0', 1, 'tramite.png'),
+('Módulo de Caja', '1.0.0', 2, 'caja.png');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `motivos_salida`
+-- Table structure for table `motivos_salida`
 --
 
 CREATE TABLE `motivos_salida` (
   `motivo` varchar(30) DEFAULT NULL,
   `id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `oficinas`
+-- Table structure for table `oficinas`
 --
 
 CREATE TABLE `oficinas` (
@@ -893,12 +945,12 @@ CREATE TABLE `oficinas` (
   `idOficina` int(11) DEFAULT NULL,
   `nombre` varchar(80) DEFAULT NULL,
   `idJefe` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `pagos`
+-- Table structure for table `pagos`
 --
 
 CREATE TABLE `pagos` (
@@ -909,12 +961,12 @@ CREATE TABLE `pagos` (
   `idTipo` int(11) DEFAULT NULL,
   `idPersona` int(11) DEFAULT NULL,
   `idCajero` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `papeletas_salida`
+-- Table structure for table `papeletas_salida`
 --
 
 CREATE TABLE `papeletas_salida` (
@@ -928,12 +980,12 @@ CREATE TABLE `papeletas_salida` (
   `idTrabajador` int(11) DEFAULT NULL,
   `idJefe` int(11) DEFAULT NULL,
   `idMotivo` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `pcs`
+-- Table structure for table `pcs`
 --
 
 CREATE TABLE `pcs` (
@@ -947,7 +999,7 @@ CREATE TABLE `pcs` (
   `observaciones` varchar(250) DEFAULT NULL,
   `direccionIP` varchar(20) DEFAULT NULL,
   `mascaraRed` varchar(20) DEFAULT NULL,
-  `PuertaEnlace` mediumblob,
+  `PuertaEnlace` mediumblob DEFAULT NULL,
   `DNS1` varchar(20) DEFAULT NULL,
   `DNS2` varchar(20) DEFAULT NULL,
   `numeroSerie` varchar(30) DEFAULT NULL,
@@ -956,12 +1008,12 @@ CREATE TABLE `pcs` (
   `clavePC` varchar(30) DEFAULT NULL,
   `id` int(11) NOT NULL,
   `foto` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `pc_perifericos`
+-- Table structure for table `pc_perifericos`
 --
 
 CREATE TABLE `pc_perifericos` (
@@ -970,23 +1022,34 @@ CREATE TABLE `pc_perifericos` (
   `idPeriferico` int(11) DEFAULT NULL,
   `observaciones` varchar(100) DEFAULT NULL,
   `idEstado` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `perfiles`
+-- Table structure for table `perfiles`
 --
 
 CREATE TABLE `perfiles` (
   `id` int(11) NOT NULL,
   `perfil` varchar(30) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `perfiles`
+--
+
+INSERT INTO `perfiles` (`id`, `perfil`) VALUES
+(1, 'Administrador'),
+(2, 'Docente'),
+(3, 'Estudiante'),
+(4, 'Administrativo'),
+(5, 'Visitante');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `perifericos`
+-- Table structure for table `perifericos`
 --
 
 CREATE TABLE `perifericos` (
@@ -996,12 +1059,12 @@ CREATE TABLE `perifericos` (
   `observaciones` varchar(250) DEFAULT NULL,
   `foto` varchar(100) DEFAULT NULL,
   `descripcion` varchar(500) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `periodos_academico`
+-- Table structure for table `periodos_academico`
 --
 
 CREATE TABLE `periodos_academico` (
@@ -1010,12 +1073,12 @@ CREATE TABLE `periodos_academico` (
   `semestre` int(11) DEFAULT NULL,
   `inicio` timestamp NULL DEFAULT NULL,
   `fin` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `permisos`
+-- Table structure for table `permisos`
 --
 
 CREATE TABLE `permisos` (
@@ -1023,12 +1086,21 @@ CREATE TABLE `permisos` (
   `idPersona` int(11) DEFAULT NULL,
   `idModulo` int(11) DEFAULT NULL,
   `idPerfil` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `permisos`
+--
+
+INSERT INTO `permisos` (`id`, `idPersona`, `idModulo`, `idPerfil`) VALUES
+(1, 1, 1, 1),
+(2, 1, 2, 4),
+(3, 2, 1, 5);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `personas`
+-- Table structure for table `personas`
 --
 
 CREATE TABLE `personas` (
@@ -1041,13 +1113,22 @@ CREATE TABLE `personas` (
   `Telefono` varchar(15) DEFAULT NULL,
   `password` varchar(25) DEFAULT NULL,
   `usuario` varchar(20) DEFAULT NULL,
-  `fechaNacimiento` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `fechaNacimiento` timestamp NULL DEFAULT NULL,
+  `genero` bit(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `personas`
+--
+
+INSERT INTO `personas` (`id`, `nombres`, `apellidos`, `dni`, `correo`, `direccion`, `Telefono`, `password`, `usuario`, `fechaNacimiento`, `genero`) VALUES
+(1, 'Juan', 'Perez', '12345678', 'jperez@gmail.com', 'av. Bolivar 123', '999925651', '123456', 'juan', '2003-09-25 22:42:39', b'0'),
+(2, 'Pedro', 'Vargas', '457812', 'pedro@gmail.com', 'Av. Balta 32145', '94512211', '1234', 'pedro', '1995-04-15 05:00:00', b'0');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `planes_estudio`
+-- Table structure for table `planes_estudio`
 --
 
 CREATE TABLE `planes_estudio` (
@@ -1055,22 +1136,22 @@ CREATE TABLE `planes_estudio` (
   `anio` int(11) DEFAULT NULL,
   `activo` int(11) DEFAULT NULL,
   `idPrograma` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `postulantes`
+-- Table structure for table `postulantes`
 --
 
 CREATE TABLE `postulantes` (
   `id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `programas_estudios`
+-- Table structure for table `programas_estudios`
 --
 
 CREATE TABLE `programas_estudios` (
@@ -1078,12 +1159,20 @@ CREATE TABLE `programas_estudios` (
   `nombre` varchar(80) DEFAULT NULL,
   `logo` varchar(50) DEFAULT NULL,
   `idTurno` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `programas_estudios`
+--
+
+INSERT INTO `programas_estudios` (`id`, `nombre`, `logo`, `idTurno`) VALUES
+(1, 'APSTI', 'APSTI.JPG', 2),
+(2, 'Contabilidad', NULL, 2);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `registros_asistencia`
+-- Table structure for table `registros_asistencia`
 --
 
 CREATE TABLE `registros_asistencia` (
@@ -1095,47 +1184,47 @@ CREATE TABLE `registros_asistencia` (
   `idTurno` int(11) DEFAULT NULL,
   `idJustificacion` int(11) DEFAULT NULL,
   `idPapeleta` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `representantes`
+-- Table structure for table `representantes`
 --
 
 CREATE TABLE `representantes` (
   `id` int(11) NOT NULL,
   `cargo` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `requisitos`
+-- Table structure for table `requisitos`
 --
 
 CREATE TABLE `requisitos` (
   `id` int(11) NOT NULL,
   `nombre` varchar(100) DEFAULT NULL,
   `idModalidad` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `requisitos_postulacion`
+-- Table structure for table `requisitos_postulacion`
 --
 
 CREATE TABLE `requisitos_postulacion` (
   `requisito` varchar(50) DEFAULT NULL,
   `id` int(11) NOT NULL,
   `idModalidad` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `requisitos_presentados`
+-- Table structure for table `requisitos_presentados`
 --
 
 CREATE TABLE `requisitos_presentados` (
@@ -1143,23 +1232,23 @@ CREATE TABLE `requisitos_presentados` (
   `idFicha` int(11) DEFAULT NULL,
   `idRequisito` int(11) DEFAULT NULL,
   `presento` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `semestres`
+-- Table structure for table `semestres`
 --
 
 CREATE TABLE `semestres` (
   `id` int(11) NOT NULL,
   `semestre` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `servidores_publicos`
+-- Table structure for table `servidores_publicos`
 --
 
 CREATE TABLE `servidores_publicos` (
@@ -1167,23 +1256,23 @@ CREATE TABLE `servidores_publicos` (
   `idCargo` int(11) DEFAULT NULL,
   `fecha_inicio` timestamp NULL DEFAULT NULL,
   `fecha_fin` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `sistemas_operativos`
+-- Table structure for table `sistemas_operativos`
 --
 
 CREATE TABLE `sistemas_operativos` (
   `id` int(11) NOT NULL,
   `nombre` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `subindicadores`
+-- Table structure for table `subindicadores`
 --
 
 CREATE TABLE `subindicadores` (
@@ -1193,79 +1282,79 @@ CREATE TABLE `subindicadores` (
   `promedio` decimal(5,2) DEFAULT NULL,
   `notaRecuperacion` decimal(5,2) DEFAULT NULL,
   `idIndicador` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `sw_antivirus`
+-- Table structure for table `sw_antivirus`
 --
 
 CREATE TABLE `sw_antivirus` (
   `id` int(11) NOT NULL,
   `nombre` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tipos_curso`
+-- Table structure for table `tipos_curso`
 --
 
 CREATE TABLE `tipos_curso` (
   `id` int(11) NOT NULL,
   `tipo` varchar(25) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tipos_disco`
+-- Table structure for table `tipos_disco`
 --
 
 CREATE TABLE `tipos_disco` (
   `id` int(11) NOT NULL,
   `nombre` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tipos_documentos`
+-- Table structure for table `tipos_documentos`
 --
 
 CREATE TABLE `tipos_documentos` (
   `id` int(11) NOT NULL,
   `tipo` varchar(25) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tipos_indicadores`
+-- Table structure for table `tipos_indicadores`
 --
 
 CREATE TABLE `tipos_indicadores` (
   `id` int(11) NOT NULL,
   `item` varchar(1) DEFAULT NULL,
   `nombre` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tipos_matricula`
+-- Table structure for table `tipos_matricula`
 --
 
 CREATE TABLE `tipos_matricula` (
   `tipo` varchar(30) DEFAULT NULL,
   `id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tipos_pago`
+-- Table structure for table `tipos_pago`
 --
 
 CREATE TABLE `tipos_pago` (
@@ -1273,23 +1362,23 @@ CREATE TABLE `tipos_pago` (
   `id` int(11) NOT NULL,
   `banco` varchar(30) DEFAULT NULL,
   `nroCuenta` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tipos_procesadores`
+-- Table structure for table `tipos_procesadores`
 --
 
 CREATE TABLE `tipos_procesadores` (
   `id` int(11) NOT NULL,
   `nombre` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `trabajos_aplicacion_profesional`
+-- Table structure for table `trabajos_aplicacion_profesional`
 --
 
 CREATE TABLE `trabajos_aplicacion_profesional` (
@@ -1300,24 +1389,24 @@ CREATE TABLE `trabajos_aplicacion_profesional` (
   `notaFinal` decimal(5,2) DEFAULT NULL,
   `numeroActa` varchar(50) DEFAULT NULL,
   `acta` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `trabajos_requisitos`
+-- Table structure for table `trabajos_requisitos`
 --
 
 CREATE TABLE `trabajos_requisitos` (
   `id` int(11) NOT NULL,
   `idTrabajo` int(11) DEFAULT NULL,
   `idRequisito` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tramites_documentarios`
+-- Table structure for table `tramites_documentarios`
 --
 
 CREATE TABLE `tramites_documentarios` (
@@ -1329,23 +1418,31 @@ CREATE TABLE `tramites_documentarios` (
   `fecha_envio` timestamp NULL DEFAULT NULL,
   `fecha_recepcion` timestamp NULL DEFAULT NULL,
   `idEstado` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `turnos`
+-- Table structure for table `turnos`
 --
 
 CREATE TABLE `turnos` (
   `id` int(11) NOT NULL,
   `turno` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `turnos`
+--
+
+INSERT INTO `turnos` (`id`, `turno`) VALUES
+(1, 'MAÑANA'),
+(2, 'TARDE');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `visitas_anexo04`
+-- Table structure for table `visitas_anexo04`
 --
 
 CREATE TABLE `visitas_anexo04` (
@@ -1355,20 +1452,76 @@ CREATE TABLE `visitas_anexo04` (
   `tareas` varchar(150) DEFAULT NULL,
   `porcentaje_avance` int(11) DEFAULT NULL,
   `idAnexo` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
 
 --
--- Índices para tablas volcadas
+-- Stand-in structure for view `v_conceptos_pago`
+-- (See below for the actual view)
+--
+CREATE TABLE `v_conceptos_pago` (
+`nombre` varchar(100)
+,`monto` decimal(10,2)
+,`id` int(11)
+,`idCta` int(11)
+,`cuenta` varchar(15)
+,`descripcion` varchar(100)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `v_estudiante`
+-- (See below for the actual view)
+--
+CREATE TABLE `v_estudiante` (
+`id` int(11)
+,`nombres` varchar(50)
+,`apellidos` varchar(50)
+,`dni` varchar(8)
+,`correo` varchar(60)
+,`genero` bit(1)
+,`direccion` varchar(150)
+,`Telefono` varchar(15)
+,`password` varchar(25)
+,`usuario` varchar(20)
+,`fechaNacimiento` timestamp
+,`idPrograma_estudios` int(11)
+,`programa` varchar(80)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `v_conceptos_pago`
+--
+DROP TABLE IF EXISTS `v_conceptos_pago`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_conceptos_pago`  AS SELECT `cp`.`nombre` AS `nombre`, `cp`.`monto` AS `monto`, `cp`.`id` AS `id`, `cp`.`idCta` AS `idCta`, `cc`.`cuenta` AS `cuenta`, `cc`.`descripcion` AS `descripcion` FROM (`conceptos_pago` `cp` join `ctas_contables` `cc` on(`cp`.`idCta` = `cc`.`id`)) ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `v_estudiante`
+--
+DROP TABLE IF EXISTS `v_estudiante`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_estudiante`  AS SELECT `p`.`id` AS `id`, `p`.`nombres` AS `nombres`, `p`.`apellidos` AS `apellidos`, `p`.`dni` AS `dni`, `p`.`correo` AS `correo`, `p`.`genero` AS `genero`, `p`.`direccion` AS `direccion`, `p`.`Telefono` AS `Telefono`, `p`.`password` AS `password`, `p`.`usuario` AS `usuario`, `p`.`fechaNacimiento` AS `fechaNacimiento`, `e`.`idPrograma_estudios` AS `idPrograma_estudios`, `pe`.`nombre` AS `programa` FROM ((`estudiantes` `e` join `personas` `p` on(`e`.`id` = `p`.`id`)) join `programas_estudios` `pe` on(`e`.`idPrograma_estudios` = `pe`.`id`)) ;
+
+--
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `anexos_documento`
+-- Indexes for table `anexos_documento`
 --
 ALTER TABLE `anexos_documento`
   ADD PRIMARY KEY (`id`),
   ADD KEY `R_128` (`idDocumento`);
+
 --
--- Indices de la tabla `anexo_03`
+-- Indexes for table `anexo_03`
 --
 ALTER TABLE `anexo_03`
   ADD KEY `R_2` (`idEmpresa`),
@@ -1376,7 +1529,7 @@ ALTER TABLE `anexo_03`
   ADD KEY `R_8` (`idEstudiante`);
 
 --
--- Indices de la tabla `anexo_04`
+-- Indexes for table `anexo_04`
 --
 ALTER TABLE `anexo_04`
   ADD PRIMARY KEY (`id`),
@@ -1387,7 +1540,7 @@ ALTER TABLE `anexo_04`
   ADD KEY `R_18` (`idDocente`);
 
 --
--- Indices de la tabla `anexo_05`
+-- Indexes for table `anexo_05`
 --
 ALTER TABLE `anexo_05`
   ADD PRIMARY KEY (`id`),
@@ -1397,7 +1550,7 @@ ALTER TABLE `anexo_05`
   ADD KEY `R_24` (`idEmpresa`);
 
 --
--- Indices de la tabla `asignaciones_bienes`
+-- Indexes for table `asignaciones_bienes`
 --
 ALTER TABLE `asignaciones_bienes`
   ADD PRIMARY KEY (`id`),
@@ -1406,25 +1559,25 @@ ALTER TABLE `asignaciones_bienes`
   ADD KEY `R_93` (`idJefeInmediato`);
 
 --
--- Indices de la tabla `auditoria`
+-- Indexes for table `auditoria`
 --
 ALTER TABLE `auditoria`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `autores`
+-- Indexes for table `autores`
 --
 ALTER TABLE `autores`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `bachilleres`
+-- Indexes for table `bachilleres`
 --
 ALTER TABLE `bachilleres`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `bachiller_trabajo_aplicacion`
+-- Indexes for table `bachiller_trabajo_aplicacion`
 --
 ALTER TABLE `bachiller_trabajo_aplicacion`
   ADD PRIMARY KEY (`id`),
@@ -1432,7 +1585,7 @@ ALTER TABLE `bachiller_trabajo_aplicacion`
   ADD KEY `R_47` (`idTrabajo`);
 
 --
--- Indices de la tabla `cargas_horaria`
+-- Indexes for table `cargas_horaria`
 --
 ALTER TABLE `cargas_horaria`
   ADD PRIMARY KEY (`id`),
@@ -1441,45 +1594,45 @@ ALTER TABLE `cargas_horaria`
   ADD KEY `R_109` (`idDocente`);
 
 --
--- Indices de la tabla `cargos`
+-- Indexes for table `cargos`
 --
 ALTER TABLE `cargos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `categorias`
+-- Indexes for table `categorias`
 --
 ALTER TABLE `categorias`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `ciudades`
+-- Indexes for table `ciudades`
 --
 ALTER TABLE `ciudades`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `conceptos_pago`
+-- Indexes for table `conceptos_pago`
 --
 ALTER TABLE `conceptos_pago`
   ADD PRIMARY KEY (`id`),
   ADD KEY `R_150` (`idCta`);
 
 --
--- Indices de la tabla `cronogramas_academicos`
+-- Indexes for table `cronogramas_academicos`
 --
 ALTER TABLE `cronogramas_academicos`
   ADD PRIMARY KEY (`id`),
   ADD KEY `R_122` (`idPeriodo`);
 
 --
--- Indices de la tabla `ctas_contables`
+-- Indexes for table `ctas_contables`
 --
 ALTER TABLE `ctas_contables`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `cursos`
+-- Indexes for table `cursos`
 --
 ALTER TABLE `cursos`
   ADD PRIMARY KEY (`id`),
@@ -1488,7 +1641,7 @@ ALTER TABLE `cursos`
   ADD KEY `R_105` (`idSemestre`);
 
 --
--- Indices de la tabla `desplazamientos`
+-- Indexes for table `desplazamientos`
 --
 ALTER TABLE `desplazamientos`
   ADD PRIMARY KEY (`id`),
@@ -1496,7 +1649,7 @@ ALTER TABLE `desplazamientos`
   ADD KEY `R_95` (`idServidorDestino`);
 
 --
--- Indices de la tabla `detalles_asignacion`
+-- Indexes for table `detalles_asignacion`
 --
 ALTER TABLE `detalles_asignacion`
   ADD PRIMARY KEY (`id`),
@@ -1504,7 +1657,7 @@ ALTER TABLE `detalles_asignacion`
   ADD KEY `R_91` (`idEquipo`);
 
 --
--- Indices de la tabla `detalles_desplazamientos`
+-- Indexes for table `detalles_desplazamientos`
 --
 ALTER TABLE `detalles_desplazamientos`
   ADD PRIMARY KEY (`id`),
@@ -1512,7 +1665,7 @@ ALTER TABLE `detalles_desplazamientos`
   ADD KEY `R_97` (`idEquipo`);
 
 --
--- Indices de la tabla `detalles_matricula`
+-- Indexes for table `detalles_matricula`
 --
 ALTER TABLE `detalles_matricula`
   ADD PRIMARY KEY (`id`),
@@ -1520,7 +1673,7 @@ ALTER TABLE `detalles_matricula`
   ADD KEY `R_100` (`idCurso`);
 
 --
--- Indices de la tabla `detalles_pago`
+-- Indexes for table `detalles_pago`
 --
 ALTER TABLE `detalles_pago`
   ADD PRIMARY KEY (`id`),
@@ -1528,7 +1681,7 @@ ALTER TABLE `detalles_pago`
   ADD KEY `R_118` (`idPago`);
 
 --
--- Indices de la tabla `detalles_permanencia`
+-- Indexes for table `detalles_permanencia`
 --
 ALTER TABLE `detalles_permanencia`
   ADD PRIMARY KEY (`id`),
@@ -1536,14 +1689,14 @@ ALTER TABLE `detalles_permanencia`
   ADD KEY `R_158` (`idTurno`);
 
 --
--- Indices de la tabla `docentes`
+-- Indexes for table `docentes`
 --
 ALTER TABLE `docentes`
   ADD PRIMARY KEY (`id`),
   ADD KEY `R_7` (`idPrograma_estudios`);
 
 --
--- Indices de la tabla `documentos`
+-- Indexes for table `documentos`
 --
 ALTER TABLE `documentos`
   ADD PRIMARY KEY (`id`),
@@ -1553,35 +1706,35 @@ ALTER TABLE `documentos`
   ADD KEY `R_137` (`idPersona`);
 
 --
--- Indices de la tabla `editoriales`
+-- Indexes for table `editoriales`
 --
 ALTER TABLE `editoriales`
   ADD PRIMARY KEY (`id`),
   ADD KEY `R_36` (`idCiudad`);
 
 --
--- Indices de la tabla `empresas`
+-- Indexes for table `empresas`
 --
 ALTER TABLE `empresas`
   ADD PRIMARY KEY (`id`),
   ADD KEY `R_13` (`idRepresentante`);
 
 --
--- Indices de la tabla `equipos`
+-- Indexes for table `equipos`
 --
 ALTER TABLE `equipos`
   ADD PRIMARY KEY (`id`),
   ADD KEY `R_82` (`idModelo`);
 
 --
--- Indices de la tabla `equipos_antivirus`
+-- Indexes for table `equipos_antivirus`
 --
 ALTER TABLE `equipos_antivirus`
   ADD PRIMARY KEY (`id`),
   ADD KEY `R_76` (`idAntivirus`);
 
 --
--- Indices de la tabla `equipos_discos`
+-- Indexes for table `equipos_discos`
 --
 ALTER TABLE `equipos_discos`
   ADD PRIMARY KEY (`id`),
@@ -1589,33 +1742,33 @@ ALTER TABLE `equipos_discos`
   ADD KEY `R_80` (`idEstado`);
 
 --
--- Indices de la tabla `estados`
+-- Indexes for table `estados`
 --
 ALTER TABLE `estados`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `estados_tramites`
+-- Indexes for table `estados_tramites`
 --
 ALTER TABLE `estados_tramites`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `estudiantes`
+-- Indexes for table `estudiantes`
 --
 ALTER TABLE `estudiantes`
   ADD PRIMARY KEY (`id`),
   ADD KEY `R_9` (`idPrograma_estudios`);
 
 --
--- Indices de la tabla `evaluaciones`
+-- Indexes for table `evaluaciones`
 --
 ALTER TABLE `evaluaciones`
   ADD PRIMARY KEY (`id`),
   ADD KEY `R_116` (`idSubIndicador`);
 
 --
--- Indices de la tabla `examenes_requisitos`
+-- Indexes for table `examenes_requisitos`
 --
 ALTER TABLE `examenes_requisitos`
   ADD PRIMARY KEY (`id`),
@@ -1623,27 +1776,27 @@ ALTER TABLE `examenes_requisitos`
   ADD KEY `R_64` (`idRequisito`);
 
 --
--- Indices de la tabla `examenes_suficiencia`
+-- Indexes for table `examenes_suficiencia`
 --
 ALTER TABLE `examenes_suficiencia`
   ADD PRIMARY KEY (`id`),
   ADD KEY `R_58` (`idBachiller`);
 
 --
--- Indices de la tabla `factores_forma`
+-- Indexes for table `factores_forma`
 --
 ALTER TABLE `factores_forma`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `fichas_permanencia`
+-- Indexes for table `fichas_permanencia`
 --
 ALTER TABLE `fichas_permanencia`
   ADD PRIMARY KEY (`id`),
   ADD KEY `R_156` (`idTrabajador`);
 
 --
--- Indices de la tabla `fichas_postulacion`
+-- Indexes for table `fichas_postulacion`
 --
 ALTER TABLE `fichas_postulacion`
   ADD PRIMARY KEY (`id`),
@@ -1654,20 +1807,20 @@ ALTER TABLE `fichas_postulacion`
   ADD KEY `R_146` (`idPeriodo`);
 
 --
--- Indices de la tabla `idiomas`
+-- Indexes for table `idiomas`
 --
 ALTER TABLE `idiomas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `indicadores`
+-- Indexes for table `indicadores`
 --
 ALTER TABLE `indicadores`
   ADD PRIMARY KEY (`id`),
   ADD KEY `R_113` (`idDetalleMatricula`);
 
 --
--- Indices de la tabla `indicadores_anexo`
+-- Indexes for table `indicadores_anexo`
 --
 ALTER TABLE `indicadores_anexo`
   ADD PRIMARY KEY (`id`),
@@ -1675,14 +1828,14 @@ ALTER TABLE `indicadores_anexo`
   ADD KEY `R_26` (`idIndicador`);
 
 --
--- Indices de la tabla `indicadores_evaluacion`
+-- Indexes for table `indicadores_evaluacion`
 --
 ALTER TABLE `indicadores_evaluacion`
   ADD PRIMARY KEY (`id`),
   ADD KEY `R_27` (`idTipo_indicador`);
 
 --
--- Indices de la tabla `jurados_examen_suficiencia`
+-- Indexes for table `jurados_examen_suficiencia`
 --
 ALTER TABLE `jurados_examen_suficiencia`
   ADD PRIMARY KEY (`id`),
@@ -1690,7 +1843,7 @@ ALTER TABLE `jurados_examen_suficiencia`
   ADD KEY `R_59` (`idJurado`);
 
 --
--- Indices de la tabla `jurados_trabajo_aplicacion`
+-- Indexes for table `jurados_trabajo_aplicacion`
 --
 ALTER TABLE `jurados_trabajo_aplicacion`
   ADD PRIMARY KEY (`id`),
@@ -1698,7 +1851,7 @@ ALTER TABLE `jurados_trabajo_aplicacion`
   ADD KEY `R_55` (`idJurado`);
 
 --
--- Indices de la tabla `justificaciones_asistencia`
+-- Indexes for table `justificaciones_asistencia`
 --
 ALTER TABLE `justificaciones_asistencia`
   ADD PRIMARY KEY (`id`),
@@ -1708,7 +1861,7 @@ ALTER TABLE `justificaciones_asistencia`
   ADD KEY `R_167` (`idJefe`);
 
 --
--- Indices de la tabla `libros`
+-- Indexes for table `libros`
 --
 ALTER TABLE `libros`
   ADD PRIMARY KEY (`id`),
@@ -1716,7 +1869,7 @@ ALTER TABLE `libros`
   ADD KEY `R_37` (`idIdioma`);
 
 --
--- Indices de la tabla `libro_autores`
+-- Indexes for table `libro_autores`
 --
 ALTER TABLE `libro_autores`
   ADD PRIMARY KEY (`id`),
@@ -1724,7 +1877,7 @@ ALTER TABLE `libro_autores`
   ADD KEY `R_31` (`idLibro`);
 
 --
--- Indices de la tabla `libro_materias`
+-- Indexes for table `libro_materias`
 --
 ALTER TABLE `libro_materias`
   ADD PRIMARY KEY (`id`),
@@ -1732,20 +1885,20 @@ ALTER TABLE `libro_materias`
   ADD KEY `R_35` (`idLibro`);
 
 --
--- Indices de la tabla `marcas`
+-- Indexes for table `marcas`
 --
 ALTER TABLE `marcas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `materias`
+-- Indexes for table `materias`
 --
 ALTER TABLE `materias`
   ADD PRIMARY KEY (`id`),
   ADD KEY `R_38` (`idCategoria`);
 
 --
--- Indices de la tabla `matriculas`
+-- Indexes for table `matriculas`
 --
 ALTER TABLE `matriculas`
   ADD PRIMARY KEY (`id`),
@@ -1755,7 +1908,7 @@ ALTER TABLE `matriculas`
   ADD KEY `R_121` (`idTipo`);
 
 --
--- Indices de la tabla `mis_favoritos`
+-- Indexes for table `mis_favoritos`
 --
 ALTER TABLE `mis_favoritos`
   ADD PRIMARY KEY (`id`),
@@ -1763,45 +1916,45 @@ ALTER TABLE `mis_favoritos`
   ADD KEY `R_33` (`idLibro`);
 
 --
--- Indices de la tabla `modalidades`
+-- Indexes for table `modalidades`
 --
 ALTER TABLE `modalidades`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `modalides_ingreso`
+-- Indexes for table `modalides_ingreso`
 --
 ALTER TABLE `modalides_ingreso`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `modelos`
+-- Indexes for table `modelos`
 --
 ALTER TABLE `modelos`
   ADD PRIMARY KEY (`id`),
   ADD KEY `R_69` (`idMarca`);
 
 --
--- Indices de la tabla `modulos`
+-- Indexes for table `modulos`
 --
 ALTER TABLE `modulos`
   ADD PRIMARY KEY (`id`),
   ADD KEY `R_102` (`idPlan`);
 
 --
--- Indices de la tabla `modulos_sys`
+-- Indexes for table `modulos_sys`
 --
 ALTER TABLE `modulos_sys`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `motivos_salida`
+-- Indexes for table `motivos_salida`
 --
 ALTER TABLE `motivos_salida`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `oficinas`
+-- Indexes for table `oficinas`
 --
 ALTER TABLE `oficinas`
   ADD PRIMARY KEY (`id`),
@@ -1809,7 +1962,7 @@ ALTER TABLE `oficinas`
   ADD KEY `R_149` (`idJefe`);
 
 --
--- Indices de la tabla `pagos`
+-- Indexes for table `pagos`
 --
 ALTER TABLE `pagos`
   ADD PRIMARY KEY (`id`),
@@ -1818,7 +1971,7 @@ ALTER TABLE `pagos`
   ADD KEY `R_151` (`idCajero`);
 
 --
--- Indices de la tabla `papeletas_salida`
+-- Indexes for table `papeletas_salida`
 --
 ALTER TABLE `papeletas_salida`
   ADD PRIMARY KEY (`id`),
@@ -1827,7 +1980,7 @@ ALTER TABLE `papeletas_salida`
   ADD KEY `R_163` (`idMotivo`);
 
 --
--- Indices de la tabla `pcs`
+-- Indexes for table `pcs`
 --
 ALTER TABLE `pcs`
   ADD PRIMARY KEY (`id`),
@@ -1837,7 +1990,7 @@ ALTER TABLE `pcs`
   ADD KEY `R_75` (`idFactorForma`);
 
 --
--- Indices de la tabla `pc_perifericos`
+-- Indexes for table `pc_perifericos`
 --
 ALTER TABLE `pc_perifericos`
   ADD PRIMARY KEY (`id`),
@@ -1846,26 +1999,26 @@ ALTER TABLE `pc_perifericos`
   ADD KEY `R_87` (`idEstado`);
 
 --
--- Indices de la tabla `perfiles`
+-- Indexes for table `perfiles`
 --
 ALTER TABLE `perfiles`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `perifericos`
+-- Indexes for table `perifericos`
 --
 ALTER TABLE `perifericos`
   ADD PRIMARY KEY (`id`),
   ADD KEY `R_84` (`idEstado`);
 
 --
--- Indices de la tabla `periodos_academico`
+-- Indexes for table `periodos_academico`
 --
 ALTER TABLE `periodos_academico`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `permisos`
+-- Indexes for table `permisos`
 --
 ALTER TABLE `permisos`
   ADD PRIMARY KEY (`id`),
@@ -1874,33 +2027,33 @@ ALTER TABLE `permisos`
   ADD KEY `R_155` (`idPerfil`);
 
 --
--- Indices de la tabla `personas`
+-- Indexes for table `personas`
 --
 ALTER TABLE `personas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `planes_estudio`
+-- Indexes for table `planes_estudio`
 --
 ALTER TABLE `planes_estudio`
   ADD PRIMARY KEY (`id`),
   ADD KEY `R_101` (`idPrograma`);
 
 --
--- Indices de la tabla `postulantes`
+-- Indexes for table `postulantes`
 --
 ALTER TABLE `postulantes`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `programas_estudios`
+-- Indexes for table `programas_estudios`
 --
 ALTER TABLE `programas_estudios`
   ADD PRIMARY KEY (`id`),
   ADD KEY `R_111` (`idTurno`);
 
 --
--- Indices de la tabla `registros_asistencia`
+-- Indexes for table `registros_asistencia`
 --
 ALTER TABLE `registros_asistencia`
   ADD PRIMARY KEY (`id`),
@@ -1910,27 +2063,27 @@ ALTER TABLE `registros_asistencia`
   ADD KEY `R_169` (`idPapeleta`);
 
 --
--- Indices de la tabla `representantes`
+-- Indexes for table `representantes`
 --
 ALTER TABLE `representantes`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `requisitos`
+-- Indexes for table `requisitos`
 --
 ALTER TABLE `requisitos`
   ADD PRIMARY KEY (`id`),
   ADD KEY `R_62` (`idModalidad`);
 
 --
--- Indices de la tabla `requisitos_postulacion`
+-- Indexes for table `requisitos_postulacion`
 --
 ALTER TABLE `requisitos_postulacion`
   ADD PRIMARY KEY (`id`),
   ADD KEY `R_141` (`idModalidad`);
 
 --
--- Indices de la tabla `requisitos_presentados`
+-- Indexes for table `requisitos_presentados`
 --
 ALTER TABLE `requisitos_presentados`
   ADD PRIMARY KEY (`id`),
@@ -1938,88 +2091,88 @@ ALTER TABLE `requisitos_presentados`
   ADD KEY `R_148` (`idRequisito`);
 
 --
--- Indices de la tabla `semestres`
+-- Indexes for table `semestres`
 --
 ALTER TABLE `semestres`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `servidores_publicos`
+-- Indexes for table `servidores_publicos`
 --
 ALTER TABLE `servidores_publicos`
   ADD PRIMARY KEY (`id`),
   ADD KEY `R_68` (`idCargo`);
 
 --
--- Indices de la tabla `sistemas_operativos`
+-- Indexes for table `sistemas_operativos`
 --
 ALTER TABLE `sistemas_operativos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `subindicadores`
+-- Indexes for table `subindicadores`
 --
 ALTER TABLE `subindicadores`
   ADD PRIMARY KEY (`id`),
   ADD KEY `R_115` (`idIndicador`);
 
 --
--- Indices de la tabla `sw_antivirus`
+-- Indexes for table `sw_antivirus`
 --
 ALTER TABLE `sw_antivirus`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `tipos_curso`
+-- Indexes for table `tipos_curso`
 --
 ALTER TABLE `tipos_curso`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `tipos_disco`
+-- Indexes for table `tipos_disco`
 --
 ALTER TABLE `tipos_disco`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `tipos_documentos`
+-- Indexes for table `tipos_documentos`
 --
 ALTER TABLE `tipos_documentos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `tipos_indicadores`
+-- Indexes for table `tipos_indicadores`
 --
 ALTER TABLE `tipos_indicadores`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `tipos_matricula`
+-- Indexes for table `tipos_matricula`
 --
 ALTER TABLE `tipos_matricula`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `tipos_pago`
+-- Indexes for table `tipos_pago`
 --
 ALTER TABLE `tipos_pago`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `tipos_procesadores`
+-- Indexes for table `tipos_procesadores`
 --
 ALTER TABLE `tipos_procesadores`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `trabajos_aplicacion_profesional`
+-- Indexes for table `trabajos_aplicacion_profesional`
 --
 ALTER TABLE `trabajos_aplicacion_profesional`
   ADD PRIMARY KEY (`id`),
   ADD KEY `R_56` (`idAsesor`);
 
 --
--- Indices de la tabla `trabajos_requisitos`
+-- Indexes for table `trabajos_requisitos`
 --
 ALTER TABLE `trabajos_requisitos`
   ADD PRIMARY KEY (`id`),
@@ -2027,7 +2180,7 @@ ALTER TABLE `trabajos_requisitos`
   ADD KEY `R_61` (`idRequisito`);
 
 --
--- Indices de la tabla `tramites_documentarios`
+-- Indexes for table `tramites_documentarios`
 --
 ALTER TABLE `tramites_documentarios`
   ADD PRIMARY KEY (`id`),
@@ -2037,40 +2190,40 @@ ALTER TABLE `tramites_documentarios`
   ADD KEY `R_133` (`idEstado`);
 
 --
--- Indices de la tabla `turnos`
+-- Indexes for table `turnos`
 --
 ALTER TABLE `turnos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `visitas_anexo04`
+-- Indexes for table `visitas_anexo04`
 --
 ALTER TABLE `visitas_anexo04`
   ADD PRIMARY KEY (`id`),
   ADD KEY `R_20` (`idAnexo`);
 
 --
--- de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- de la tabla `auditoria`
+-- AUTO_INCREMENT for table `auditoria`
 --
 ALTER TABLE `auditoria`
-  MODIFY `id` int(11) NOT NULL;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `anexos_documento`
+-- Constraints for table `anexos_documento`
 --
 ALTER TABLE `anexos_documento`
   ADD CONSTRAINT `R_128` FOREIGN KEY (`idDocumento`) REFERENCES `documentos` (`id`);
 
 --
--- Filtros para la tabla `anexo_03`
+-- Constraints for table `anexo_03`
 --
 ALTER TABLE `anexo_03`
   ADD CONSTRAINT `R_2` FOREIGN KEY (`idEmpresa`) REFERENCES `empresas` (`id`),
@@ -2078,7 +2231,7 @@ ALTER TABLE `anexo_03`
   ADD CONSTRAINT `R_8` FOREIGN KEY (`idEstudiante`) REFERENCES `estudiantes` (`id`);
 
 --
--- Filtros para la tabla `anexo_04`
+-- Constraints for table `anexo_04`
 --
 ALTER TABLE `anexo_04`
   ADD CONSTRAINT `R_14` FOREIGN KEY (`idEstudiante`) REFERENCES `estudiantes` (`id`),
@@ -2088,7 +2241,7 @@ ALTER TABLE `anexo_04`
   ADD CONSTRAINT `R_18` FOREIGN KEY (`idDocente`) REFERENCES `docentes` (`id`);
 
 --
--- Filtros para la tabla `anexo_05`
+-- Constraints for table `anexo_05`
 --
 ALTER TABLE `anexo_05`
   ADD CONSTRAINT `R_21` FOREIGN KEY (`idPrograma_estudios`) REFERENCES `programas_estudios` (`id`),
@@ -2097,7 +2250,7 @@ ALTER TABLE `anexo_05`
   ADD CONSTRAINT `R_24` FOREIGN KEY (`idEmpresa`) REFERENCES `empresas` (`id`);
 
 --
--- Filtros para la tabla `asignaciones_bienes`
+-- Constraints for table `asignaciones_bienes`
 --
 ALTER TABLE `asignaciones_bienes`
   ADD CONSTRAINT `R_88` FOREIGN KEY (`idServidorPublico`) REFERENCES `servidores_publicos` (`id`),
@@ -2105,26 +2258,26 @@ ALTER TABLE `asignaciones_bienes`
   ADD CONSTRAINT `R_93` FOREIGN KEY (`idJefeInmediato`) REFERENCES `servidores_publicos` (`id`);
 
 --
--- Filtros para la tabla `autores`
+-- Constraints for table `autores`
 --
 ALTER TABLE `autores`
   ADD CONSTRAINT `R_29` FOREIGN KEY (`id`) REFERENCES `personas` (`id`);
 
 --
--- Filtros para la tabla `bachilleres`
+-- Constraints for table `bachilleres`
 --
 ALTER TABLE `bachilleres`
   ADD CONSTRAINT `R_39` FOREIGN KEY (`id`) REFERENCES `estudiantes` (`id`);
 
 --
--- Filtros para la tabla `bachiller_trabajo_aplicacion`
+-- Constraints for table `bachiller_trabajo_aplicacion`
 --
 ALTER TABLE `bachiller_trabajo_aplicacion`
   ADD CONSTRAINT `R_46` FOREIGN KEY (`idBachiller`) REFERENCES `bachilleres` (`id`),
   ADD CONSTRAINT `R_47` FOREIGN KEY (`idTrabajo`) REFERENCES `trabajos_aplicacion_profesional` (`id`);
 
 --
--- Filtros para la tabla `cargas_horaria`
+-- Constraints for table `cargas_horaria`
 --
 ALTER TABLE `cargas_horaria`
   ADD CONSTRAINT `R_107` FOREIGN KEY (`idPeriodo`) REFERENCES `periodos_academico` (`id`),
@@ -2132,19 +2285,19 @@ ALTER TABLE `cargas_horaria`
   ADD CONSTRAINT `R_109` FOREIGN KEY (`idDocente`) REFERENCES `docentes` (`id`);
 
 --
--- Filtros para la tabla `conceptos_pago`
+-- Constraints for table `conceptos_pago`
 --
 ALTER TABLE `conceptos_pago`
   ADD CONSTRAINT `R_150` FOREIGN KEY (`idCta`) REFERENCES `ctas_contables` (`id`);
 
 --
--- Filtros para la tabla `cronogramas_academicos`
+-- Constraints for table `cronogramas_academicos`
 --
 ALTER TABLE `cronogramas_academicos`
   ADD CONSTRAINT `R_122` FOREIGN KEY (`idPeriodo`) REFERENCES `periodos_academico` (`id`);
 
 --
--- Filtros para la tabla `cursos`
+-- Constraints for table `cursos`
 --
 ALTER TABLE `cursos`
   ADD CONSTRAINT `R_103` FOREIGN KEY (`idModulo`) REFERENCES `modulos` (`id`),
@@ -2152,56 +2305,56 @@ ALTER TABLE `cursos`
   ADD CONSTRAINT `R_105` FOREIGN KEY (`idSemestre`) REFERENCES `semestres` (`id`);
 
 --
--- Filtros para la tabla `desplazamientos`
+-- Constraints for table `desplazamientos`
 --
 ALTER TABLE `desplazamientos`
   ADD CONSTRAINT `R_94` FOREIGN KEY (`idServidorOrigen`) REFERENCES `servidores_publicos` (`id`),
   ADD CONSTRAINT `R_95` FOREIGN KEY (`idServidorDestino`) REFERENCES `servidores_publicos` (`id`);
 
 --
--- Filtros para la tabla `detalles_asignacion`
+-- Constraints for table `detalles_asignacion`
 --
 ALTER TABLE `detalles_asignacion`
   ADD CONSTRAINT `R_90` FOREIGN KEY (`idAsignacion`) REFERENCES `asignaciones_bienes` (`id`),
   ADD CONSTRAINT `R_91` FOREIGN KEY (`idEquipo`) REFERENCES `equipos` (`id`);
 
 --
--- Filtros para la tabla `detalles_desplazamientos`
+-- Constraints for table `detalles_desplazamientos`
 --
 ALTER TABLE `detalles_desplazamientos`
   ADD CONSTRAINT `R_96` FOREIGN KEY (`idDesplazamiento`) REFERENCES `desplazamientos` (`id`),
   ADD CONSTRAINT `R_97` FOREIGN KEY (`idEquipo`) REFERENCES `equipos` (`id`);
 
 --
--- Filtros para la tabla `detalles_matricula`
+-- Constraints for table `detalles_matricula`
 --
 ALTER TABLE `detalles_matricula`
   ADD CONSTRAINT `R_100` FOREIGN KEY (`idCurso`) REFERENCES `cursos` (`id`),
   ADD CONSTRAINT `R_99` FOREIGN KEY (`idMatricula`) REFERENCES `matriculas` (`id`);
 
 --
--- Filtros para la tabla `detalles_pago`
+-- Constraints for table `detalles_pago`
 --
 ALTER TABLE `detalles_pago`
   ADD CONSTRAINT `R_117` FOREIGN KEY (`idConcepto`) REFERENCES `conceptos_pago` (`id`),
   ADD CONSTRAINT `R_118` FOREIGN KEY (`idPago`) REFERENCES `pagos` (`id`);
 
 --
--- Filtros para la tabla `detalles_permanencia`
+-- Constraints for table `detalles_permanencia`
 --
 ALTER TABLE `detalles_permanencia`
   ADD CONSTRAINT `R_157` FOREIGN KEY (`idFicha`) REFERENCES `fichas_permanencia` (`id`),
   ADD CONSTRAINT `R_158` FOREIGN KEY (`idTurno`) REFERENCES `turnos` (`id`);
 
 --
--- Filtros para la tabla `docentes`
+-- Constraints for table `docentes`
 --
 ALTER TABLE `docentes`
   ADD CONSTRAINT `R_10` FOREIGN KEY (`id`) REFERENCES `personas` (`id`),
   ADD CONSTRAINT `R_7` FOREIGN KEY (`idPrograma_estudios`) REFERENCES `programas_estudios` (`id`);
 
 --
--- Filtros para la tabla `documentos`
+-- Constraints for table `documentos`
 --
 ALTER TABLE `documentos`
   ADD CONSTRAINT `R_134` FOREIGN KEY (`idTipo`) REFERENCES `tipos_documentos` (`id`),
@@ -2210,32 +2363,32 @@ ALTER TABLE `documentos`
   ADD CONSTRAINT `R_137` FOREIGN KEY (`idPersona`) REFERENCES `personas` (`id`);
 
 --
--- Filtros para la tabla `editoriales`
+-- Constraints for table `editoriales`
 --
 ALTER TABLE `editoriales`
   ADD CONSTRAINT `R_36` FOREIGN KEY (`idCiudad`) REFERENCES `ciudades` (`id`);
 
 --
--- Filtros para la tabla `empresas`
+-- Constraints for table `empresas`
 --
 ALTER TABLE `empresas`
   ADD CONSTRAINT `R_13` FOREIGN KEY (`idRepresentante`) REFERENCES `representantes` (`id`);
 
 --
--- Filtros para la tabla `equipos`
+-- Constraints for table `equipos`
 --
 ALTER TABLE `equipos`
   ADD CONSTRAINT `R_82` FOREIGN KEY (`idModelo`) REFERENCES `modelos` (`id`);
 
 --
--- Filtros para la tabla `equipos_antivirus`
+-- Constraints for table `equipos_antivirus`
 --
 ALTER TABLE `equipos_antivirus`
   ADD CONSTRAINT `R_76` FOREIGN KEY (`idAntivirus`) REFERENCES `sw_antivirus` (`id`),
   ADD CONSTRAINT `R_77` FOREIGN KEY (`id`) REFERENCES `pcs` (`id`);
 
 --
--- Filtros para la tabla `equipos_discos`
+-- Constraints for table `equipos_discos`
 --
 ALTER TABLE `equipos_discos`
   ADD CONSTRAINT `R_78` FOREIGN KEY (`idTipoDisco`) REFERENCES `tipos_disco` (`id`),
@@ -2243,39 +2396,39 @@ ALTER TABLE `equipos_discos`
   ADD CONSTRAINT `R_80` FOREIGN KEY (`idEstado`) REFERENCES `estados` (`id`);
 
 --
--- Filtros para la tabla `estudiantes`
+-- Constraints for table `estudiantes`
 --
 ALTER TABLE `estudiantes`
   ADD CONSTRAINT `R_11` FOREIGN KEY (`id`) REFERENCES `personas` (`id`),
   ADD CONSTRAINT `R_9` FOREIGN KEY (`idPrograma_estudios`) REFERENCES `programas_estudios` (`id`);
 
 --
--- Filtros para la tabla `evaluaciones`
+-- Constraints for table `evaluaciones`
 --
 ALTER TABLE `evaluaciones`
   ADD CONSTRAINT `R_116` FOREIGN KEY (`idSubIndicador`) REFERENCES `subindicadores` (`id`);
 
 --
--- Filtros para la tabla `examenes_requisitos`
+-- Constraints for table `examenes_requisitos`
 --
 ALTER TABLE `examenes_requisitos`
   ADD CONSTRAINT `R_63` FOREIGN KEY (`idExamen`) REFERENCES `examenes_suficiencia` (`id`),
   ADD CONSTRAINT `R_64` FOREIGN KEY (`idRequisito`) REFERENCES `requisitos` (`id`);
 
 --
--- Filtros para la tabla `examenes_suficiencia`
+-- Constraints for table `examenes_suficiencia`
 --
 ALTER TABLE `examenes_suficiencia`
   ADD CONSTRAINT `R_58` FOREIGN KEY (`idBachiller`) REFERENCES `bachilleres` (`id`);
 
 --
--- Filtros para la tabla `fichas_permanencia`
+-- Constraints for table `fichas_permanencia`
 --
 ALTER TABLE `fichas_permanencia`
   ADD CONSTRAINT `R_156` FOREIGN KEY (`idTrabajador`) REFERENCES `servidores_publicos` (`id`);
 
 --
--- Filtros para la tabla `fichas_postulacion`
+-- Constraints for table `fichas_postulacion`
 --
 ALTER TABLE `fichas_postulacion`
   ADD CONSTRAINT `R_142` FOREIGN KEY (`idPago`) REFERENCES `pagos` (`id`),
@@ -2285,40 +2438,40 @@ ALTER TABLE `fichas_postulacion`
   ADD CONSTRAINT `R_146` FOREIGN KEY (`idPeriodo`) REFERENCES `periodos_academico` (`id`);
 
 --
--- Filtros para la tabla `indicadores`
+-- Constraints for table `indicadores`
 --
 ALTER TABLE `indicadores`
   ADD CONSTRAINT `R_113` FOREIGN KEY (`idDetalleMatricula`) REFERENCES `detalles_matricula` (`id`);
 
 --
--- Filtros para la tabla `indicadores_anexo`
+-- Constraints for table `indicadores_anexo`
 --
 ALTER TABLE `indicadores_anexo`
   ADD CONSTRAINT `R_25` FOREIGN KEY (`idAnexo`) REFERENCES `anexo_05` (`id`),
   ADD CONSTRAINT `R_26` FOREIGN KEY (`idIndicador`) REFERENCES `indicadores_evaluacion` (`id`);
 
 --
--- Filtros para la tabla `indicadores_evaluacion`
+-- Constraints for table `indicadores_evaluacion`
 --
 ALTER TABLE `indicadores_evaluacion`
   ADD CONSTRAINT `R_27` FOREIGN KEY (`idTipo_indicador`) REFERENCES `tipos_indicadores` (`id`);
 
 --
--- Filtros para la tabla `jurados_examen_suficiencia`
+-- Constraints for table `jurados_examen_suficiencia`
 --
 ALTER TABLE `jurados_examen_suficiencia`
   ADD CONSTRAINT `R_57` FOREIGN KEY (`idExamen`) REFERENCES `examenes_suficiencia` (`id`),
   ADD CONSTRAINT `R_59` FOREIGN KEY (`idJurado`) REFERENCES `docentes` (`id`);
 
 --
--- Filtros para la tabla `jurados_trabajo_aplicacion`
+-- Constraints for table `jurados_trabajo_aplicacion`
 --
 ALTER TABLE `jurados_trabajo_aplicacion`
   ADD CONSTRAINT `R_54` FOREIGN KEY (`idTrabajo`) REFERENCES `trabajos_aplicacion_profesional` (`id`),
   ADD CONSTRAINT `R_55` FOREIGN KEY (`idJurado`) REFERENCES `docentes` (`id`);
 
 --
--- Filtros para la tabla `justificaciones_asistencia`
+-- Constraints for table `justificaciones_asistencia`
 --
 ALTER TABLE `justificaciones_asistencia`
   ADD CONSTRAINT `R_164` FOREIGN KEY (`idTurno`) REFERENCES `turnos` (`id`),
@@ -2327,34 +2480,34 @@ ALTER TABLE `justificaciones_asistencia`
   ADD CONSTRAINT `R_167` FOREIGN KEY (`idJefe`) REFERENCES `servidores_publicos` (`id`);
 
 --
--- Filtros para la tabla `libros`
+-- Constraints for table `libros`
 --
 ALTER TABLE `libros`
   ADD CONSTRAINT `R_32` FOREIGN KEY (`idEditorial`) REFERENCES `editoriales` (`id`),
   ADD CONSTRAINT `R_37` FOREIGN KEY (`idIdioma`) REFERENCES `idiomas` (`id`);
 
 --
--- Filtros para la tabla `libro_autores`
+-- Constraints for table `libro_autores`
 --
 ALTER TABLE `libro_autores`
   ADD CONSTRAINT `R_30` FOREIGN KEY (`idAutor`) REFERENCES `autores` (`id`),
   ADD CONSTRAINT `R_31` FOREIGN KEY (`idLibro`) REFERENCES `libros` (`id`);
 
 --
--- Filtros para la tabla `libro_materias`
+-- Constraints for table `libro_materias`
 --
 ALTER TABLE `libro_materias`
   ADD CONSTRAINT `R_34` FOREIGN KEY (`idMateria`) REFERENCES `materias` (`id`),
   ADD CONSTRAINT `R_35` FOREIGN KEY (`idLibro`) REFERENCES `libros` (`id`);
 
 --
--- Filtros para la tabla `materias`
+-- Constraints for table `materias`
 --
 ALTER TABLE `materias`
   ADD CONSTRAINT `R_38` FOREIGN KEY (`idCategoria`) REFERENCES `categorias` (`id`);
 
 --
--- Filtros para la tabla `matriculas`
+-- Constraints for table `matriculas`
 --
 ALTER TABLE `matriculas`
   ADD CONSTRAINT `R_106` FOREIGN KEY (`idPeriodo`) REFERENCES `periodos_academico` (`id`),
@@ -2363,33 +2516,33 @@ ALTER TABLE `matriculas`
   ADD CONSTRAINT `R_98` FOREIGN KEY (`idEstudiante`) REFERENCES `estudiantes` (`id`);
 
 --
--- Filtros para la tabla `mis_favoritos`
+-- Constraints for table `mis_favoritos`
 --
 ALTER TABLE `mis_favoritos`
   ADD CONSTRAINT `R_28` FOREIGN KEY (`idPersona`) REFERENCES `personas` (`id`),
   ADD CONSTRAINT `R_33` FOREIGN KEY (`idLibro`) REFERENCES `libros` (`id`);
 
 --
--- Filtros para la tabla `modelos`
+-- Constraints for table `modelos`
 --
 ALTER TABLE `modelos`
   ADD CONSTRAINT `R_69` FOREIGN KEY (`idMarca`) REFERENCES `marcas` (`id`);
 
 --
--- Filtros para la tabla `modulos`
+-- Constraints for table `modulos`
 --
 ALTER TABLE `modulos`
   ADD CONSTRAINT `R_102` FOREIGN KEY (`idPlan`) REFERENCES `planes_estudio` (`id`);
 
 --
--- Filtros para la tabla `oficinas`
+-- Constraints for table `oficinas`
 --
 ALTER TABLE `oficinas`
   ADD CONSTRAINT `R_123` FOREIGN KEY (`idOficina`) REFERENCES `oficinas` (`id`),
   ADD CONSTRAINT `R_149` FOREIGN KEY (`idJefe`) REFERENCES `servidores_publicos` (`id`);
 
 --
--- Filtros para la tabla `pagos`
+-- Constraints for table `pagos`
 --
 ALTER TABLE `pagos`
   ADD CONSTRAINT `R_120` FOREIGN KEY (`idTipo`) REFERENCES `tipos_pago` (`id`),
@@ -2397,7 +2550,7 @@ ALTER TABLE `pagos`
   ADD CONSTRAINT `R_151` FOREIGN KEY (`idCajero`) REFERENCES `servidores_publicos` (`id`);
 
 --
--- Filtros para la tabla `papeletas_salida`
+-- Constraints for table `papeletas_salida`
 --
 ALTER TABLE `papeletas_salida`
   ADD CONSTRAINT `R_161` FOREIGN KEY (`idTrabajador`) REFERENCES `servidores_publicos` (`id`),
@@ -2405,7 +2558,7 @@ ALTER TABLE `papeletas_salida`
   ADD CONSTRAINT `R_163` FOREIGN KEY (`idMotivo`) REFERENCES `motivos_salida` (`id`);
 
 --
--- Filtros para la tabla `pcs`
+-- Constraints for table `pcs`
 --
 ALTER TABLE `pcs`
   ADD CONSTRAINT `R_71` FOREIGN KEY (`idTipoProcesador`) REFERENCES `tipos_procesadores` (`id`),
@@ -2415,7 +2568,7 @@ ALTER TABLE `pcs`
   ADD CONSTRAINT `R_81` FOREIGN KEY (`id`) REFERENCES `equipos` (`id`);
 
 --
--- Filtros para la tabla `pc_perifericos`
+-- Constraints for table `pc_perifericos`
 --
 ALTER TABLE `pc_perifericos`
   ADD CONSTRAINT `R_85` FOREIGN KEY (`idPC`) REFERENCES `pcs` (`id`),
@@ -2423,14 +2576,14 @@ ALTER TABLE `pc_perifericos`
   ADD CONSTRAINT `R_87` FOREIGN KEY (`idEstado`) REFERENCES `estados` (`id`);
 
 --
--- Filtros para la tabla `perifericos`
+-- Constraints for table `perifericos`
 --
 ALTER TABLE `perifericos`
   ADD CONSTRAINT `R_83` FOREIGN KEY (`id`) REFERENCES `equipos` (`id`),
   ADD CONSTRAINT `R_84` FOREIGN KEY (`idEstado`) REFERENCES `estados` (`id`);
 
 --
--- Filtros para la tabla `permisos`
+-- Constraints for table `permisos`
 --
 ALTER TABLE `permisos`
   ADD CONSTRAINT `R_153` FOREIGN KEY (`idPersona`) REFERENCES `personas` (`id`),
@@ -2438,25 +2591,25 @@ ALTER TABLE `permisos`
   ADD CONSTRAINT `R_155` FOREIGN KEY (`idPerfil`) REFERENCES `perfiles` (`id`);
 
 --
--- Filtros para la tabla `planes_estudio`
+-- Constraints for table `planes_estudio`
 --
 ALTER TABLE `planes_estudio`
   ADD CONSTRAINT `R_101` FOREIGN KEY (`idPrograma`) REFERENCES `programas_estudios` (`id`);
 
 --
--- Filtros para la tabla `postulantes`
+-- Constraints for table `postulantes`
 --
 ALTER TABLE `postulantes`
   ADD CONSTRAINT `R_140` FOREIGN KEY (`id`) REFERENCES `personas` (`id`);
 
 --
--- Filtros para la tabla `programas_estudios`
+-- Constraints for table `programas_estudios`
 --
 ALTER TABLE `programas_estudios`
   ADD CONSTRAINT `R_111` FOREIGN KEY (`idTurno`) REFERENCES `turnos` (`id`);
 
 --
--- Filtros para la tabla `registros_asistencia`
+-- Constraints for table `registros_asistencia`
 --
 ALTER TABLE `registros_asistencia`
   ADD CONSTRAINT `R_159` FOREIGN KEY (`idTrabajador`) REFERENCES `servidores_publicos` (`id`),
@@ -2465,58 +2618,58 @@ ALTER TABLE `registros_asistencia`
   ADD CONSTRAINT `R_169` FOREIGN KEY (`idPapeleta`) REFERENCES `papeletas_salida` (`id`);
 
 --
--- Filtros para la tabla `representantes`
+-- Constraints for table `representantes`
 --
 ALTER TABLE `representantes`
   ADD CONSTRAINT `R_12` FOREIGN KEY (`id`) REFERENCES `personas` (`id`);
 
 --
--- Filtros para la tabla `requisitos`
+-- Constraints for table `requisitos`
 --
 ALTER TABLE `requisitos`
   ADD CONSTRAINT `R_62` FOREIGN KEY (`idModalidad`) REFERENCES `modalidades` (`id`);
 
 --
--- Filtros para la tabla `requisitos_postulacion`
+-- Constraints for table `requisitos_postulacion`
 --
 ALTER TABLE `requisitos_postulacion`
   ADD CONSTRAINT `R_141` FOREIGN KEY (`idModalidad`) REFERENCES `modalides_ingreso` (`id`);
 
 --
--- Filtros para la tabla `requisitos_presentados`
+-- Constraints for table `requisitos_presentados`
 --
 ALTER TABLE `requisitos_presentados`
   ADD CONSTRAINT `R_147` FOREIGN KEY (`idFicha`) REFERENCES `fichas_postulacion` (`id`),
   ADD CONSTRAINT `R_148` FOREIGN KEY (`idRequisito`) REFERENCES `requisitos_postulacion` (`id`);
 
 --
--- Filtros para la tabla `servidores_publicos`
+-- Constraints for table `servidores_publicos`
 --
 ALTER TABLE `servidores_publicos`
   ADD CONSTRAINT `R_67` FOREIGN KEY (`id`) REFERENCES `personas` (`id`),
   ADD CONSTRAINT `R_68` FOREIGN KEY (`idCargo`) REFERENCES `cargos` (`id`);
 
 --
--- Filtros para la tabla `subindicadores`
+-- Constraints for table `subindicadores`
 --
 ALTER TABLE `subindicadores`
   ADD CONSTRAINT `R_115` FOREIGN KEY (`idIndicador`) REFERENCES `indicadores` (`id`);
 
 --
--- Filtros para la tabla `trabajos_aplicacion_profesional`
+-- Constraints for table `trabajos_aplicacion_profesional`
 --
 ALTER TABLE `trabajos_aplicacion_profesional`
   ADD CONSTRAINT `R_56` FOREIGN KEY (`idAsesor`) REFERENCES `docentes` (`id`);
 
 --
--- Filtros para la tabla `trabajos_requisitos`
+-- Constraints for table `trabajos_requisitos`
 --
 ALTER TABLE `trabajos_requisitos`
   ADD CONSTRAINT `R_60` FOREIGN KEY (`idTrabajo`) REFERENCES `trabajos_aplicacion_profesional` (`id`),
   ADD CONSTRAINT `R_61` FOREIGN KEY (`idRequisito`) REFERENCES `requisitos` (`id`);
 
 --
--- Filtros para la tabla `tramites_documentarios`
+-- Constraints for table `tramites_documentarios`
 --
 ALTER TABLE `tramites_documentarios`
   ADD CONSTRAINT `R_129` FOREIGN KEY (`idDocumento`) REFERENCES `documentos` (`id`),
@@ -2525,7 +2678,7 @@ ALTER TABLE `tramites_documentarios`
   ADD CONSTRAINT `R_133` FOREIGN KEY (`idEstado`) REFERENCES `estados_tramites` (`id`);
 
 --
--- Filtros para la tabla `visitas_anexo04`
+-- Constraints for table `visitas_anexo04`
 --
 ALTER TABLE `visitas_anexo04`
   ADD CONSTRAINT `R_20` FOREIGN KEY (`idAnexo`) REFERENCES `anexo_04` (`id`);
