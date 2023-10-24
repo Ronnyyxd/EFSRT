@@ -27,7 +27,7 @@ $titulo = $esNuevo==1?'Nuevo ':'Editando ';
         <input type="text" name="numero" value="<?=$numero?>">
         <br>
         fecha:
-        <input type="text" name="fecha" value="<?=$fecha?>">
+        <input type="text" name="date" value="<?=$fecha?>">
         <br>
         tareas:
         <input type="text" name="tareas" value="<?=$tareas?>">

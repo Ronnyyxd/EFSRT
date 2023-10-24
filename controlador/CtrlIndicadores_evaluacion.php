@@ -2,6 +2,7 @@
 session_start();
 require_once './core/Controlador.php';
 require_once './modelo/Indicadores_evaluacion.php';
+require_once './assets/Helper.php';
 
 class CtrlIndicadores_evaluacion extends Controlador {
     public function index(){

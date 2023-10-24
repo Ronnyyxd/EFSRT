@@ -2,6 +2,7 @@
 session_start();
 require_once './core/Controlador.php';
 require_once './modelo/Docentes.php';
+require_once './assets/Helper.php';
 
 class CtrlDocentes extends Controlador {
     public function index(){

@@ -2,6 +2,7 @@
 session_start();
 require_once './core/Controlador.php';
 require_once './modelo/Modulos.php';
+require_once './assets/Helper.php';
 
 class CtrlModulos extends Controlador {
     public function index(){

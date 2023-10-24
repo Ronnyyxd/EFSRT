@@ -1,6 +1,7 @@
 <?php
 require_once './core/Controlador.php';
 require_once './modelo/Estado.php';
+require_once './assets/Helper.php';
 
 class CtrlEstado extends Controlador {
     public function index(){

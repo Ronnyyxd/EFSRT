@@ -2,6 +2,7 @@
 session_start();
 require_once './core/Controlador.php';
 require_once './modelo/tipos_indicadores.php';
+require_once './assets/Helper.php';
 
 class CtrlTipos_indicadores extends Controlador {
     public function index(){

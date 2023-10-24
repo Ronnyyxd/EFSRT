@@ -2,6 +2,7 @@
 session_start();
 require_once './core/Controlador.php';
 require_once './modelo/Empresas.php';
+require_once './assets/Helper.php';
 
 class CtrlEmpresas extends Controlador {
     public function index(){

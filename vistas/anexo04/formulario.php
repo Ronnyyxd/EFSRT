@@ -27,10 +27,10 @@ $titulo = $esNuevo==1?'Nuevo Anexo 04':'Editando Anexo 04';
         <input type="hidden" name="esNuevo" value="<?=$esNuevo?>">
         <br>
         fecha_inicio:
-        <input type="text" name="fecha_inicio" value="<?=$fecha_inicio?>">
+        <input type="date" name="fecha_inicio" value="<?=$fecha_inicio?>">
         <br>
         fecha_fin:
-        <input type="text" name="fecha_fin" value="<?=$fecha_fin?>">
+        <input type="date" name="fecha_fin" value="<?=$fecha_fin?>">
         <br>
         problemas_detectados:
         <input type="text" name="problemas_detectados" value="<?=$problemas_detectados?>">

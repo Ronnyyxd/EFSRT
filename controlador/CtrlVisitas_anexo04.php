@@ -2,6 +2,7 @@
 session_start();
 require_once './core/Controlador.php';
 require_once './modelo/Visitas_anexo04.php';
+require_once './assets/Helper.php';
 
 class CtrlVisitas_anexo04 extends Controlador {
     public function index(){

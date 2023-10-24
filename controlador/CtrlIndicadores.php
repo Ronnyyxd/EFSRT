@@ -1,6 +1,7 @@
 <?php
 require_once './core/Controlador.php';
 require_once './modelo/Indicadores.php';
+require_once './assets/Helper.php';
 
 class CtrlIndicadores extends Controlador {
     public function index(){

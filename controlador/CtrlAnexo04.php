@@ -2,6 +2,7 @@
 session_start();
 require_once './core/Controlador.php';
 require_once './modelo/Anexo04.php';
+require_once './assets/Helper.php';
 
 class CtrlAnexo04 extends Controlador {
     public function index(){
@@ -53,10 +54,10 @@ class CtrlAnexo04 extends Controlador {
         $datos = [
             'datos'=>$data['data'][0]
         ];
-        $home = $this->mostrar('cargos/formulario.php',$datos,true);
+        $home = $this->mostrar('anexo04/formulario.php',$datos,true);
 
          $datos= [
-            'titulo'=>'Editar Cargo',
+            'titulo'=>'Editar Anexo 04',
             'contenido'=>$home,
             'menu'=>$_SESSION['menu']
         ];

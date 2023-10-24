@@ -2,6 +2,7 @@
 session_start();
 require_once './core/Controlador.php';
 require_once './modelo/Anexo05.php';
+require_once './assets/Helper.php';
 
 class CtrlAnexo05 extends Controlador {
     public function index(){
@@ -75,7 +76,7 @@ class CtrlAnexo05 extends Controlador {
         $Total_horas = $_POST['Total_horas'];   
         $idEmpresa = $_POST['idEmpresa'];   
         $lugar_oficina = $_POST['lugar_oficina'];   
-        $lugar_laboratorio  = $_POST['lugar_laboratorio '];   
+        $lugar_laboratorio  = $_POST['lugar_laboratorio'];   
         $lugar_almacen  = $_POST['lugar_almacen'];   
         $lugar_campo = $_POST['lugar_campo'];   
         $lugar_otros = $_POST['lugar_otros'];   
