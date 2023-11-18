@@ -11,7 +11,7 @@ class CtrlRepresentantes extends Controlador {
         $data = $obj->getTodo();
 
         # var_dump($data);exit;
-
+        $msg=$data['msg'];
         $datos = [
             'titulo'=>'Representantes',
             'datos'=>$data['data']
@@ -22,7 +22,8 @@ class CtrlRepresentantes extends Controlador {
         $datos= [
             'titulo'=>'Representantes',
             'contenido'=>$home,
-            'menu'=>$_SESSION['menu']
+            'menu'=>$_SESSION['menu'],
+            'msg'=>$msg
         ];
     $this->mostrar('./plantilla/home.php',$datos);
 
@@ -38,12 +39,14 @@ class CtrlRepresentantes extends Controlador {
     }
     public function nuevo(){
         # echo "Agregando..";
+        /* $msg='';
         $datos= [
             'titulo'=>'Nuevo Representante',
             'contenido'=>$this->mostrar('representantes/formulario.php',null,true),
             'menu'=>$_SESSION['menu']
         ];
-    $this->mostrar('./plantilla/home.php',$datos);
+    $this->mostrar('./plantilla/home.php',$datos); */
+    $this->mostrar('representantes/formulario.php');
     }
     public function editar(){
         $id = $_GET['id'];
@@ -51,17 +54,19 @@ class CtrlRepresentantes extends Controlador {
         $obj = new Representantes($id);
         $data = $obj->editar();
         # var_dump($data);exit;
+        $msg=$data['msg'];
         $datos = [
             'datos'=>$data['data'][0]
         ];
-        $home = $this->mostrar('representantes/formulario.php',$datos,true);
+        /* $home = $this->mostrar('representantes/formulario.php',$datos,true);
 
          $datos= [
             'titulo'=>'Editar Representantes',
             'contenido'=>$home,
             'menu'=>$_SESSION['menu']
         ];
-    $this->mostrar('./plantilla/home.php',$datos);
+    $this->mostrar('./plantilla/home.php',$datos); */
+    $this->mostrar('representantes/formulario.php',$datos);
     }
     public function guardar(){
         # echo "Guardando..";

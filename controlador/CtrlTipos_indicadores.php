@@ -11,9 +11,9 @@ class CtrlTipos_indicadores extends Controlador {
         $data = $obj->getTodo();
 
         # var_dump($data);exit;
-
+        $msg=$data['msg'];
         $datos = [
-            'titulo'=>'tipos_indicadores',
+            
             'datos'=>$data['data']
         ];
 
@@ -37,12 +37,14 @@ class CtrlTipos_indicadores extends Controlador {
     }
     public function nuevo(){
         # echo "Agregando..";
+        /* $msg='';
         $datos= [
             'titulo'=>'Tipos de Indicadores',
             'contenido'=>$this->mostrar('tipos_indicadores/formulario.php',null,true),
             'menu'=>$_SESSION['menu']
         ];
-    $this->mostrar('./plantilla/home.php',$datos);
+    $this->mostrar('./plantilla/home.php',$datos); */
+    $this->mostrar('tipos_indicadores/formulario.php');
     }
     public function editar(){
         $id = $_GET['id'];
@@ -50,17 +52,19 @@ class CtrlTipos_indicadores extends Controlador {
         $obj = new Tipos_indicadores($id);
         $data = $obj->editar();
         # var_dump($data);exit;
+        $msg=$data['msg'];
         $datos = [
             'datos'=>$data['data'][0]
         ];
-        $home = $this->mostrar('tipos_indicadores/formulario.php',$datos,true);
+        /* $home = $this->mostrar('tipos_indicadores/formulario.php',$datos,true);
 
          $datos= [
             'titulo'=>'Editar Tipo de Indicador',
             'contenido'=>$home,
             'menu'=>$_SESSION['menu']
         ];
-    $this->mostrar('./plantilla/home.php',$datos);
+    $this->mostrar('./plantilla/home.php',$datos); */
+    $this->mostrar('tipos_indicadores/formulario.php',$datos);
     }
 
 

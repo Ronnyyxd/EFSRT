@@ -12,9 +12,9 @@ class CtrlEstudiantes extends Controlador {
         $data = $obj->getTodo();
 
         # var_dump($data);exit;
-
+        $msg=$data['msg'];
         $datos = [
-            'titulo'=>'Estudiantes',
+            
             'datos'=>$data['data']
         ];
 
@@ -38,12 +38,14 @@ class CtrlEstudiantes extends Controlador {
     }
     public function nuevo(){
         # echo "Agregando..";
-        $datos= [
+        /*  $msg='';
+            $datos= [
             'titulo'=>'Nuevo Estudiante',
             'contenido'=>$this->mostrar('estudiantes/formulario.php',null,true),
             'menu'=>$_SESSION['menu']
         ];
-    $this->mostrar('./plantilla/home.php',$datos);
+    $this->mostrar('./plantilla/home.php',$datos); */
+    $this->mostrar('estudiantes/formulario.php');
     }
     public function editar(){
         $id = $_GET['id'];
@@ -51,9 +53,11 @@ class CtrlEstudiantes extends Controlador {
         $obj = new Estudiantes($id);
         $data = $obj->editar();
         # var_dump($data);exit;
+        $msg=$data['msg'];
         $datos = [
             'datos'=>$data['data'][0]
         ];
+        /* $this->mostrar('estudiantes/formulario.php',$datos); */
         $this->mostrar('estudiantes/formulario.php',$datos);
     }
     public function guardar(){

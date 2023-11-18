@@ -11,9 +11,9 @@ class CtrlProgramas_estudios extends Controlador {
         $data = $obj->getTodo();
 
         # var_dump($data);exit;
-
+        $msg=$data['msg'];
         $datos = [
-            'titulo'=>'programas_estudios',
+            
             'datos'=>$data['data']
         ];
 
@@ -22,7 +22,8 @@ class CtrlProgramas_estudios extends Controlador {
         $datos= [
             'titulo'=>'Programas de Estudios',
             'contenido'=>$home,
-            'menu'=>$_SESSION['menu']
+            'menu'=>$_SESSION['menu'],
+            'msg'=>$msg
         ];
     $this->mostrar('./plantilla/home.php',$datos);
     }
@@ -37,12 +38,14 @@ class CtrlProgramas_estudios extends Controlador {
     }
     public function nuevo(){
         # echo "Agregando..";
+        /* $msg='';
         $datos= [
             'titulo'=>'Nuevo Programa de Estudios',
             'contenido'=>$this->mostrar('programas_estudios/formulario.php',null,true),
             'menu'=>$_SESSION['menu']
         ];
-    $this->mostrar('./plantilla/home.php',$datos);
+    $this->mostrar('./plantilla/home.php',$datos); */
+    $this->mostrar('programas_estudios/formulario.php');
     }
     public function editar(){
         $id = $_GET['id'];
@@ -50,17 +53,19 @@ class CtrlProgramas_estudios extends Controlador {
         $obj = new Programas_estudios($id);
         $data = $obj->editar();
         # var_dump($data);exit;
+        $msg=$data['msg'];
         $datos = [
             'datos'=>$data['data'][0]
         ];
-        $home = $this->mostrar('programas_estudios/formulario.php',$datos,true);
+        /* $home = $this->mostrar('programas_estudios/formulario.php',$datos,true);
 
          $datos= [
             'titulo'=>'Editar Programa de Estudios',
             'contenido'=>$home,
             'menu'=>$_SESSION['menu']
         ];
-    $this->mostrar('./plantilla/home.php',$datos);
+    $this->mostrar('./plantilla/home.php',$datos); */
+    $this->mostrar('programas_estudios/formulario.php',$datos);
     }
 
 

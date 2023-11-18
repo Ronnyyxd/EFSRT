@@ -11,9 +11,9 @@ class CtrlModulos extends Controlador {
         $data = $obj->getTodo();
 
         # var_dump($data);exit;
-
+        $msg=$data['msg'];
         $datos = [
-            'titulo'=>'Modulos',
+            
             'datos'=>$data['data']
         ];
 
@@ -37,12 +37,14 @@ class CtrlModulos extends Controlador {
     }
     public function nuevo(){
         # echo "Agregando..";
+        /* $msg='';
         $datos= [
             'titulo'=>'Nuevo Modulo',
             'contenido'=>$this->mostrar('modulos/formulario.php',null,true),
             'menu'=>$_SESSION['menu']
         ];
-    $this->mostrar('./plantilla/home.php',$datos);
+    $this->mostrar('./plantilla/home.php',$datos); */
+    $this->mostrar('modulos/formulario.php');
     }
     public function editar(){
         $id = $_GET['id'];
@@ -50,17 +52,19 @@ class CtrlModulos extends Controlador {
         $obj = new Modulos($id);
         $data = $obj->editar();
         # var_dump($data);exit;
+        $msg=$data['msg'];
         $datos = [
             'datos'=>$data['data'][0]
         ];
-        $home = $this->mostrar('modulos/formulario.php',$datos,true);
+        /* $home = $this->mostrar('modulos/formulario.php',$datos,true);
 
          $datos= [
             'titulo'=>'Editar Modulo',
             'contenido'=>$home,
             'menu'=>$_SESSION['menu']
         ];
-    $this->mostrar('./plantilla/home.php',$datos);
+    $this->mostrar('./plantilla/home.php',$datos); */
+    $this->mostrar('modulos/formulario.php',$datos);
     }
 
     public function guardar(){

@@ -10,6 +10,7 @@ class Empresas extends Modelo {
     private $idRepresentante;
     private $RUC;
     private $esActiva;
+    
     private $_tabla='empresas';
 
 

@@ -13,7 +13,7 @@ class CtrlTurnos extends Controlador {
         # var_dump($data);exit;
         $msg=$data['msg'];
         $datos = [
-            'titulo'=>'Turnos',
+            
             'datos'=>$data['data']
         ];
 
@@ -38,14 +38,15 @@ class CtrlTurnos extends Controlador {
     }
     public function nuevo(){
         # echo "Agregando..";
-        $msg='';
+        /* $msg='';
         $datos= [
             'titulo'=>'Nuevo Turno',
             'contenido'=>$this->mostrar('turnos/formulario.php',null,true),
             'menu'=>$_SESSION['menu'],
             'msg'=>$msg
         ];
-    $this->mostrar('./plantilla/home.php',$datos);
+    $this->mostrar('./plantilla/home.php',$datos); */
+    $this->mostrar('turnos/formulario.php');
     }
     public function editar(){
         $id = $_GET['id'];
@@ -57,7 +58,7 @@ class CtrlTurnos extends Controlador {
         $datos = [
             'datos'=>$data['data'][0]
         ];
-        $home = $this->mostrar('turnos/formulario.php',$datos,true);
+        /* $home = $this->mostrar('turnos/formulario.php',$datos,true);
 
          $datos= [
             'titulo'=>'Editar Turno',
@@ -65,7 +66,8 @@ class CtrlTurnos extends Controlador {
             'menu'=>$_SESSION['menu'],
             'msg'=>$msg
         ];
-    $this->mostrar('./plantilla/home.php',$datos);
+    $this->mostrar('./plantilla/home.php',$datos); */
+    $this->mostrar('turnos/formulario.php',$datos);
     }
     public function guardar(){
         # echo "Guardando..";

@@ -11,16 +11,16 @@ class CtrlPlanes_estudio extends Controlador {
         $data = $obj->getTodo();
 
         # var_dump($data);exit;
-
+        $msg=$data['msg'];
         $datos = [
-            'titulo'=>'Planes_estudio',
+            
             'datos'=>$data['data']
         ];
 
         $home = $this->mostrar('planes_estudio/mostrar.php',$datos,true);
 
         $datos= [
-            'titulo'=>'Indicadores de Evaluacion',
+            'titulo'=>'Plan de Estudio',
             'contenido'=>$home,
             'menu'=>$_SESSION['menu']
         ];
@@ -37,12 +37,14 @@ class CtrlPlanes_estudio extends Controlador {
     }
     public function nuevo(){
         # echo "Agregando..";
+        /* $msg='';
         $datos= [
             'titulo'=>'Nuevo plan de estudio',
             'contenido'=>$this->mostrar('planes_estudio/formulario.php',null,true),
             'menu'=>$_SESSION['menu']
         ];
-    $this->mostrar('./plantilla/home.php',$datos);
+    $this->mostrar('./plantilla/home.php',$datos); */
+    $this->mostrar('planes_estudio/formulario.php');
     }
     public function editar(){
         $id = $_GET['id'];
@@ -50,17 +52,19 @@ class CtrlPlanes_estudio extends Controlador {
         $obj = new Planes_estudio($id);
         $data = $obj->editar();
         # var_dump($data);exit;
+        $msg=$data['msg'];
         $datos = [
             'datos'=>$data['data'][0]
         ];
-        $home = $this->mostrar('planes_estudio/formulario.php',$datos,true);
+        /* $home = $this->mostrar('planes_estudio/formulario.php',$datos,true);
 
          $datos= [
             'titulo'=>'Editar plan de estudio',
             'contenido'=>$home,
             'menu'=>$_SESSION['menu']
         ];
-    $this->mostrar('./plantilla/home.php',$datos);
+    $this->mostrar('./plantilla/home.php',$datos); */
+    $this->mostrar('planes_estudio/formulario.php',$datos);
     }
 
 

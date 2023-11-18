@@ -1,9 +1,9 @@
 
-<a href="?ctrl=CtrlTurnos&accion=nuevo">Nuevo Turno</a>
 
-<button id="nuevo" type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-lg">
-                  Nuevo
-</button>
+<a href="#" class="btn btn-primary nuevo">
+    <i class="fa fa-plus"></i> 
+    Nuevo Turno
+</a>
 
 
     <table class="table">
@@ -26,18 +26,21 @@ foreach ($datos as $d) {
         <?=$d['turno']?>
     </td>
     <td>
-        <a href="?ctrl=CtrlTurnos&accion=editar&id=<?=$d['id']?>">
+        <a data-id="<?=$d["id"]?>" href="#" class="btn btn-success editar">
+            <i class="fa fa-edit"></i> 
             Editar
         </a>
-        <a href="?ctrl=CtrlTurnos&accion=eliminar&id=<?=$d['id']?>">Eliminar</a>
-        
+        <a data-id="<?=$d["id"]?>" data-nombre="<?=$d["turno"]?>" href="#" class="btn btn-danger eliminar">
+          <i class="fa fa-trash"></i>  
+          Eliminar
+        </a>
     </td>
 </tr>
 
 <?php
 }
 ?>
-        </tbody>
+      </tbody>
     </table>
 
     <a href="?">Retornar</a>
@@ -52,7 +55,7 @@ foreach ($datos as $d) {
               </button>
             </div>
             <div class="modal-body">
-              <p>Cargando turnos...</p>
+              <p>Cargando Turnos...</p>
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>

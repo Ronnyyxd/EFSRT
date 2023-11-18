@@ -11,9 +11,9 @@ class CtrlIndicadores_evaluacion extends Controlador {
         $data = $obj->getTodo();
 
         # var_dump($data);exit;
-
+        $msg=$data['msg'];
         $datos = [
-            'titulo'=>'indicadores_evaluacion',
+            
             'datos'=>$data['data']
         ];
 
@@ -22,7 +22,8 @@ class CtrlIndicadores_evaluacion extends Controlador {
         $datos= [
             'titulo'=>'Indicadores de Evaluacion',
             'contenido'=>$home,
-            'menu'=>$_SESSION['menu']
+            'menu'=>$_SESSION['menu'],
+            'msg'=>$msg
         ];
     $this->mostrar('./plantilla/home.php',$datos);
     }
@@ -37,12 +38,14 @@ class CtrlIndicadores_evaluacion extends Controlador {
     }
     public function nuevo(){
         # echo "Agregando..";
+        /* $msg='';
         $datos= [
             'titulo'=>'Nuevo Indicador de Evaluacion',
             'contenido'=>$this->mostrar('indicadores_evaluacion/formulario.php',null,true),
             'menu'=>$_SESSION['menu']
         ];
-    $this->mostrar('./plantilla/home.php',$datos);
+    $this->mostrar('./plantilla/home.php',$datos); */
+    $this->mostrar('indicadores_evaluacion/formulario.php');
     }
     public function editar(){
         $id = $_GET['id'];
@@ -50,17 +53,19 @@ class CtrlIndicadores_evaluacion extends Controlador {
         $obj = new Indicadores_evaluacion($id);
         $data = $obj->editar();
         # var_dump($data);exit;
+        $msg=$data['msg'];
         $datos = [
             'datos'=>$data['data'][0]
         ];
-        $home = $this->mostrar('indicadores_evaluacion/formulario.php',$datos,true);
+        /* $home = $this->mostrar('indicadores_evaluacion/formulario.php',$datos,true);
 
          $datos= [
             'titulo'=>'Editar Indicador de Evaluacion',
             'contenido'=>$home,
             'menu'=>$_SESSION['menu']
         ];
-    $this->mostrar('./plantilla/home.php',$datos);
+    $this->mostrar('./plantilla/home.php',$datos); */
+    $this->mostrar('indicadores_evaluacion/formulario.php',$datos);
     }
 
 

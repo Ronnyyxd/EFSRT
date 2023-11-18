@@ -71,7 +71,7 @@ abstract class Helper
             'CtrlIndicadores_anexo'=>'Indicadores_anexo',
             'CtrlIndicadores_evaluacion'=>'Indicadores_Evaluacion',
             'CtrlModulos'=>'Modulos',
-            'CtrlPersonas'=>'Personas',
+            #'CtrlPersonas'=>'Personas',
             'CtrlProgramas_Estudios'=>'Programas_Estudios',
             'CtrlTipos_indicadores'=>'Tipos_indicadores',
             'CtrlTurnos'=>'Turnos',

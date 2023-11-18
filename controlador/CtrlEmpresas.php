@@ -11,9 +11,9 @@ class CtrlEmpresas extends Controlador {
         $data = $obj->getTodo();
 
         # var_dump($data);exit;
-
+        $msg=$data['msg'];
         $datos = [
-            'titulo'=>'Empresas',
+            
             'datos'=>$data['data']
         ];
 
@@ -38,12 +38,14 @@ class CtrlEmpresas extends Controlador {
     }
     public function nuevo(){
         # echo "Agregando..";
+        /* $msg='';
         $datos= [
             'titulo'=>'Nueva Empresa',
             'contenido'=>$this->mostrar('empresas/formulario.php',null,true),
             'menu'=>$_SESSION['menu']
         ];
-    $this->mostrar('./plantilla/home.php',$datos);
+    $this->mostrar('./plantilla/home.php',$datos); */
+    $this->mostrar('empresas/formulario.php');
     }
     public function editar(){
         $id = $_GET['id'];
@@ -51,17 +53,19 @@ class CtrlEmpresas extends Controlador {
         $obj = new Empresas($id);
         $data = $obj->editar();
         # var_dump($data);exit;
+        $msg=$data['msg'];
         $datos = [
             'datos'=>$data['data'][0]
         ];
-        $home = $this->mostrar('empresas/formulario.php',$datos,true);
+        /* $home = $this->mostrar('empresas/formulario.php',$datos,true);
 
          $datos= [
             'titulo'=>'Editar Empresa',
             'contenido'=>$home,
             'menu'=>$_SESSION['menu']
         ];
-    $this->mostrar('./plantilla/home.php',$datos);
+    $this->mostrar('./plantilla/home.php',$datos); */
+    $this->mostrar('empresas/formulario.php',$datos);
     }
 
     public function guardar(){

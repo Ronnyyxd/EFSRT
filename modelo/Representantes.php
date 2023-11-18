@@ -4,6 +4,7 @@ require_once './core/Modelo.php';
 class Representantes extends Modelo {
     private $id;
     private $cargo;
+    
     private $_tabla='representantes';
 
     public function __construct($id=null,$cargo=null){
