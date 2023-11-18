@@ -11,7 +11,7 @@ class CtrlTurnos extends Controlador {
         $data = $obj->getTodo();
 
         # var_dump($data);exit;
-
+        $msg=$data['msg'];
         $datos = [
             'titulo'=>'Turnos',
             'datos'=>$data['data']
@@ -22,7 +22,8 @@ class CtrlTurnos extends Controlador {
         $datos= [
             'titulo'=>'Turnos',
             'contenido'=>$home,
-            'menu'=>$_SESSION['menu']
+            'menu'=>$_SESSION['menu'],
+            'msg'=>$msg
         ];
     $this->mostrar('./plantilla/home.php',$datos);
     }
@@ -37,10 +38,12 @@ class CtrlTurnos extends Controlador {
     }
     public function nuevo(){
         # echo "Agregando..";
+        $msg='';
         $datos= [
             'titulo'=>'Nuevo Turno',
             'contenido'=>$this->mostrar('turnos/formulario.php',null,true),
-            'menu'=>$_SESSION['menu']
+            'menu'=>$_SESSION['menu'],
+            'msg'=>$msg
         ];
     $this->mostrar('./plantilla/home.php',$datos);
     }
@@ -50,15 +53,17 @@ class CtrlTurnos extends Controlador {
         $obj = new Turnos ($id);
         $data = $obj->editar();
         # var_dump($data);exit;
+        $msg=$data['msg'];
         $datos = [
             'datos'=>$data['data'][0]
         ];
-        $home = $this->mostrar('turno/formulario.php',$datos,true);
+        $home = $this->mostrar('turnos/formulario.php',$datos,true);
 
          $datos= [
             'titulo'=>'Editar Turno',
             'contenido'=>$home,
-            'menu'=>$_SESSION['menu']
+            'menu'=>$_SESSION['menu'],
+            'msg'=>$msg
         ];
     $this->mostrar('./plantilla/home.php',$datos);
     }

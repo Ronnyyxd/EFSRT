@@ -86,6 +86,15 @@ class CtrlPersona extends Controlador {
         $idPerfil = $_GET['idPerfil'];
         $idPersona = $_GET['id'];
 
+        $obj = new Persona($idPersona);
+        $data = $obj->editar()['data'];
+        if(! is_null($data)){
+
+            $_SESSION['id']=$data[0]['id'];
+            $_SESSION['usuario']=$data[0]['usuario'];
+            $_SESSION['nombre']=$data[0]['nombres'] . ' '. $data[0]['apellidos'];
+        }
+
 
         $_SESSION['menu']= Helper::getMenu($idModulo,$idPerfil);
 
