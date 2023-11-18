@@ -37,12 +37,13 @@ class CtrlAnexo05 extends Controlador {
     }
     public function nuevo(){
         # echo "Agregando..";
-        $datos= [
+        /* $datos= [
             'titulo'=>'Nuevo Anexo 05',
             'contenido'=>$this->mostrar('anexo05/formulario.php',null,true),
             'menu'=>$_SESSION['menu']
         ];
-    $this->mostrar('./plantilla/home.php',$datos);
+    $this->mostrar('./plantilla/home.php',$datos); */
+    $this->mostrar('anexo05/formulario.php');
     }
     public function editar(){
         $id = $_GET['id'];
@@ -50,17 +51,19 @@ class CtrlAnexo05 extends Controlador {
         $obj = new Anexo05($id);
         $data = $obj->editar();
         # var_dump($data);exit;
+        $msg=$data['msg'];
         $datos = [
             'datos'=>$data['data'][0]
         ];
-        $home = $this->mostrar('anexo05/formulario.php',$datos,true);
+        /* $home = $this->mostrar('anexo05/formulario.php',$datos,true);
 
          $datos= [
             'titulo'=>'Editar Anexo 05',
             'contenido'=>$home,
             'menu'=>$_SESSION['menu']
         ];
-    $this->mostrar('./plantilla/home.php',$datos);
+    $this->mostrar('./plantilla/home.php',$datos); */
+    $this->mostrar('anexo05/formulario.php',$datos);
     }
 
 

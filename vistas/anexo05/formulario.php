@@ -19,75 +19,64 @@ $fecha_anexo = isset($datos['fecha_anexo'])?$datos['fecha_anexo']:'';
 $lugar_anexo = isset($datos['lugar_anexo'])?$datos['lugar_anexo']:'';
 
 $esNuevo = isset($datos['id'])?0:1;
-$titulo = $esNuevo==1?'Nuevo Anexo 05':'Editando Anexo 05';
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1><?=$titulo?></h1>
-    <form action="?ctrl=CtrlAnexo05&accion=guardar" method="post">
+<form action="?ctrl=CtrlAnexo05&accion=guardar" method="post">
         id:
-        <input type="text" name="id" value="<?=$id?>">
+        <input class="form-control" type="text" name="id" value="<?=$id?>">
         <input type="hidden" name="esNuevo" value="<?=$esNuevo?>">
         <br>
         idPrograma_estudios:
-        <input type="text" name="idPrograma_estudios" value="<?=$idPrograma_estudios?>">
+        <input class="form-control" type="text" name="idPrograma_estudios" value="<?=$idPrograma_estudios?>">
         <br>
         idEstudiante:
-        <input type="text" name="idEstudiante" value="<?=$idEstudiante?>">
+        <input class="form-control" type="text" name="idEstudiante" value="<?=$idEstudiante?>">
         <br>
         idModulo:
-        <input type="text" name="idModulo" value="<?=$idModulo?>">
+        <input class="form-control" type="text" name="idModulo" value="<?=$idModulo?>">
         <br>
         fecha_inicio:
-        <input type="date" name="fecha_inicio" value="<?=$fecha_inicio?>">
+        <input class="form-control" type="date" name="fecha_inicio" value="<?=$fecha_inicio?>">
         <br>
         fecha_fin:
-        <input type="date" name="fecha_fin" value="<?=$fecha_fin?>">
+        <input class="form-control" type="date" name="fecha_fin" value="<?=$fecha_fin?>">
         <br>
         Total_horas:
-        <input type="text" name="Total_horas" value="<?=$Total_horas?>">
+        <input class="form-control" type="text" name="Total_horas" value="<?=$Total_horas?>">
         <br>
         idEmpresa:
-        <input type="text" name="idEmpresa" value="<?=$idEmpresa?>">
+        <input class="form-control" type="text" name="idEmpresa" value="<?=$idEmpresa?>">
         <br>
         lugar_oficina:
-        <input type="text" name="lugar_oficina" value="<?=$lugar_oficina?>">
+        <input class="form-control" type="text" name="lugar_oficina" value="<?=$lugar_oficina?>">
         <br>
         lugar_laboratorio:
-        <input type="text" name="lugar_laboratorio" value="<?=$lugar_laboratorio?>">
+        <input class="form-control" type="text" name="lugar_laboratorio" value="<?=$lugar_laboratorio?>">
         <br>
         lugar_almacen:
-        <input type="text" name="lugar_almacen" value="<?=$lugar_almacen?>">
+        <input class="form-control" type="text" name="lugar_almacen" value="<?=$lugar_almacen?>">
         <br>
         lugar_campo:
-        <input type="text" name="lugar_campo" value="<?=$lugar_campo?>">
+        <input class="form-control" type="text" name="lugar_campo" value="<?=$lugar_campo?>">
         <br>
         lugar_otros:
-        <input type="text" name="lugar_otros" value="<?=$lugar_otros?>">
+        <input class="form-control" type="text" name="lugar_otros" value="<?=$lugar_otros?>">
         <br>
         horario:
-        <input type="text" name="horario" value="<?=$horario?>">
+        <input class="form-control" type="text" name="horario" value="<?=$horario?>">
         <br>
         tareas:
-        <input type="text" name="tareas" value="<?=$tareas?>">
+        <input class="form-control" type="text" name="tareas" value="<?=$tareas?>">
         <br>
         total_puntaje:
-        <input type="text" name="total_puntaje" value="<?=$total_puntaje?>">
+        <input class="form-control" type="text" name="total_puntaje" value="<?=$total_puntaje?>">
         <br>
         fecha_anexo:
-        <input type="text" name="fecha_anexo" value="<?=$fecha_anexo?>">
+        <input class="form-control" type="text" name="fecha_anexo" value="<?=$fecha_anexo?>">
         <br>
         lugar_anexo:
-        <input type="text" name="lugar_anexo" value="<?=$lugar_anexo?>">
+        <input class="form-control" type="text" name="lugar_anexo" value="<?=$lugar_anexo?>">
         <br>
-        <input type="submit" value="Guardar">
+        <input class="btn btn-primary mb-3" type="submit" value="Guardar">
 
     </form>
 

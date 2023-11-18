@@ -11,7 +11,7 @@ class CtrlAnexo04 extends Controlador {
         $data = $obj->getTodo();
 
         # var_dump($data);exit;
-
+        $msg=$data['msg'];
         $datos = [
             'titulo'=>'Anexo04',
             'datos'=>$data['data']
@@ -22,7 +22,8 @@ class CtrlAnexo04 extends Controlador {
         $datos= [
             'titulo'=>'Anexo 04',
             'contenido'=>$home,
-            'menu'=>$_SESSION['menu']
+            'menu'=>$_SESSION['menu'],
+            'msg'=>$msg
         ];
     $this->mostrar('./plantilla/home.php',$datos);
     }
@@ -38,12 +39,14 @@ class CtrlAnexo04 extends Controlador {
     }
     public function nuevo(){
         # echo "Agregando..";
+        /* $msg='';
         $datos= [
             'titulo'=>'Nuevo Anexo 04',
             'contenido'=>$this->mostrar('anexo04/formulario.php',null,true),
             'menu'=>$_SESSION['menu']
         ];
-    $this->mostrar('./plantilla/home.php',$datos);
+    $this->mostrar('./plantilla/home.php',$datos); */
+    $this->mostrar('anexo04/formulario.php');
     }
     public function editar(){
         $id = $_GET['id'];
@@ -51,17 +54,19 @@ class CtrlAnexo04 extends Controlador {
         $obj = new Anexo04($id);
         $data = $obj->editar();
         # var_dump($data);exit;
+        $msg=$data['msg'];
         $datos = [
             'datos'=>$data['data'][0]
         ];
-        $home = $this->mostrar('anexo04/formulario.php',$datos,true);
+        /* $home = $this->mostrar('anexo04/formulario.php',$datos,true);
 
          $datos= [
             'titulo'=>'Editar Anexo 04',
             'contenido'=>$home,
             'menu'=>$_SESSION['menu']
         ];
-    $this->mostrar('./plantilla/home.php',$datos);
+    $this->mostrar('./plantilla/home.php',$datos); */
+    $this->mostrar('anexo04/formulario.php',$datos);
     }
 
     public function guardar(){

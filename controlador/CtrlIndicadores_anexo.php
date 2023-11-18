@@ -11,9 +11,9 @@ class CtrlIndicadores_anexo extends Controlador {
         $data = $obj->getTodo();
 
         # var_dump($data);exit;
-
+        $msg=$data['msg'];
         $datos = [
-            'titulo'=>'Indicadores de anexo ',
+            
             'datos'=>$data['data']
         ];
 
@@ -37,12 +37,14 @@ class CtrlIndicadores_anexo extends Controlador {
     }
     public function nuevo(){
         # echo "Agregando..";
+        /* $msg='';
         $datos= [
             'titulo'=>'Nuevo Indicador de Anexo',
             'contenido'=>$this->mostrar('Indicadores_anexo/formulario.php',null,true),
             'menu'=>$_SESSION['menu']
         ];
-    $this->mostrar('./plantilla/home.php',$datos);
+    $this->mostrar('./plantilla/home.php',$datos); */
+    $this->mostrar('indicadores_anexo/formulario.php');
     }
     public function editar(){
         $id = $_GET['id'];
@@ -50,17 +52,19 @@ class CtrlIndicadores_anexo extends Controlador {
         $obj = new Indicadores_anexo($id);
         $data = $obj->editar();
         # var_dump($data);exit;
+        $msg=$data['msg'];
         $datos = [
             'datos'=>$data['data'][0]
         ];
-        $home = $this->mostrar('indicadores_anexo/formulario.php',$datos,true);
+        /* $home = $this->mostrar('indicadores_anexo/formulario.php',$datos,true);
 
          $datos= [
             'titulo'=>'Editar Indicador de Anexo',
             'contenido'=>$home,
             'menu'=>$_SESSION['menu']
         ];
-    $this->mostrar('./plantilla/home.php',$datos);
+    $this->mostrar('./plantilla/home.php',$datos); */
+    $this->mostrar('indicadores_anexo/formulario.php',$datos);
     }
 
     public function guardar(){
