@@ -48,7 +48,7 @@
         <a href="forgot-password.html">Olvide mi contraseña</a>
       </p>
       <p class="mb-0">
-        <a href="register.html" class="text-center">Regístrate</a>
+      <a href="registro/index.html" class="text-center">Regístrate</a>
       </p>
     </div>
     <!-- /.login-card-body -->

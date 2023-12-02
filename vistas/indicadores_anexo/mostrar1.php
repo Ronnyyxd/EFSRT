@@ -1,17 +1,11 @@
 
-<a href="#" class="btn btn-primary nuevo">
-    <i class="fa fa-plus"></i> 
-    Nueva Visita
-</a>    
+
+
 <table class="table">
-<thead>
+    <thead>
         <tr>
-            <th>Numero</th>
-            <th>Numero de Visita</th>
-            <th>Fecha</th>
-            <th>Tareas</th>
-            <th>Porcentaje de avance</th>
-           
+
+            <th>Calificacion</th>
             </tr>
       </thead>
       <tbody>
@@ -21,33 +15,22 @@ if (is_array($datos))
 foreach ($datos as $d) {
     ?>
 <tr>
-    <td>
-        <?=$d['id']?>
-    </td>
-    <td>
-        <?=$d['numero']?>
-    </td>
-    <td>
-        <?=$d['fecha']?>
-    </td>
-    <td>
-        <?=$d['tareas']?>
-    </td>
-    <td>
-        <?=$d['porcentaje_avance']?>
-    </td>
- 
 
     <td>
+        <?=$d['calificacion']?>
+    </td>
+    
+
+    <!-- <td>
         <a data-id="<?=$d["id"]?>" href="#" class="btn btn-success editar">
             <i class="fa fa-edit"></i> 
             Editar
         </a>
-        <a data-id="<?=$d["id"]?>" data-nombre="<?=$d["numero"]?>" href="#" class="btn btn-danger eliminar">
+        <a data-id="<?=$d["id"]?>" data-nombre="<?=$d["idAnexo"]?>" href="#" class="btn btn-danger eliminar">
           <i class="fa fa-trash"></i>  
           Eliminar
         </a>
-    </td>
+    </td> -->
 </tr>
 
 <?php

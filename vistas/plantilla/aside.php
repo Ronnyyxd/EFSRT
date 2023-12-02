@@ -14,7 +14,9 @@
           <img src="20232\imagenes\mark.jfif" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-        <?=(isset($_SESSION['usuario']))?$_SESSION['usuario']:'Visitante';?>
+        <a href="#" class="d-block"> 
+        <?=(isset($_SESSION['nombre']))?$_SESSION['nombre']:'Usuario';?>
+        </a>
         </div>
       </div>
 
@@ -64,7 +66,7 @@
 
             </ul>
           </li>
-
+      
 
           <li class="nav-header">CERRAR</li>
 

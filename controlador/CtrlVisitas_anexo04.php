@@ -20,7 +20,7 @@ class CtrlVisitas_anexo04 extends Controlador {
         $home = $this->mostrar('visitas_anexo04/mostrar.php',$datos,true);
 
         $datos= [
-            'titulo'=>'Visitas Anexo 04',
+            'titulo'=>'Visitas',
             'contenido'=>$home,
             'menu'=>$_SESSION['menu']
         ];
@@ -96,5 +96,66 @@ class CtrlVisitas_anexo04 extends Controlador {
         # var_dump($data);exit;
         $this->index();
 
+    }
+
+    public function getModulosXEstudiante(){
+        require_once './modelo/Anexo04.php';
+        $nombreEst = $this->getEstudiante();
+
+        $obj = new Anexo04;
+        $data = $obj->getAnexoXEstudiante($_GET['id']);
+        //var_dump($data);exit;
+
+        $datos = [
+            
+            'datos'=>$data['data']
+        ];
+        $home = $this->mostrar('visitas_anexo04/mostrarModulosXEstudiante.php',$datos,true);
+
+        $datos= [
+            'titulo'=>'Visitas para: '.$nombreEst,
+            'contenido'=>$home,
+            'menu'=>$_SESSION['menu']
+        ];
+        $this->mostrar('./plantilla/home.php',$datos);
+
+    }
+    private function getEstudiante(){
+        require_once './modelo/Persona.php';
+        $id = $_GET['id'];
+        $obj = new Persona($id);
+        $estudiante = $obj->editar()['data'][0];
+        
+        return $estudiante['nombres'] . ' '. $estudiante['apellidos'];
+    }
+
+    public function visitasXEstudiante(){
+
+        $_SESSION['idAnexo']=  $_GET['idAnexo'];
+        $nombreEst = $this->getEstudiante();
+
+        $obj =  new Visitas_anexo04();
+
+        $data = $obj->getPorEstudiante($_GET['id'],$_GET['idModulo']);
+
+        //var_dump($data); exit;
+
+        $idAnexo=$data['data'][0]['id'];
+        
+        $datos = [
+            'idAnexo'=>$idAnexo,
+            'datos'=>$data['data']
+        ];
+        $home = $this->mostrar('visitas_anexo04/mostrarXEstudiante.php',$datos,true);
+
+
+        $datos= [
+            'titulo'=>'Visitas para: '.$nombreEst.' - Módulo: '.$_GET['idModulo'],
+            'contenido'=>$home,
+            'menu'=>$_SESSION['menu']
+        ];
+    $this->mostrar('./plantilla/home.php',$datos);
+        
+        
     }
 }

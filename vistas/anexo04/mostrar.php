@@ -7,15 +7,11 @@
     <thead>
         <tr>
             <th>Id</th>
-            <th>fecha_inicio</th>
-            <th>fecha_fin</th>
-            <th>problemas_detectados</th>
-            <th>observaciones</th>
-            <th>idEstudiante</th>
-            <th>idPrograma_estudios</th>
-            <th>idModulo</th>
-            <th>idEmpresa</th>
-            <th>idDocente</th>
+            <th>Fecha de inicio</th>
+            <th>Fecha de fin</th>
+            <th>Problemas_detectados</th>
+            <th>Observaciones</th>
+
             </tr>
       </thead>
       <tbody>
@@ -39,21 +35,7 @@ foreach ($datos as $d) {
     <td>
         <?=$d['observaciones']?>
     </td>
-    <td>
-        <?=$d['idEstudiante']?>
-    </td>
-    <td>
-        <?=$d['idPrograma_estudios']?>
-    </td>
-    <td>
-        <?=$d['idModulo']?>
-    </td>
-    <td>
-        <?=$d['idEmpresa']?>
-    </td>
-    <td>
-        <?=$d['idDocente']?>
-    </td>
+
 
     <td>
         <a data-id="<?=$d["id"]?>" href="#" class="btn btn-success editar">

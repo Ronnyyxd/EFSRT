@@ -9,9 +9,6 @@ class Visitas_anexo04 extends Modelo {
     private $porcentaje_avance;
     private $idAnexo;
 
-
-
-
     private $_tabla='visitas_anexo04';
 
     public function __construct($id=null,$numero=null,$fecha=null,$tareas=null,$porcentaje_avance=null,$idAnexo=null,
@@ -61,5 +58,10 @@ class Visitas_anexo04 extends Modelo {
         ];
         $wh = "id=$this->id";
         return $this->update($wh,$datos);
+    }
+    public function getPorEstudiante ($id,$idM){
+        $sql = "Select * from v_visitasA4 where idEstudiante=$id and idModulo=$idM";
+        $this->setSql($sql);
+        return $this->ejecutarSql();
     }
 }

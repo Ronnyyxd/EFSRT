@@ -4,7 +4,6 @@ require_once './core/Modelo.php';
 class Turnos extends Modelo {
     private $id;
     private $turno;
-    
     private $_tabla='turnos';
 
     public function __construct($id=null,$turno=null){

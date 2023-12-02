@@ -21,12 +21,10 @@ abstract class Helper
                     case 3:   #Estudiante
                         $menu=self::getMenuTramiteEstudiante();
                         break;
-                    case 4:   #Administrativo
-                        $menu=self::getMenuTramiteAdministrativo();
-                        break;
                     
-                    default:    #Visitante
-                        $menu=self::getMenuTramiteVisitante();
+                    
+                    default:    #Evaluador
+                        $menu=self::getMenuTramiteEvaluador();
                         break;
                 }    
             
@@ -42,12 +40,10 @@ abstract class Helper
                     case '3':   #Estudiante
                         $menu=self::getMenuCajaEstudiante();
                         break;
-                    case '4':   #Administrativo
-                        $menu=self::getMenuCajaAdministrativo();
-                        break;
                     
-                    default:    #Visitante
-                        $menu=self::getMenuCajaVisitante();
+                    
+                    default:    #Evaluador
+                        $menu=self::getMenuCajaEvaluador();
                         break;
                 }   
                 break;
@@ -65,44 +61,52 @@ abstract class Helper
             'CtrlAnexo04'=>'Anexo 04',
             'CtrlAnexo05'=>'Anexo 05',
             'CtrlDocentes'=>'Docentes',
-            'CtrlRepresentantes'=>'Representantes',
-            'CtrlEmpresas'=>'Empresas',
+            /* 'CtrlRepresentantes'=>'Representantes', */
+            /* 'CtrlEmpresas'=>'Empresas', */
             'CtrlEstudiantes'=>'Estudiantes',
             'CtrlIndicadores_anexo'=>'Indicadores_anexo',
             'CtrlIndicadores_evaluacion'=>'Indicadores_Evaluacion',
             'CtrlModulos'=>'Modulos',
-            #'CtrlPersonas'=>'Personas',
+            /* 'CtrlPersonas'=>'Personas', */
             'CtrlProgramas_Estudios'=>'Programas_Estudios',
             'CtrlTipos_indicadores'=>'Tipos_indicadores',
             'CtrlTurnos'=>'Turnos',
             'CtrlVisitas_Anexo04'=>'Visitas_Anexo04',
-            'CtrlPlanes_estudio'=>'Planes de Estudio',
+            'CtrlPlanes_estudio'=>'Programas de Estudio',
         ]; 
     }
-    private static function getMenuTramiteAdministrativo(){
-        return [
-           #  'CtrlFactorForma'=>'Factores de Forma',
-            'CtrlCtaContable'=>'Cuentas Contables',
-            'CtrlConceptoPago'=>'Conceptos de Pago',
-            'CtrlEstudiante'=>'Estudiante',
-        ]; 
-    }
+    
+    
     private static function getMenuTramiteDocente(){
         return [
-            'CtrlCargo'=>'Cargos',
-            'CtrlEstado'=>'Estados',
+            'CtrlVisitas_Anexo04'=>'Visitas',
+            'CtrlAnexo03'=>'Documentacion Anexo 03',
+            'CtrlAnexo04'=>'Documentacion Anexo 04',
+            'CtrlAnexo05'=>'Documentacion Anexo 05',
+            'CtrlEstudiante'=>' Mis Estudiantes',
+
            
         ]; 
     }
     private static function getMenuTramiteEstudiante(){
         return [
+            'CtrlAnexo03'=>'Documentacion Anexo 03',
+            'CtrlAnexo04'=>'Documentacion Anexo 04',
+            'CtrlAnexo05'=>'Documentacion Anexo 05',
+            'CtrlIndicadores_anexo1'=>'Visualizar Nota',
             
-            'CtrlEstado'=>'Estados',
+            'CtrlRepresentantes'=>'Editar Datos',
+            
+            
+            
+            
            
         ]; 
     }
-    private static function getMenuTramiteVisitante(){
+    private static function getMenuTramiteEvaluador(){
         return [
+            
+            'CtrlIndicadores_evaluacion'=>'Indicadores de Evaluacion',
         ]; 
     }
     private static function getMenuCajaAdmin(){
@@ -115,29 +119,31 @@ abstract class Helper
             'CtrlEstudiante'=>'Estudiante',
         ]; 
     }
-    private static function getMenuCajaAdministrativo(){
+   
+    private static function getMenuCajaDocente(){
         return [
+            'CtrlVisitas_Anexo04'=>'Visitas_Anexo04',
+            'CtrlIndicadores_anexo'=>'Visualizar Nota',
             'CtrlAnexo03'=>'Anexo 03',
             'CtrlAnexo04'=>'Anexo 04',
             'CtrlAnexo05'=>'Anexo 05',
         ]; 
     }
-    private static function getMenuCajaDocente(){
-        return [
-            'CtrlCargo'=>'Cargos',
-            'CtrlEstado'=>'Estados',
-           
-        ]; 
-    }
     private static function getMenuCajaEstudiante(){
         return [
+            'CtrlAnexo03'=>'Anexo 03',
+            'CtrlAnexo04'=>'Anexo 04',
+            'CtrlAnexo05'=>'Anexo 05',
+            'CtrlIndicadores_anexo_1'=>'Indicadores_anexo',
             
-            'CtrlEstado'=>'Estados',
+            
            
         ]; 
     }
-    private static function getMenuCajaVisitante(){
+    private static function getMenuCajaEvaluador(){
         return [
+            'CtrlIndicadores_anexo'=>'Indicadores_anexo',
+            'CtrlIndicadores_evaluacion'=>'Indicadores_Evaluacion',
         ]; 
     }
 

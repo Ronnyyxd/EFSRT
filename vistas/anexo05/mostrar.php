@@ -7,13 +7,11 @@
 <thead>
         <tr>
             <th>Id</th>
-            <th>idPrograma_estudios</th>
-            <th>idEstudiante</th>
-            <th>idModulo</th>
+
             <th>fecha_inicio</th>
             <th>fecha_fin</th>
             <th>Total_horas</th>
-            <th>idEmpresa</th>
+   
             <th>lugar_oficina</th>
             <th>lugar_laboratorio</th>
             <th>lugar_almacen</th>
@@ -36,15 +34,7 @@ foreach ($datos as $d) {
     <td>
         <?=$d['id']?>
     </td>
-    <td>
-        <?=$d['idPrograma_estudios']?>
-    </td>
-    <td>
-        <?=$d['idEstudiante']?>
-    </td>
-    <td>
-        <?=$d['idModulo']?>
-    </td>
+  
     <td>
         <?=$d['fecha_inicio']?>
     </td>
@@ -54,9 +44,7 @@ foreach ($datos as $d) {
     <td>
         <?=$d['Total_horas']?>
     </td>
-    <td>
-        <?=$d['idEmpresa']?>
-    </td>
+    
     <td>
         <?=$d['lugar_oficina']?>
     </td>

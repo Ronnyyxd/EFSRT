@@ -1,15 +1,13 @@
 <?php
 session_start();
 require_once './core/Controlador.php';
-require_once './modelo/Estudiantes.php';
+require_once './modelo/Indicadores_anexo.php';
 require_once './assets/Helper.php';
 
-
-class CtrlEstudiantes extends Controlador {
+class CtrlIndicadores_anexo1 extends Controlador {
     public function index(){
-        # echo "Hola Estudiantes";
-        
-        $obj = new Estudiantes;
+        # echo "Hola Indicadores_anexo";
+        $obj = new Indicadores_anexo;
         $data = $obj->getTodo();
 
         # var_dump($data);exit;
@@ -19,57 +17,70 @@ class CtrlEstudiantes extends Controlador {
             'datos'=>$data['data']
         ];
 
-        $home = $this->mostrar('estudiantes/mostrar.php',$datos,true);
+        $home = $this->mostrar('indicadores_anexo/mostrar1.php',$datos,true);
 
         $datos= [
-            'titulo'=>'Estudiantes',
+            'titulo'=>'Nota',
             'contenido'=>$home,
-            'menu'=>$_SESSION['menu'],
-            'msg'=>$msg
+            'menu'=>$_SESSION['menu']
         ];
     $this->mostrar('./plantilla/home.php',$datos);
     }
-
+    	
     public function eliminar(){
-        
         $id = $_GET['id'];
         # echo "eliminando: ".$id;
-        $obj =new Estudiantes ($id);
+        $obj =new Indicadores_anexo ($id);
         $obj->eliminar();
 
         $this->index();
     }
     public function nuevo(){
-        
         # echo "Agregando..";
-  /*       $datos= [
-            'titulo'=>'Nuevo Estudiante',
-            'contenido'=>$this->mostrar('estudiantes/formulario.php',null,true),
+        /* $msg='';
+        $datos= [
+            'titulo'=>'Nuevo Indicador de Anexo',
+            'contenido'=>$this->mostrar('Indicadores_anexo/formulario.php',null,true),
             'menu'=>$_SESSION['menu']
         ];
     $this->mostrar('./plantilla/home.php',$datos); */
-    $this->mostrar('estudiantes/formulario.php');
+    $this->mostrar('indicadores_anexo/formulario.php');
     }
     public function editar(){
-        
         $id = $_GET['id'];
         # echo "Editando: ".$id;
-        $obj = new Estudiantes($id);
+        $obj = new Indicadores_anexo($id);
         $data = $obj->editar();
         # var_dump($data);exit;
+        $msg=$data['msg'];
         $datos = [
             'datos'=>$data['data'][0]
         ];
-        $this->mostrar('estudiantes/formulario.php',$datos);
+        /* $home = $this->mostrar('indicadores_anexo/formulario.php',$datos,true);
+
+         $datos= [
+            'titulo'=>'Editar Indicador de Anexo',
+            'contenido'=>$home,
+            'menu'=>$_SESSION['menu']
+        ];
+    $this->mostrar('./plantilla/home.php',$datos); */
+    $this->mostrar('indicadores_anexo/formulario.php',$datos);
     }
+
     public function guardar(){
         # echo "Guardando..";
         # var_dump($_POST);
         $id = $_POST['id'];
-        $idPrograma_estudios = $_POST['idPrograma_estudios'];
-        $esNuevo = $_POST['esNuevo'];
+        $idAnexo = $_POST['idAnexo'];   
+        $idIndicador = $_POST['idIndicador'];    
+        $calificacion = $_POST['calificacion'];
 
-        $obj = new Estudiantes ($id, $idPrograma_estudios );
+        $esNuevo = $_POST['esNuevo'];  
+
+
+  
+
+        $obj = new Indicadores_anexo ($id, $idAnexo,$idIndicador,$calificacion );
 
         switch ($esNuevo) {
             case 0: # Editar
@@ -86,5 +97,4 @@ class CtrlEstudiantes extends Controlador {
         $this->index();
 
     }
-    
 }

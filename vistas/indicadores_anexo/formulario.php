@@ -2,7 +2,7 @@
 $id = isset($datos['id'])?$datos['id']:'';
 $idAnexo = isset($datos['idAnexo'])?$datos['idAnexo']:'';
 $idIndicador = isset($datos['idIndicador'])?$datos['idIndicador']:'';
-$calificacion = isset($datos['calificacion'])?$datos['calificacion']:'';
+$calificacion = isset($datos['calificaccion'])?$datos['calificacion']:'';
 $esNuevo = isset($datos['id'])?0:1;
 ?>
     <form action="?ctrl=CtrlIndicadores_anexo&accion=guardar" method="post">

@@ -6,7 +6,7 @@
 <table class="table">
 <thead>
         <tr>
-            <th>Numero</th>
+            
             <th>Numero de Visita</th>
             <th>Fecha</th>
             <th>Tareas</th>
@@ -21,9 +21,7 @@ if (is_array($datos))
 foreach ($datos as $d) {
     ?>
 <tr>
-    <td>
-        <?=$d['id']?>
-    </td>
+   
     <td>
         <?=$d['numero']?>
     </td>
@@ -56,7 +54,7 @@ foreach ($datos as $d) {
       </tbody>
     </table>
 
-    <a href="?">Retornar</a>
+    <a href="?ctrl=CtrlEstudiante">Retornar</a>
 
     <div class="modal fade" id="modal-lg">
         <div class="modal-dialog modal-lg">

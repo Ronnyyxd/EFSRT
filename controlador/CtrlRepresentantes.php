@@ -13,14 +13,14 @@ class CtrlRepresentantes extends Controlador {
         # var_dump($data);exit;
         $msg=$data['msg'];
         $datos = [
-            'titulo'=>'Representantes',
+            'titulo'=>'Editar Datos',
             'datos'=>$data['data']
         ];
 
         $home = $this->mostrar('representantes/mostrar.php',$datos,true);
 
         $datos= [
-            'titulo'=>'Representantes',
+            'titulo'=>'Editar Datos',
             'contenido'=>$home,
             'menu'=>$_SESSION['menu'],
             'msg'=>$msg

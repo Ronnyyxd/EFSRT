@@ -4,7 +4,7 @@ $numero = isset($datos['numero'])?$datos['numero']:'';
 $fecha = isset($datos['fecha'])?$datos['fecha']:'';
 $tareas = isset($datos['tareas'])?$datos['tareas']:'';
 $porcentaje_avance = isset($datos['porcentaje_avance'])?$datos['porcentaje_avance']:'';
-$idAnexo = isset($datos['idAnexo'])?$datos['idAnexo']:'';
+$idAnexo = isset($datos['idAnexo'])?$datos['idAnexo']:$_SESSION['idAnexo'];
 $esNuevo = isset($datos['id'])?0:1;
 ?>
 
@@ -13,20 +13,21 @@ $esNuevo = isset($datos['id'])?0:1;
         <input class="form-control" type="text" name="id" value="<?=$id?>">
         <input type="hidden" name="esNuevo" value="<?=$esNuevo?>">
         <br>
-        numero:
+        Numero de visita:
         <input class="form-control" type="text" name="numero" value="<?=$numero?>">
+        <br>        
+        Fecha de visita:
+        <input type="date" name="fecha" value="<?=$fecha?>">
         <br>
-        fecha:
-        <input class="form-control" type="text" name="date" value="<?=$fecha?>">
         <br>
-        tareas:
+        Tareas:
         <input class="form-control" type="text" name="tareas" value="<?=$tareas?>">
         <br>
-        porcentaje_avance:
+        Porcentaje de avance:
         <input class="form-control" type="text" name="porcentaje_avance" value="<?=$porcentaje_avance?>">
-        <br>
-        idAnexo:
-        <input class="form-control" type="text" name="idAnexo" value="<?=$idAnexo?>">
+        
+        
+        <input type="hidden" class="form-control" type="text" name="idAnexo" value="<?=$idAnexo?>">
         <br>
         <br>
         <input class="btn btn-primary mb-3" type="submit" value="Guardar">

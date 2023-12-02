@@ -15,9 +15,6 @@
             <th>movilidad</th>
             <th>otros</th>
             <th>solo_EFSRT</th>
-            <th>idEmpresa</th>
-            <th>idEstudiante</th>
-            <th>idModulo</th>
             <th>detalle_otros</th>
             </tr>
       </thead>
@@ -55,23 +52,15 @@ foreach ($datos as $d) {
         <?=$d['solo_EFSRT']?>
     </td>
     <td>
-        <?=$d['idEmpresa']?>
-    </td>
-    <td>
-        <?=$d['idEstudiante']?>
-    </td>
-    <td>
-        <?=$d['modulo']?>
-    </td>
-    <td>
+
         <?=$d['detalle_otros']?>
     </td>
     <td>    
-        <a data-id="<?=$d["Fecha_desde"]?>" href="#" class="btn btn-success editar">
+        <a data-id="<?=$d["NroModulo"]?>" href="#" class="btn btn-success editar">
             <i class="fa fa-edit"></i> 
             Editar
         </a>
-        <a data-id="<?=$d["Fecha_hasta"]?>" data-nombre="<?=$d["nombre"]?>" href="#" class="btn btn-danger eliminar">
+        <a data-id="<?=$d["NroModulo"]?>" data-nombre="<?=$d["NroModulo"]?>" href="#" class="btn btn-danger eliminar">
           <i class="fa fa-trash"></i>  
           Eliminar
         </a>

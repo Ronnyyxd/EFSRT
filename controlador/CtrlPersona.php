@@ -92,7 +92,8 @@ class CtrlPersona extends Controlador {
 
             $_SESSION['id']=$data[0]['id'];
             $_SESSION['usuario']=$data[0]['usuario'];
-            $_SESSION['nombre']=$data[0]['nombres'] . ' '. $data[0]['apellidos'];
+            $_SESSION['cargo']=$data[0]['cargo'];
+            $_SESSION['nombre']=$data[0]['nombres'] . ' '. $data[0]['cargo']. ' '. $data[0]['programa'];
         }
 
 

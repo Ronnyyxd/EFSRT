@@ -4,7 +4,6 @@ require_once './core/Modelo.php';
 class Docentes extends Modelo {
     private $idPrograma_estudios;
     private $id;
-    
     private $_tabla='docentes';
 
     public function __construct($id=null,$idPrograma_estudios=null){

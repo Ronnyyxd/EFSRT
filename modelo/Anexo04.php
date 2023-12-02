@@ -64,4 +64,9 @@ class Anexo04 extends Modelo {
         $wh = "id=$this->id";
         return $this->update($wh,$datos);
     }
+    public function getAnexoXEstudiante($id){
+        $sql ="Select * from anexo_04 where idEstudiante=$id";
+        $this->setSql($sql);
+       return  $this->ejecutarSql();
+    }
 }

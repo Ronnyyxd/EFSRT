@@ -1,14 +1,9 @@
 
-<a href="#" class="btn btn-primary nuevo">
-    <i class="fa fa-plus"></i> 
-    Nuevo Representante
-</a>    
-
 <table class="table">
     <thead>
         <tr>
-            <th>Id</th>
-            <th>cargo</th>
+            
+            <th>Nombre</th>
         </tr>
     </thead>
     <tbody>
@@ -17,9 +12,7 @@ if (is_array($datos))
 foreach ($datos as $d) {
     ?>
 <tr>
-    <td>
-        <?=$d['id']?>
-    </td>
+   
     <td>
         <?=$d['cargo']?>
     </td>
